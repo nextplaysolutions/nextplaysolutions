@@ -5,7 +5,7 @@ import CTAButton from "@/components/CTAButton";
 export const metadata: Metadata = {
   title: "Pricing — NextPlay Solutions",
   description:
-    "AI Readiness Audit starting at $500. Flat fee, no hourly billing, no retainer. Founding cohort spots still available at no cost.",
+    "AI Readiness Assessment starting at $500. Flat fee, no hourly billing, no retainer. Founding cohort spots still available at no cost.",
 };
 
 const included = [
@@ -23,7 +23,7 @@ const upsells = [
     badge: "Add-on",
   },
   {
-    title: "Quarterly audit subscription",
+    title: "Quarterly assessment subscription",
     body: "AI moves fast. A quarterly check-in keeps your roadmap current as new tools become relevant.",
     badge: "Add-on",
   },
@@ -47,7 +47,7 @@ export default function PricingPage() {
             Founding cohort — still open
           </p>
           <p className="text-sm text-brand-gray">
-            4 to 6 businesses go through the full audit at no cost in exchange
+            4 to 6 businesses go through the full assessment at no cost in exchange
             for feedback and a testimonial.
           </p>
         </div>
@@ -63,7 +63,7 @@ export default function PricingPage() {
       <div className="border border-gray-200 rounded-2xl overflow-hidden mb-10">
         <div className="p-8 border-b border-gray-100">
           <p className="text-sm font-semibold text-brand-teal uppercase tracking-widest mb-3">
-            AI Readiness Audit
+            AI Readiness Assessment
           </p>
           <div className="flex items-end gap-2 mb-2">
             <span className="text-5xl font-bold text-brand-dark">$500</span>
@@ -104,7 +104,7 @@ export default function PricingPage() {
 
       {/* CTA */}
       <div className="mb-14">
-        <CTAButton label="Book Your Audit Call" size="large" />
+        <CTAButton label="Book Your Assessment Call" size="large" />
         <p className="text-sm text-brand-gray mt-3">
           We confirm the exact price on the call before any work begins.
         </p>
@@ -112,7 +112,7 @@ export default function PricingPage() {
 
       {/* Add-ons */}
       <h2 className="text-2xl font-bold text-brand-dark mb-6">
-        Want more than the audit?
+        Want more than the assessment?
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         {upsells.map((u) => (
@@ -128,7 +128,7 @@ export default function PricingPage() {
         ))}
       </div>
       <p className="text-sm text-brand-gray mt-5">
-        Add-on pricing discussed after the audit is complete. No pressure — the
+        Add-on pricing discussed after the assessment is complete. No pressure — the
         roadmap stands on its own.
       </p>
     </div>

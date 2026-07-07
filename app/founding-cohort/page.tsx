@@ -4,7 +4,7 @@ import CTAButton from "@/components/CTAButton";
 export const metadata: Metadata = {
   title: "Founding Cohort — NextPlay Solutions",
   description:
-    "We're selecting 4 to 6 founding clients to go through the AI Readiness Audit at no cost. Free in exchange for honest feedback and a testimonial.",
+    "We're taking on 4 to 6 founding clients to go through the AI Readiness Assessment at no cost. Free in exchange for honest feedback and a testimonial.",
 };
 
 const deliverables = [
@@ -13,8 +13,8 @@ const deliverables = [
     body: "A guided conversation with Scout across seven areas of your business — operations, sales, marketing, customer service, finance, HR, and more.",
   },
   {
-    title: "AI savings report",
-    body: "A detailed report that shows exactly where AI can save you time and money — specific to your business, not a generic template.",
+    title: "AI opportunity report",
+    body: "A detailed report showing exactly where AI can reduce operational costs, free up your team, and create new revenue opportunities — specific to your business, not a generic template. Personally reviewed by our founders before it reaches you.",
   },
   {
     title: "Curated tool list with pricing",
@@ -41,8 +41,8 @@ export default function FoundingCohortPage() {
       </h1>
 
       <p className="text-xl text-brand-gray leading-relaxed mb-10">
-        We&rsquo;re selecting a small group of businesses to go through the full AI
-        Readiness Audit at no charge — in exchange for honest feedback and a
+        We&rsquo;re taking on 4 to 6 founding clients to go through the full AI
+        Readiness Assessment at no charge — in exchange for honest feedback and a
         testimonial if you find it valuable. After this cohort, it becomes a
         paid service.
       </p>
@@ -85,13 +85,13 @@ export default function FoundingCohortPage() {
           <span className="font-semibold">This offer is genuinely limited.</span>{" "}
           We&rsquo;re working with 4 to 6 businesses — enough to get real feedback,
           small enough to give each one serious attention. Once the cohort is
-          full, the next audit is at our standard rate.
+          full, the next assessment is at our standard rate.
         </p>
       </div>
 
       {/* CTA */}
       <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
-        <CTAButton label="Apply for a Free Spot" href="/book" size="large" />
+        <CTAButton label="Claim a Free Spot" href="/book" size="large" />
         <p className="text-sm text-brand-gray">
           Takes 15 minutes. No prep needed.
         </p>

@@ -7,7 +7,7 @@ interface CTAButtonProps {
 }
 
 export default function CTAButton({
-  label = "Book Your Free Audit Call",
+  label = "Book Your Free Assessment Call",
   href = "/book",
   size = "default",
 }: CTAButtonProps) {

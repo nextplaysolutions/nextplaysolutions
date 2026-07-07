@@ -107,7 +107,7 @@ export default function WhyUsPage() {
           Founding cohort spots are still open. Come see the difference for
           yourself — no cost, no commitment.
         </p>
-        <CTAButton label="Book Your Free Audit Call" size="large" />
+        <CTAButton label="Book Your Free Assessment Call" size="large" />
       </div>
     </div>
   );

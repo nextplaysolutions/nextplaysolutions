@@ -4,7 +4,7 @@ import CTAButton from "@/components/CTAButton";
 export const metadata: Metadata = {
   title: "How It Works — NextPlay Solutions",
   description:
-    "A 3-step AI readiness audit: discovery call with Scout, AI-generated report, and a prioritized roadmap of tools to implement.",
+    "A 3-step AI readiness assessment: discovery call with Scout, AI-generated report, and a prioritized roadmap of tools to implement.",
 };
 
 const steps = [
@@ -24,11 +24,11 @@ const steps = [
     number: "02",
     title: "AI-generated report",
     duration: "Delivered within 24–48 hours",
-    body: "Based on your discovery call, we generate a detailed report that maps your business against common AI use cases. You get specifics — not 'AI can help with customer service,' but 'here's how AI handles your tier-1 support tickets and what that frees up for your team.'",
+    body: "Based on your discovery call, we generate a detailed report that maps your business against common AI use cases. Scout runs the conversation, but every report is personally reviewed by our founders before it reaches you. You get specifics — not 'AI can help with customer service,' but 'here's how AI handles your tier-1 support tickets and what that frees up for your team.'",
     details: [
       "Identifies your highest-leverage AI opportunities",
-      "Explains the potential time and cost savings per area",
-      "Written in plain language — no technical background needed",
+      "Covers both cost reduction and revenue growth potential",
+      "Personally reviewed by our founders before delivery",
       "Honest about where AI isn't worth your time yet",
     ],
   },
@@ -111,10 +111,10 @@ export default function HowItWorksPage() {
           Ready to find out where AI fits your business?
         </h2>
         <p className="text-brand-gray mb-6">
-          Founding cohort spots are still open — go through the full audit at
+          Founding cohort spots are still open — go through the full assessment at
           no cost.
         </p>
-        <CTAButton label="Book Your Free Audit Call" size="large" />
+        <CTAButton label="Book Your Free Assessment Call" size="large" />
       </div>
     </div>
   );

@@ -5,7 +5,7 @@ import CTAButton from "@/components/CTAButton";
 export const metadata: Metadata = {
   title: "NextPlay Solutions — Enterprise AI Strategy. Small Business Price.",
   description:
-    "Find out exactly where AI can save your business time and money. Scout conducts a guided audit and delivers a prioritized roadmap you can act on immediately.",
+    "Find out exactly where AI can save your business time and money. Scout conducts a guided assessment and delivers a prioritized roadmap you can act on immediately.",
 };
 
 const steps = [
@@ -17,7 +17,7 @@ const steps = [
   {
     number: "02",
     title: "AI-generated report",
-    body: "You get a detailed breakdown of exactly where AI can save you time and money — specific to how your business actually runs.",
+    body: "You get a detailed breakdown of where AI can cut operational costs, reduce manual work, and surface new revenue opportunities — specific to how your business actually runs.",
   },
   {
     number: "03",
@@ -43,12 +43,12 @@ export default function HomePage() {
             <span className="text-brand-teal">Small business price.</span>
           </h1>
           <p className="text-xl md:text-2xl text-brand-gray leading-relaxed mb-8 max-w-2xl">
-            An AI readiness audit for small businesses. Find out exactly where
-            AI can save you time and money — and get a roadmap you can act on
-            this week.
+            An AI readiness assessment for small businesses. Find out exactly where
+            AI can cut operational costs, free up your team, and create new
+            revenue opportunities — with a roadmap you can act on this week.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 items-start">
-            <CTAButton label="Book Your Free Audit Call" size="large" />
+            <CTAButton label="Book Your Free Assessment Call" size="large" />
             <Link
               href="/how-it-works"
               className="inline-flex items-center gap-2 text-brand-dark font-semibold text-base hover:text-brand-teal transition-colors py-4"
@@ -70,7 +70,7 @@ export default function HomePage() {
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
-              { label: "Under $20M revenue", sub: "Right-sized for where you are" },
+              { label: "Small to mid-sized business", sub: "Right-sized for where you are — not enterprise overhead" },
               { label: "No CTO or tech team", sub: "We speak plain language, not jargon" },
               { label: "Too busy to research AI", sub: "We do the homework. You get the answers." },
             ].map((item) => (
@@ -91,7 +91,7 @@ export default function HomePage() {
           </h2>
           <p className="text-lg text-brand-gray">
             No consultants billing by the hour. No six-week engagement. A
-            focused audit with a clear output.
+            focused assessment with a clear output.
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -145,16 +145,16 @@ export default function HomePage() {
               Limited spots available
             </p>
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">
-              Get the audit free.
+              Get the assessment free.
             </h2>
             <p className="text-gray-300 max-w-md leading-relaxed">
-              We&rsquo;re selecting 4 to 6 founding clients to go through the full
+              We&rsquo;re taking on 4 to 6 founding clients to go through the full
               program at no cost — in exchange for honest feedback and a
               testimonial if you find it valuable.
             </p>
           </div>
           <div className="flex flex-col gap-3 flex-shrink-0">
-            <CTAButton label="Apply for a Free Spot" href="/founding-cohort" size="large" />
+            <CTAButton label="Claim a Free Spot" href="/founding-cohort" size="large" />
             <Link
               href="/pricing"
               className="text-sm text-gray-400 hover:text-white transition-colors text-center"

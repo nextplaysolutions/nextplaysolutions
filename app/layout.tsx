@@ -10,9 +10,10 @@ const geist = Geist({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://nextplaysolutions.ai"),
   title: "NextPlay Solutions — Enterprise AI Strategy. Small Business Price.",
   description:
-    "Find out exactly where AI can save your business time and money. Scout conducts a guided audit and delivers a prioritized roadmap you can implement immediately.",
+    "Find out exactly where AI can save your business time and money. Scout conducts a guided assessment and delivers a prioritized roadmap you can implement immediately.",
   openGraph: {
     title: "NextPlay Solutions",
     description: "Enterprise AI strategy. Small business price.",

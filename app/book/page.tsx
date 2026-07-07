@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Book a Call — NextPlay Solutions",
   description:
-    "Schedule your AI Readiness Audit discovery call. 15 minutes to find out where AI can save your business time and money.",
+    "Schedule your AI Readiness Assessment discovery call. 15 minutes to find out where AI can save your business time and money.",
 };
 
 export default function BookPage() {
