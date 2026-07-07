@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 
 export const metadata: Metadata = {
   title: "Book a Call — NextPlay Solutions",
@@ -17,14 +18,15 @@ export default function BookPage() {
         needed, just show up and answer Scout&rsquo;s questions honestly.
       </p>
 
-      {/* ── PASTE YOUR GHL CALENDAR EMBED CODE BELOW THIS LINE ── */}
-      <div className="border-2 border-dashed border-gray-200 rounded-xl p-10 text-center text-brand-gray bg-gray-50">
-        <p className="text-sm font-medium text-gray-400 mb-1">Calendar embed</p>
-        <p className="text-sm text-gray-400">
-          Paste your GoHighLevel calendar widget code here.
-        </p>
-      </div>
-      {/* ── END GHL CALENDAR EMBED ── */}
+      {/* GHL booking calendar — NextPlay Solutions Marketing Account */}
+      <iframe
+        src="https://api.leadconnectorhq.com/widget/booking/KEFGPgHjpXAPtdLaxZVv"
+        style={{ width: "100%", border: "none", overflow: "hidden", minHeight: "700px" }}
+        scrolling="no"
+        id="ghl-booking-calendar"
+        title="Book your AI Readiness Assessment call"
+      />
+      <Script src="https://link.msgsndr.com/js/form_embed.js" strategy="lazyOnload" />
 
       <p className="text-sm text-brand-gray mt-8">
         Questions before booking?{" "}
