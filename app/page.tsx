@@ -3,7 +3,7 @@ import Link from "next/link";
 import CTAButton from "@/components/CTAButton";
 
 export const metadata: Metadata = {
-  title: "NextPlay Solutions — Enterprise AI Strategy. Small Business Price.",
+  title: "NextPlay Solutions — Your Unfair AI Advantage",
   description:
     "Find out exactly where AI can save your business time and money. Scout conducts a guided assessment and delivers a prioritized roadmap you can act on immediately.",
 };
@@ -39,9 +39,12 @@ export default function HomePage() {
             Founding cohort — free spots available
           </div>
           <h1 className="text-5xl md:text-6xl font-bold text-brand-dark leading-tight tracking-tight mb-6">
-            Enterprise AI strategy.{" "}
-            <span className="text-brand-teal">Small business price.</span>
+            Your unfair{" "}
+            <span className="text-brand-teal">AI advantage.</span>
           </h1>
+          <p className="text-lg font-semibold text-brand-dark mb-4">
+            Enterprise AI strategy. Small business price.
+          </p>
           <p className="text-xl md:text-2xl text-brand-gray leading-relaxed mb-8 max-w-2xl">
             An AI readiness assessment for small businesses. Find out exactly where
             AI can cut operational costs, free up your team, and create new

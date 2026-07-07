@@ -8,7 +8,7 @@ export default function Footer() {
           <span className="font-semibold text-brand-dark">
             NextPlay<span className="text-brand-teal">.</span>
           </span>
-          <span className="ml-2">Enterprise AI strategy. Small business price.</span>
+          <span className="ml-2">Your unfair AI advantage.</span>
         </div>
         <nav className="flex flex-wrap gap-5 justify-center">
           <Link href="/how-it-works" className="hover:text-brand-teal transition-colors">

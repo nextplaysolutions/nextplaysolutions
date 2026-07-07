@@ -7,8 +7,7 @@ export const size = {
 
 export const contentType = "image/png";
 
-export const alt =
-  "NextPlay Solutions — Enterprise AI strategy. Small business price.";
+export const alt = "NextPlay Solutions — Your unfair AI advantage.";
 
 export default function Image() {
   return new ImageResponse(
@@ -62,9 +61,9 @@ export default function Image() {
             flexDirection: "column",
           }}
         >
-          <div style={{ display: "flex" }}>Enterprise AI strategy.</div>
+          <div style={{ display: "flex" }}>Your unfair</div>
           <div style={{ display: "flex", color: "#2dd4bf" }}>
-            Small business price.
+            AI advantage.
           </div>
         </div>
         <div
@@ -75,7 +74,7 @@ export default function Image() {
             display: "flex",
           }}
         >
-          Find out exactly where AI can save your business time and money.
+          Enterprise AI strategy. Small business price.
         </div>
       </div>
     ),
