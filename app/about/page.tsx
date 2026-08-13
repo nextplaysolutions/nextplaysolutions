@@ -21,8 +21,9 @@ const founders = [
     linkedin: "https://www.linkedin.com/in/ethanhamiltonlinkedin/",
     companies: "LinkedIn · Snap · Tesla · Paylocity",
     body: [
-      "Ethan spent a decade deciding who got hired — at LinkedIn, at Snap, at Tesla — which is an unusually honest vantage point. You learn quickly which roles exist because the work matters and which exist because nobody ever fixed the process underneath them.",
+      "Ethan spent a decade deciding who got hired — at LinkedIn, at Snap, at Tesla — which is an unusually honest vantage point on how a company actually works. You learn quickly which roles exist because the work matters, and which exist because nobody ever fixed the process underneath them.",
       "He has also sold real estate in Omaha since 2014, more than $18 million of it, walking people through the largest purchase most of them will ever make. Both jobs turn out to be the same job: work out what someone actually needs, then be straight with them about it.",
+      "He is blunt about where this technology belongs. It should not replace the people in a business. It should take the work that was never worth a person's day to begin with.",
     ],
   },
   {
