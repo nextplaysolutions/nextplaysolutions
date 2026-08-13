@@ -1,28 +1,39 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import CTAButton from "@/components/CTAButton";
+import DemoScout from "@/components/DemoScout";
+import {
+  AREAS,
+  COHORT_SIZE,
+  COMPANY,
+  DURATION,
+  FAQ_JSONLD,
+  SERVICE_JSONLD,
+  WHO_ITS_FOR,
+} from "@/lib/offer";
 
 export const metadata: Metadata = {
-  title: "NextPlay Solutions — Your Unfair AI Advantage",
+  title: "NextPlay Solutions — Your unfair AI advantage",
   description:
-    "Find out exactly where AI can save your business time and money. Scout conducts a guided assessment and delivers a prioritized roadmap you can act on immediately.",
+    "Seven areas of your business reviewed in 25 minutes. A report naming the tools, the real costs, and the order to do them in.",
+  alternates: { canonical: "/" },
 };
 
 const steps = [
   {
-    number: "01",
-    title: "Discovery call with Scout",
-    body: "Scout, our AI voice agent, walks through seven areas of your business in a 15-minute guided conversation.",
+    n: "01",
+    title: "A conversation with Scout",
+    body: `About ${DURATION.assessmentMinutes} minutes by phone. Scout works through seven areas of the business. Nothing to prepare — answer the way you'd tell a colleague.`,
   },
   {
-    number: "02",
-    title: "AI-generated report",
-    body: "You get a detailed breakdown of where AI can cut operational costs, reduce manual work, and surface new revenue opportunities — specific to how your business actually runs.",
+    n: "02",
+    title: "We read every transcript",
+    body: "Scout runs the interview. Jordan and Ethan review the findings and write the report. Nothing reaches you unread.",
   },
   {
-    number: "03",
-    title: "Prioritized roadmap",
-    body: "A curated list of tools with pricing and a clear action order. Start with what moves the needle fastest.",
+    n: "03",
+    title: "The report, in three days",
+    body: "Named tools with their real prices, ranked by what they'd return and what they'd take to put in. Plus what to skip, and why.",
   },
 ];
 
@@ -31,140 +42,177 @@ const companies = ["LinkedIn", "Meta", "Tesla", "Snapchat"];
 export default function HomePage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(SERVICE_JSONLD) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_JSONLD) }}
+      />
+
       {/* Hero */}
-      <section className="max-w-5xl mx-auto px-5 pt-20 pb-16 md:pt-28 md:pb-24">
-        <div className="max-w-3xl">
-          <div className="inline-flex items-center gap-2 bg-brand-teal-light text-brand-teal-dark text-sm font-semibold px-3 py-1 rounded-full mb-6">
-            <span className="w-2 h-2 bg-brand-teal rounded-full inline-block" />
-            Founding cohort — free spots available
+      <section className="max-w-[1200px] mx-auto px-5 pt-20 pb-20 md:pt-28 md:pb-28">
+        <div className="grid lg:grid-cols-[1.15fr_1fr] gap-14 lg:gap-20 items-start">
+          <div>
+            <p className="np-eyebrow">AI Readiness Assessment</p>
+            <h1 className="np-display mt-6 text-[2.75rem] md:text-6xl text-np-navy">
+              {COMPANY.tagline}
+            </h1>
+            <p className="mt-7 text-xl md:text-[1.375rem] font-light leading-[1.5] text-np-body max-w-[34ch]">
+              Seven areas of your business, {DURATION.assessmentMinutes} minutes
+              on the phone, and a report naming the tools, the real costs, and
+              the order to do them in.
+            </p>
+
+            <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4">
+              <CTAButton label="Book an assessment call" size="large" />
+              <Link
+                href="/assessment"
+                className="text-np-navy font-medium hover:text-np-rust transition-colors py-3"
+              >
+                What&rsquo;s in the report →
+              </Link>
+            </div>
           </div>
-          <h1 className="text-5xl md:text-6xl font-bold text-brand-dark leading-tight tracking-tight mb-6">
-            Your unfair{" "}
-            <span className="text-brand-teal">AI advantage.</span>
-          </h1>
-          <p className="text-lg font-semibold text-brand-dark mb-4">
-            Enterprise AI strategy. Small business price.
-          </p>
-          <p className="text-xl md:text-2xl text-brand-gray leading-relaxed mb-8 max-w-2xl">
-            An AI readiness assessment for small businesses. Find out exactly where
-            AI can cut operational costs, free up your team, and create new
-            revenue opportunities — with a roadmap you can act on this week.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 items-start">
-            <CTAButton label="Book Your Free Assessment Call" size="large" />
-            <Link
-              href="/how-it-works"
-              className="inline-flex items-center gap-2 text-brand-dark font-semibold text-base hover:text-brand-teal transition-colors py-4"
-            >
-              See how it works
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </Link>
+
+          <div className="lg:pt-2">
+            <DemoScout />
           </div>
         </div>
       </section>
 
-      {/* Who it's for */}
-      <section className="bg-gray-50 border-y border-gray-100">
-        <div className="max-w-5xl mx-auto px-5 py-12">
-          <p className="text-sm font-semibold text-brand-gray uppercase tracking-widest mb-6">
-            Built for businesses like yours
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {/* Who it's for — hairline grid, the report's signature device */}
+      <section className="border-t border-np-rule bg-np-tint">
+        <div className="max-w-[1200px] mx-auto px-5 py-16">
+          <p className="np-label">Built for</p>
+          <div className="np-grid mt-6 md:grid-cols-3">
             {[
-              { label: "Small to mid-sized business", sub: "Right-sized for where you are — not enterprise overhead" },
-              { label: "No CTO or tech team", sub: "We speak plain language, not jargon" },
-              { label: "Too busy to research AI", sub: "We do the homework. You get the answers." },
-            ].map((item) => (
-              <div key={item.label} className="bg-white rounded-xl border border-gray-200 p-5">
-                <p className="font-semibold text-brand-dark mb-1">{item.label}</p>
-                <p className="text-sm text-brand-gray">{item.sub}</p>
+              {
+                h: "No CTO, no tech team",
+                p: "Nobody whose job is to evaluate this. So it lands on yours.",
+              },
+              {
+                h: "No time to research it",
+                p: "Every tool claims the same things. Sorting them takes weeks you don't have.",
+              },
+              {
+                h: "Wary of being sold to",
+                p: "We take no referral fees from any vendor. The list is what fits, not what pays.",
+              },
+            ].map((c) => (
+              <div key={c.h} className="p-7">
+                <p className="font-medium text-np-navy text-[1.0625rem]">
+                  {c.h}
+                </p>
+                <p className="mt-2.5 text-[0.9375rem] leading-relaxed text-np-body font-light">
+                  {c.p}
+                </p>
               </div>
             ))}
           </div>
+          <p className="mt-6 text-[0.9375rem] text-np-muted font-light">
+            {WHO_ITS_FOR}
+          </p>
         </div>
       </section>
 
-      {/* How it works — teaser */}
-      <section className="max-w-5xl mx-auto px-5 py-16 md:py-24">
-        <div className="max-w-2xl mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-brand-dark mb-4">
-            Three steps. One week. Real answers.
-          </h2>
-          <p className="text-lg text-brand-gray">
-            No consultants billing by the hour. No six-week engagement. A
-            focused assessment with a clear output.
-          </p>
+      {/* How it runs */}
+      <section className="max-w-[1200px] mx-auto px-5 py-20 md:py-28">
+        <div className="flex items-baseline gap-5 np-section-rule pb-3 mb-12">
+          <span className="np-label">How it runs</span>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {steps.map((step) => (
-            <div key={step.number}>
-              <p className="text-4xl font-bold text-brand-teal-light mb-3">
-                {step.number}
+
+        <div className="grid md:grid-cols-3 gap-12 md:gap-14">
+          {steps.map((s) => (
+            <div key={s.n}>
+              <p className="np-label" style={{ color: "var(--np-rust)" }}>
+                {s.n}
               </p>
-              <p className="font-semibold text-brand-dark text-lg mb-2">
-                {step.title}
+              <h3 className="mt-4 text-[1.375rem] font-normal text-np-navy leading-snug">
+                {s.title}
+              </h3>
+              <p className="mt-3 leading-relaxed text-np-body font-light">
+                {s.body}
               </p>
-              <p className="text-brand-gray leading-relaxed">{step.body}</p>
             </div>
           ))}
         </div>
-        <div className="mt-10">
-          <Link href="/how-it-works" className="text-brand-teal font-semibold hover:underline">
-            Full breakdown →
-          </Link>
+
+        <div className="mt-14 flex flex-wrap gap-x-3 gap-y-2">
+          {AREAS.map((a) => (
+            <span
+              key={a}
+              className="np-label border border-np-rule px-3 py-2"
+              style={{ color: "var(--np-body)" }}
+            >
+              {a}
+            </span>
+          ))}
         </div>
       </section>
 
-      {/* Credibility bar */}
-      <section className="border-t border-gray-100 bg-gray-50">
-        <div className="max-w-5xl mx-auto px-5 py-10 flex flex-col md:flex-row items-center gap-6 md:gap-10">
-          <p className="text-sm font-semibold text-brand-gray uppercase tracking-widest whitespace-nowrap">
-            Our background
-          </p>
-          <div className="flex flex-wrap gap-4 justify-center md:justify-start">
+      {/* Selection band — a bar to clear, never "free" */}
+      <section className="bg-np-navy text-white">
+        <div className="max-w-[1200px] mx-auto px-5 py-20 md:py-24">
+          <div className="grid lg:grid-cols-[1.1fr_1fr] gap-14 lg:gap-20 items-start">
+            <div>
+              <p
+                className="np-eyebrow"
+                style={{ color: "var(--np-rust-light)" }}
+              >
+                Founding cohort
+              </p>
+              <h2 className="np-display mt-6 text-4xl md:text-5xl">
+                We&rsquo;re taking {COHORT_SIZE} businesses through this before
+                we launch.
+              </h2>
+              <p className="mt-7 text-lg font-light leading-relaxed text-np-on-navy-2 max-w-[46ch]">
+                We want the assessment tested against real operations before it
+                goes out broadly. In return we ask for honest feedback on what
+                landed and what didn&rsquo;t, and a testimonial if the work earns
+                one.
+              </p>
+              <div className="mt-10">
+                <CTAButton
+                  label="Book an assessment call"
+                  size="large"
+                  variant="on-navy"
+                />
+              </div>
+            </div>
+
+            <div className="lg:pt-2">
+              <DemoScout variant="navy" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Operator pedigree */}
+      <section className="max-w-[1200px] mx-auto px-5 py-20 md:py-24">
+        <div className="grid md:grid-cols-[auto_1fr] gap-10 md:gap-16 items-center">
+          <div className="flex flex-wrap gap-x-8 gap-y-3">
             {companies.map((c) => (
               <span
                 key={c}
-                className="text-sm font-semibold text-brand-dark bg-white border border-gray-200 px-4 py-2 rounded-lg"
+                className="text-[1.0625rem] font-medium text-np-navy"
               >
                 {c}
               </span>
             ))}
           </div>
-          <p className="text-sm text-brand-gray md:ml-auto md:text-right max-w-xs">
-            25 years combined in sales, ops, tech, and risk — now applied to
-            small business.
-          </p>
-        </div>
-      </section>
-
-      {/* Founding cohort CTA band */}
-      <section className="max-w-5xl mx-auto px-5 py-16 md:py-24">
-        <div className="bg-brand-dark rounded-2xl px-8 py-12 md:px-14 md:py-16 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
-          <div>
-            <p className="text-brand-teal font-semibold text-sm uppercase tracking-widest mb-3">
-              Limited spots available
-            </p>
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">
-              Get the assessment free.
-            </h2>
-            <p className="text-gray-300 max-w-md leading-relaxed">
-              We&rsquo;re taking on 4 to 6 founding clients to go through the full
-              program at no cost — in exchange for honest feedback and a
-              testimonial if you find it valuable.
-            </p>
-          </div>
-          <div className="flex flex-col gap-3 flex-shrink-0">
-            <CTAButton label="Claim a Free Spot" href="/founding-cohort" size="large" />
+          <p className="text-np-body font-light leading-relaxed max-w-[52ch]">
+            Jordan and Ethan spent 25 years between them inside companies that
+            adopted this technology early — in sales, operations, product and
+            risk. They saw which changes held and which were theatre.{" "}
             <Link
-              href="/pricing"
-              className="text-sm text-gray-400 hover:text-white transition-colors text-center"
+              href="/about"
+              className="text-np-navy font-medium hover:text-np-rust transition-colors whitespace-nowrap"
             >
-              See standard pricing →
+              About us →
             </Link>
-          </div>
+          </p>
         </div>
       </section>
     </>

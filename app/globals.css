@@ -1,16 +1,176 @@
 @import "tailwindcss";
 
+/* ---------------------------------------------------------------------------
+   NextPlay Solutions — Brand System v1.0
+   Source of truth: docs/brand/BRAND-SYSTEM.md (§08 Developer handoff)
+   ADD NO COLORS OUTSIDE THIS SET.
+   Governing principle: default to less. The identity is built on subtraction —
+   when in doubt, remove the element rather than style it.
+--------------------------------------------------------------------------- */
+
 @theme {
-  --color-brand-teal: #0D9488;
-  --color-brand-teal-dark: #0F766E;
-  --color-brand-teal-light: #CCFBF1;
-  --color-brand-dark: #111827;
-  --color-brand-gray: #6B7280;
-  --font-sans: var(--font-geist-sans);
+  --color-np-navy: #14213d;
+  --color-np-blue: #2c4a8c;
+  --color-np-rust: #c8622f;
+  --color-np-rust-light: #e8925c;
+  --color-np-tint: #faf6f2;
+  --color-np-white: #ffffff;
+  --color-np-body: #4a5163;
+  --color-np-muted: #8a8f9c;
+  --color-np-rule: #e4e6ea;
+  --color-np-on-navy: #e8edf6;
+  --color-np-on-navy-2: #c8d2e6;
+  --color-np-on-navy-muted: #9ba8c4;
+
+  --font-sans: var(--np-font);
+  --font-mono: var(--np-mono);
+
+  /* Square corners everywhere. No rounded cards. */
+  --radius-none: 0;
+  --radius-sm: 0;
+  --radius-md: 0;
+  --radius-lg: 0;
+  --radius-xl: 0;
+  --radius-2xl: 0;
+  --radius-3xl: 0;
+  --radius-full: 0;
+}
+
+/* Canonical variable names from the brand guidelines, so component CSS lifted
+   verbatim out of §08 works without translation. */
+:root {
+  --np-navy: #14213d;
+  --np-blue: #2c4a8c;
+  --np-rust: #c8622f;
+  --np-rust-light: #e8925c;
+  --np-tint: #faf6f2;
+  --np-white: #ffffff;
+  --np-body: #4a5163;
+  --np-muted: #8a8f9c;
+  --np-rule: #e4e6ea;
+  --np-on-navy: #e8edf6;
+  --np-on-navy-2: #c8d2e6;
+  --np-on-navy-muted: #9ba8c4;
+
+  --np-radius: 0;
+  --np-max: 1200px;
+  --np-ease: 150ms ease;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
-  font-family: var(--font-sans), system-ui, sans-serif;
-  color: #111827;
-  background: #ffffff;
+  font-family: var(--np-font), Helvetica, sans-serif;
+  color: var(--np-navy);
+  background: var(--np-white);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* --- The mark: "Aperture" -------------------------------------------------
+   A play arrow cut out of a solid square. The arrow is negative space:
+   nothing is added, something is removed. Drawn entirely in CSS — no image
+   files, no SVG assets — so it stays sharp at any size and inherits color
+   from one property. Markup and clip-path lifted verbatim from §08.
+-------------------------------------------------------------------------- */
+
+.np-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.np-mark {
+  width: 32px;
+  height: 32px;
+  background: var(--np-navy);
+  flex: none;
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% 100%,
+    0 100%,
+    0 0,
+    34% 26%,
+    34% 74%,
+    72% 50%,
+    34% 26%,
+    0 0
+  );
+}
+
+.np-word {
+  font-family: var(--np-font), Helvetica, sans-serif;
+  font-weight: 300;
+  font-size: 22px;
+  color: var(--np-navy);
+  line-height: 1;
+}
+
+.np-word strong {
+  font-weight: 600;
+}
+
+/* Inverted lockup for navy grounds */
+.np-logo--invert .np-mark {
+  background: #fff;
+}
+.np-logo--invert .np-word {
+  color: #fff;
+}
+
+/* --- Shared type devices, matched to the client report -------------------- */
+
+/* Eyebrow: mono, uppercase, wide tracking, rust. */
+.np-eyebrow {
+  font-family: var(--np-mono), monospace;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--np-rust);
+}
+
+/* Small metadata label: mono, uppercase, muted. */
+.np-label {
+  font-family: var(--np-mono), monospace;
+  font-size: 0.625rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--np-muted);
+}
+
+/* Display headline: Archivo 300, tight tracking. */
+.np-display {
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  line-height: 1.08;
+}
+
+/* Section rule: 2px navy underline beneath a section head. */
+.np-section-rule {
+  border-bottom: 2px solid var(--np-navy);
+}
+
+/* Hairline grid: cells separated by 1px gaps over the rule colour, so rules
+   appear without any element drawing a border. The report's signature device. */
+.np-grid {
+  display: grid;
+  gap: 1px;
+  background: var(--np-rule);
+  border: 1px solid var(--np-rule);
+}
+
+.np-grid > * {
+  background: var(--np-white);
+}
+
+/* Focus visibility — keep it square and on-system. */
+:where(a, button, input, textarea, select):focus-visible {
+  outline: 2px solid var(--np-rust);
+  outline-offset: 2px;
 }

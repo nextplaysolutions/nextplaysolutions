@@ -39,3 +39,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# internal business documents — NOT for the public repo
+# (brand masters, GTM strategy, assessment templates)
+# Remove this line if you decide the repo is private and you want them versioned.
+/docs

@@ -1,37 +1,61 @@
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
+import { Archivo, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import { ORGANIZATION_JSONLD } from "@/lib/offer";
 
-const geist = Geist({
-  variable: "--font-geist-sans",
+const archivo = Archivo({
+  variable: "--np-font",
   subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  display: "swap",
+});
+
+const plexMono = IBM_Plex_Mono({
+  variable: "--np-mono",
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://nextplaysolutions.ai"),
-  title: "NextPlay Solutions — Your Unfair AI Advantage",
+  title: {
+    default: "NextPlay Solutions — Your unfair AI advantage",
+    template: "%s — NextPlay Solutions",
+  },
   description:
-    "Find out exactly where AI can save your business time and money. Scout conducts a guided assessment and delivers a prioritized roadmap you can implement immediately.",
+    "An AI readiness assessment for small and mid-sized businesses. Seven areas of your business reviewed in 25 minutes, and a report naming the tools, the real costs, and the order to do them in.",
   openGraph: {
-    title: "NextPlay Solutions",
-    description: "Your unfair AI advantage. Enterprise AI strategy at a small business price.",
+    title: "NextPlay Solutions — Your unfair AI advantage",
+    description:
+      "Seven areas of your business reviewed in 25 minutes. A report naming the tools, the real costs, and the order to do them in.",
     url: "https://nextplaysolutions.ai",
     siteName: "NextPlay Solutions",
     locale: "en_US",
     type: "website",
   },
+  alternates: { canonical: "/" },
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${geist.variable} h-full antialiased`}>
+    <html
+      lang="en"
+      className={`${archivo.variable} ${plexMono.variable} h-full`}
+    >
       <body className="min-h-full flex flex-col">
+        {/* Machine-readable description of the organization. Kept in sync with
+            /lib/offer.ts so agents, crawlers and humans read the same offer. */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(ORGANIZATION_JSONLD),
+          }}
+        />
         <Nav />
         <main className="flex-1">{children}</main>
         <Footer />
