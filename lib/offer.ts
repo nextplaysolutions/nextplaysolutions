@@ -95,26 +95,37 @@ export const WHO_ITS_FOR =
   "Small and mid-sized businesses with no CTO and no dedicated technical staff.";
 
 /**
- * NOTE: per-founder company attribution is deliberately absent. The collective
- * claim ("between us — LinkedIn, Meta, Tesla, Snapchat") is Jordan's own
- * wording and is safe; splitting those four companies between two people was
- * an assumption that has never been confirmed. Don't reintroduce a per-person
- * breakdown until Jordan confirms who worked where.
+ * Company attributions verified against both LinkedIn work histories (Aug 2026).
+ * Ethan: LinkedIn (4y10m), Snap, Tesla, Paylocity — talent and go-to-market.
+ * Jordan: LinkedIn (8y1m), Meta (3y1m) — trust, safety and risk leadership.
+ * The four-company claim is accurate; the earlier per-person split was not.
  */
 export const FOUNDERS = [
   {
     name: "Ethan Hamilton",
     role: "Co-founder",
-    background: "Technology and product",
+    background: "Talent, sales and go-to-market",
+    companies: ["LinkedIn", "Snap", "Tesla", "Paylocity"],
     linkedin: "https://www.linkedin.com/in/ethanhamiltonlinkedin/",
   },
   {
     name: "Jordan Svoboda",
     role: "Co-founder",
-    background: "Sales, operations and risk",
+    background: "Operations, trust and risk",
+    companies: ["LinkedIn", "Meta"],
     linkedin: "https://www.linkedin.com/in/jordansvoboda/",
   },
 ] as const;
+
+/**
+ * Why the company exists. Stated plainly because it is the actual
+ * differentiator, not a values statement: the same technology can be pointed
+ * at cutting people or at freeing them, and we point it at the second.
+ */
+export const POSITION =
+  "NextPlay exists to make small teams harder to replace, not easier to cut. " +
+  "A fifteen-person business has no slack to trim — it has people doing three jobs each. " +
+  "The assessment identifies which of those jobs software should take, so the people can return to the work only they can do.";
 
 /* -------------------------------------------------------------------------
    Structured data. schema.org vocabulary, so crawlers and purchasing agents

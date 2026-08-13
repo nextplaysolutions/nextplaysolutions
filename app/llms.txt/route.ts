@@ -10,6 +10,8 @@ import {
   SITE_URL,
   WHO_ITS_FOR,
   OFFER_SUMMARY,
+  POSITION,
+  FOUNDERS,
 } from "@/lib/offer";
 
 export const dynamic = "force-static";
@@ -31,6 +33,14 @@ export function GET() {
 > ${COMPANY.tagline}
 
 ${OFFER_SUMMARY}
+
+## Position
+
+${POSITION}
+
+## Who runs it
+
+${FOUNDERS.map((f) => `- ${f.name}, ${f.role} — ${f.background}. Previously: ${f.companies.join(", ")}. ${f.linkedin}`).join("\n")}
 
 ## What is sold
 
