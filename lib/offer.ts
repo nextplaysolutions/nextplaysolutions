@@ -94,18 +94,25 @@ export const OFFER_SUMMARY =
 export const WHO_ITS_FOR =
   "Small and mid-sized businesses with no CTO and no dedicated technical staff.";
 
+/**
+ * NOTE: per-founder company attribution is deliberately absent. The collective
+ * claim ("between us — LinkedIn, Meta, Tesla, Snapchat") is Jordan's own
+ * wording and is safe; splitting those four companies between two people was
+ * an assumption that has never been confirmed. Don't reintroduce a per-person
+ * breakdown until Jordan confirms who worked where.
+ */
 export const FOUNDERS = [
   {
-    name: "Jordan Ross",
-    role: "Co-founder",
-    background: "Sales and operations",
-    companies: ["LinkedIn", "Tesla"],
-  },
-  {
-    name: "Ethan",
+    name: "Ethan Hamilton",
     role: "Co-founder",
     background: "Technology and product",
-    companies: ["Meta", "Snapchat"],
+    linkedin: "https://www.linkedin.com/in/ethanhamiltonlinkedin/",
+  },
+  {
+    name: "Jordan Svoboda",
+    role: "Co-founder",
+    background: "Sales, operations and risk",
+    linkedin: "https://www.linkedin.com/in/jordansvoboda/",
   },
 ] as const;
 
@@ -130,6 +137,7 @@ export const ORGANIZATION_JSONLD = {
     "@type": "Person",
     name: f.name,
     jobTitle: f.role,
+    sameAs: f.linkedin,
   })),
   knowsAbout: [
     "AI readiness assessment",

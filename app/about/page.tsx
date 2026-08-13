@@ -9,21 +9,23 @@ export const metadata: Metadata = {
   alternates: { canonical: "/about" },
 };
 
-/* Ethan leads — primary public face of the business. */
+/* Ethan leads — primary public face of the business.
+   Per-founder company tags removed pending confirmation of who worked where;
+   the collective claim in the intro is the verified one. */
 const founders = [
   {
-    name: "Ethan",
+    name: "Ethan Hamilton",
     role: "Co-founder",
     focus: "Technology and product",
-    companies: ["Meta", "Snapchat"],
-    body: "Built and shipped AI-adjacent product at platform scale. Knows where the technology genuinely earns its keep and where the demo is doing the talking — which is most of what this work comes down to.",
+    linkedin: "https://www.linkedin.com/in/ethanhamiltonlinkedin/",
+    body: "Built and shipped product at platform scale. Knows where this technology genuinely earns its keep and where the demo is doing the talking — which is most of what the work comes down to.",
   },
   {
-    name: "Jordan Ross",
+    name: "Jordan Svoboda",
     role: "Co-founder",
     focus: "Sales, operations and risk",
-    companies: ["LinkedIn", "Tesla"],
-    body: "Sat inside sales and operations orgs as they rebuilt their workflows around this tooling, and inside the risk function that had to sign off on it. Saw which changes stuck after the enthusiasm wore off.",
+    linkedin: "https://www.linkedin.com/in/jordansvoboda/",
+    body: "Sat inside sales and operations teams as they rebuilt their workflows around this tooling, and alongside the risk function that had to sign off on it. Saw which changes stuck once the enthusiasm wore off.",
   },
 ];
 
@@ -82,15 +84,15 @@ export default function AboutPage() {
               <p className="mt-5 text-[1.0625rem] leading-relaxed text-np-body font-light">
                 {f.body}
               </p>
-              <div className="mt-7 pt-5 border-t border-np-rule flex gap-6">
-                {f.companies.map((c) => (
-                  <span
-                    key={c}
-                    className="text-[0.9375rem] font-medium text-np-navy"
-                  >
-                    {c}
-                  </span>
-                ))}
+              <div className="mt-7 pt-5 border-t border-np-rule">
+                <a
+                  href={f.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="np-label inline-block py-2 hover:text-np-rust transition-colors"
+                >
+                  LinkedIn ↗
+                </a>
               </div>
             </div>
           ))}
