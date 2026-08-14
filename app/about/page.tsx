@@ -63,9 +63,9 @@ export default function AboutPage() {
   return (
     <>
       {/* Position */}
-      <section className="max-w-[1200px] mx-auto px-5 pt-20 pb-16 md:pt-28">
+      <section className="max-w-[1200px] mx-auto px-5 pt-24 pb-16 md:pt-40 md:pb-20">
         <p className="np-eyebrow">About</p>
-        <h1 className="np-display mt-6 text-[2.5rem] md:text-[3.5rem] text-np-navy max-w-[20ch]">
+        <h1 className="np-display mt-8 text-[2.75rem] md:text-[4rem] text-np-navy max-w-[20ch]">
           Make people harder to replace
         </h1>
         <div className="mt-8 max-w-[60ch] flex flex-col gap-5 text-lg md:text-xl font-light leading-[1.6] text-np-body">

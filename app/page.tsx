@@ -9,7 +9,6 @@ import {
   DURATION,
   FAQ_JSONLD,
   SERVICE_JSONLD,
-  WHO_ITS_FOR,
 } from "@/lib/offer";
 
 export const metadata: Metadata = {
@@ -52,31 +51,30 @@ export default function HomePage() {
       />
 
       {/* Hero */}
-      <section className="max-w-[1200px] mx-auto px-5 pt-20 pb-20 md:pt-28 md:pb-28">
-        <div className="grid lg:grid-cols-[1.15fr_1fr] gap-14 lg:gap-20 items-start">
+      <section className="max-w-[1200px] mx-auto px-5 pt-24 pb-24 md:pt-44 md:pb-40">
+        <div className="grid lg:grid-cols-[1.15fr_1fr] gap-16 lg:gap-24 items-start">
           <div>
             <p className="np-eyebrow">AI Readiness Assessment</p>
-            <h1 className="np-display mt-6 text-[2.75rem] md:text-6xl text-np-navy">
+            <h1 className="np-display mt-8 text-[3rem] md:text-[4.5rem] text-np-navy">
               {COMPANY.tagline}
             </h1>
-            <p className="mt-7 text-xl md:text-[1.375rem] font-light leading-[1.5] text-np-body max-w-[34ch]">
-              Seven areas of your business, {DURATION.assessmentMinutes} minutes
-              on the phone, and a report naming the tools, the real costs, and
-              the order to do them in.
+            <p className="mt-9 text-xl md:text-[1.375rem] font-light leading-[1.5] text-np-body max-w-[34ch]">
+              Seven areas of your business. {DURATION.assessmentMinutes} minutes
+              on the phone. A report naming the tools, the costs, and the order.
             </p>
 
-            <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4">
+            <div className="mt-12 flex flex-wrap items-center gap-x-8 gap-y-4">
               <CTAButton label="Book an assessment call" size="large" />
               <Link
-                href="/assessment"
+                href="/assessment/sample"
                 className="text-np-navy font-medium hover:text-np-rust transition-colors py-3"
               >
-                What&rsquo;s in the report →
+                See a real assessment →
               </Link>
             </div>
           </div>
 
-          <div className="lg:pt-2">
+          <div className="lg:pt-4">
             <DemoScout />
           </div>
         </div>
@@ -101,38 +99,35 @@ export default function HomePage() {
                 p: "We take no referral fees from any vendor. The list is what fits, not what pays.",
               },
             ].map((c) => (
-              <div key={c.h} className="p-7">
+              <div key={c.h} className="p-8 md:p-9">
                 <p className="font-medium text-np-navy text-[1.0625rem]">
                   {c.h}
                 </p>
-                <p className="mt-2.5 text-[0.9375rem] leading-relaxed text-np-body font-light">
+                <p className="mt-3 text-[0.9375rem] leading-relaxed text-np-body font-light">
                   {c.p}
                 </p>
               </div>
             ))}
           </div>
-          <p className="mt-6 text-[0.9375rem] text-np-muted font-light">
-            {WHO_ITS_FOR}
-          </p>
         </div>
       </section>
 
       {/* How it runs */}
-      <section className="max-w-[1200px] mx-auto px-5 py-20 md:py-28">
-        <div className="flex items-baseline gap-5 np-section-rule pb-3 mb-12">
+      <section className="max-w-[1200px] mx-auto px-5 py-24 md:py-36">
+        <div className="flex items-baseline gap-5 np-section-rule pb-3 mb-14">
           <span className="np-label">How it runs</span>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-12 md:gap-14">
+        <div className="grid md:grid-cols-3 gap-12 md:gap-16">
           {steps.map((s) => (
             <div key={s.n}>
               <p className="np-label" style={{ color: "var(--np-rust)" }}>
                 {s.n}
               </p>
-              <h3 className="mt-4 text-[1.375rem] font-normal text-np-navy leading-snug">
+              <h3 className="mt-5 text-[1.375rem] font-light text-np-navy leading-snug">
                 {s.title}
               </h3>
-              <p className="mt-3 leading-relaxed text-np-body font-light">
+              <p className="mt-4 leading-relaxed text-np-body font-light">
                 {s.body}
               </p>
             </div>
@@ -154,8 +149,8 @@ export default function HomePage() {
 
       {/* Selection band — a bar to clear, never "free" */}
       <section className="bg-np-navy text-white">
-        <div className="max-w-[1200px] mx-auto px-5 py-20 md:py-24">
-          <div className="grid lg:grid-cols-[1.1fr_1fr] gap-14 lg:gap-20 items-start">
+        <div className="max-w-[1200px] mx-auto px-5 py-24 md:py-36">
+          <div className="grid lg:grid-cols-[1.1fr_1fr] gap-16 lg:gap-24 items-start">
             <div>
               <p
                 className="np-eyebrow"
@@ -163,17 +158,15 @@ export default function HomePage() {
               >
                 Founding cohort
               </p>
-              <h2 className="np-display mt-6 text-4xl md:text-5xl">
+              <h2 className="np-display mt-8 text-4xl md:text-[3.5rem]">
                 We&rsquo;re taking {COHORT_SIZE} businesses through this before
                 we launch.
               </h2>
-              <p className="mt-7 text-lg font-light leading-relaxed text-np-on-navy-2 max-w-[46ch]">
-                We want the assessment tested against real operations before it
-                goes out broadly. In return we ask for honest feedback on what
-                landed and what didn&rsquo;t, and a testimonial if the work earns
-                one.
+              <p className="mt-8 text-lg font-light leading-relaxed text-np-on-navy-2 max-w-[44ch]">
+                We want it tested against real operations first. In return:
+                honest feedback, and a testimonial if the work earns one.
               </p>
-              <div className="mt-10">
+              <div className="mt-11">
                 <CTAButton
                   label="Book an assessment call"
                   size="large"
@@ -202,10 +195,10 @@ export default function HomePage() {
               </span>
             ))}
           </div>
-          <p className="text-np-body font-light leading-relaxed max-w-[52ch]">
-            Jordan and Ethan spent 25 years between them inside companies that
-            adopted this technology early — in sales, operations, product and
-            risk. They saw which changes held and which were theatre.{" "}
+          <p className="text-np-body font-light leading-relaxed max-w-[48ch]">
+            25 years between them inside the companies that adopted this
+            technology first. They saw which changes held and which were
+            theatre.{" "}
             <Link
               href="/about"
               className="text-np-navy font-medium hover:text-np-rust transition-colors whitespace-nowrap"

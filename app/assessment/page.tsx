@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import CTAButton from "@/components/CTAButton";
 import DemoScout from "@/components/DemoScout";
 import {
@@ -65,16 +66,41 @@ export default function AssessmentPage() {
       />
 
       {/* Header */}
-      <section className="max-w-[1200px] mx-auto px-5 pt-20 pb-16 md:pt-28">
+      <section className="max-w-[1200px] mx-auto px-5 pt-24 pb-16 md:pt-40 md:pb-20">
         <p className="np-eyebrow">The Assessment</p>
-        <h1 className="np-display mt-6 text-[2.5rem] md:text-[3.5rem] text-np-navy max-w-[20ch]">
+        <h1 className="np-display mt-8 text-[2.75rem] md:text-[4rem] text-np-navy max-w-[20ch]">
           Where AI pays for itself in your business
         </h1>
-        <p className="mt-7 text-xl font-light leading-[1.55] text-np-body max-w-[56ch]">
-          Seven areas reviewed. The opportunities that hold up, the tools that
-          fit, what each one costs, and the order to do them in. Every figure is
-          a finding based on what you tell us — an estimate, not a guarantee.
+        <p className="mt-8 text-xl font-light leading-[1.55] text-np-body max-w-[50ch]">
+          The opportunities that hold up, the tools that fit, what each one
+          costs, and the order to do them in. Every figure is a finding — an
+          estimate, not a guarantee.
         </p>
+      </section>
+
+      {/* See a real one — the strongest proof we have */}
+      <section className="max-w-[1200px] mx-auto px-5 pb-16">
+        <Link
+          href="/assessment/sample"
+          className="group block border border-np-rule hover:border-np-navy transition-colors p-8 md:p-10"
+        >
+          <div className="flex items-start justify-between gap-6 flex-wrap">
+            <div className="max-w-[52ch]">
+              <p className="np-eyebrow">See a real one</p>
+              <p className="mt-4 text-[1.375rem] md:text-[1.625rem] font-light text-np-navy leading-snug">
+                A complete assessment, delivered August 2026 to a six-person
+                remodeling company.
+              </p>
+              <p className="mt-3 text-np-body font-light leading-relaxed">
+                Anonymised, otherwise unchanged — including the two sections
+                telling the owner not to buy anything.
+              </p>
+            </div>
+            <span className="np-label group-hover:text-np-rust transition-colors whitespace-nowrap">
+              Read it →
+            </span>
+          </div>
+        </Link>
       </section>
 
       {/* Fact strip — hairline grid */}

@@ -11,11 +11,11 @@ export const metadata: Metadata = {
 
 export default function BookPage() {
   return (
-    <section className="max-w-[1200px] mx-auto px-5 pt-20 pb-24 md:pt-28">
+    <section className="max-w-[1200px] mx-auto px-5 pt-24 pb-24 md:pt-40">
       <div className="grid lg:grid-cols-[1fr_380px] gap-14 lg:gap-20 items-start">
         <div>
           <p className="np-eyebrow">Book</p>
-          <h1 className="np-display mt-6 text-[2.5rem] md:text-[3.25rem] text-np-navy max-w-[16ch]">
+          <h1 className="np-display mt-8 text-[2.75rem] md:text-[3.5rem] text-np-navy max-w-[16ch]">
             Pick a time that works
           </h1>
           <p className="mt-7 text-xl font-light leading-[1.55] text-np-body max-w-[52ch]">
