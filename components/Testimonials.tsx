@@ -10,7 +10,7 @@ export default function Testimonials() {
   return (
     <section className="max-w-[1200px] mx-auto px-5 py-24 md:py-36">
       <div className="np-section-rule pb-3 mb-14">
-        <span className="np-label">From the founding cohort</span>
+        <span className="np-label">From our clients</span>
       </div>
 
       <div

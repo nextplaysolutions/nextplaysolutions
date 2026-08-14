@@ -5,7 +5,6 @@ import DemoScout from "@/components/DemoScout";
 import Testimonials from "@/components/Testimonials";
 import {
   AREAS,
-  COHORT_SIZE,
   COMPANY,
   DURATION,
   FAQ_JSONLD,
@@ -148,7 +147,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Selection band — a bar to clear, never "free" */}
+      {/* Trust band — the report tells you what not to buy */}
       <section className="bg-np-navy text-white">
         <div className="max-w-[1200px] mx-auto px-5 py-24 md:py-36">
           <div className="grid lg:grid-cols-[1.1fr_1fr] gap-16 lg:gap-24 items-start">
@@ -157,15 +156,16 @@ export default function HomePage() {
                 className="np-eyebrow"
                 style={{ color: "var(--np-rust-light)" }}
               >
-                Founding cohort
+                The honest version
               </p>
               <h2 className="np-display mt-8 text-4xl md:text-[3.5rem]">
-                We&rsquo;re taking {COHORT_SIZE} businesses through this before
-                we launch.
+                If AI isn&rsquo;t worth it for your business yet, the report
+                says so.
               </h2>
               <p className="mt-8 text-lg font-light leading-relaxed text-np-on-navy-2 max-w-[44ch]">
-                We want it tested against real operations first. In return:
-                honest feedback, and a testimonial if the work earns one.
+                Every assessment includes what not to buy. We take no referral
+                fees from any vendor, so the recommendations have nothing to
+                sell you.
               </p>
               <div className="mt-11">
                 <CTAButton
@@ -183,7 +183,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Cohort testimonials — invisible until the first real one lands */}
+      {/* Client testimonials — invisible until the first real one lands */}
       <Testimonials />
 
       {/* Operator pedigree */}

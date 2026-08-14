@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import DemoScout from "@/components/DemoScout";
-import { COMPANY, DURATION, AREAS, COHORT_SIZE } from "@/lib/offer";
+import { COMPANY, DURATION, AREAS } from "@/lib/offer";
 
 export const metadata: Metadata = {
   title: "Book an assessment call",
@@ -64,11 +64,12 @@ export default function BookPage() {
           </div>
 
           <div className="border-l-2 border-np-rust pl-5">
-            <p className="np-label">Founding cohort</p>
+            <p className="np-label">After you book</p>
             <p className="mt-3 text-[0.9375rem] leading-relaxed text-np-body font-light">
-              We&rsquo;re taking {COHORT_SIZE} businesses through the assessment
-              before we launch it broadly. Scope and terms are confirmed on the
-              call.
+              Scout calls at your chosen time. Jordan and Ethan review the
+              transcript, and your report arrives within{" "}
+              {DURATION.reportTurnaroundDays} business days. The fee is a flat
+              rate, confirmed before any work begins.
             </p>
           </div>
 

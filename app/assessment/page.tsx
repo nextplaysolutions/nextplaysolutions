@@ -215,7 +215,7 @@ export default function AssessmentPage() {
         </div>
       </section>
 
-      {/* Cohort testimonials — invisible until the first real one lands */}
+      {/* Client testimonials — invisible until the first real one lands */}
       <Testimonials />
 
       {/* Questions */}

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import CTAButton from "@/components/CTAButton";
-import { COHORT_SIZE } from "@/lib/offer";
+import { DURATION } from "@/lib/offer";
 
 export const metadata: Metadata = {
   title: "About",
@@ -186,12 +186,11 @@ export default function AboutPage() {
       <section className="max-w-[1200px] mx-auto px-5 py-20 md:py-24">
         <div className="max-w-[52ch]">
           <h2 className="np-display text-3xl md:text-4xl text-np-navy">
-            We&rsquo;re taking {COHORT_SIZE} businesses through this before we
-            launch.
+            {DURATION.assessmentMinutes} minutes to find out
           </h2>
           <p className="mt-6 text-np-body font-light leading-relaxed">
-            If yours might be one of them, the fastest way to find out is to
-            have the conversation.
+            If any of this sounds like your business, the fastest way to know
+            what AI is actually worth to it is to have the conversation.
           </p>
           <div className="mt-8">
             <CTAButton label="Book an assessment call" size="large" />

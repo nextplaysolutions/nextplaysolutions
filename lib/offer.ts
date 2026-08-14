@@ -28,8 +28,9 @@ export const COMPANY = {
   email: "hello@nextplaysolutions.ai",
 } as const;
 
-/** The founding cohort size. A bar to clear, not a discount. */
-export const COHORT_SIZE = 6;
+/* Founding-cohort framing removed 2026-08-14 — the site now sells the
+   assessment as a standard paid engagement. Do not reintroduce cohort or
+   "free" language. */
 
 /** Live phone lines. These are different agents — do not conflate them. */
 export const PHONE = {
@@ -69,9 +70,10 @@ export const DURATION = {
 } as const;
 
 /**
- * Post-cohort pricing. NOT live yet — the founding cohort is by selection and
- * carries no fee. When the cohort closes, set `LIVE` to true and the price
- * enters the structured data automatically.
+ * Public pricing. Jordan's call (2026-08-14): no dollar figures on the site
+ * yet — the fee is quoted at booking and confirmed before any work begins.
+ * When he's ready to publish numbers, set `LIVE` to true and the range enters
+ * the page copy, FAQ, llms.txt and structured data automatically.
  */
 export const PRICING = {
   LIVE: false,
@@ -79,6 +81,11 @@ export const PRICING = {
   min: 1500,
   max: 3000,
 } as const;
+
+/** The one sentence used everywhere pricing is asked about. */
+export const PRICING_STATEMENT = PRICING.LIVE
+  ? `A flat fee between $${PRICING.min.toLocaleString()} and $${PRICING.max.toLocaleString()}, confirmed before any work begins.`
+  : "A flat fee, quoted when you book and confirmed before any work begins. No hourly billing, no retainer.";
 
 /**
  * The offer in one sentence. If an agent reads nothing else, it reads this.
@@ -204,11 +211,9 @@ export const SERVICE_JSONLD = {
   offers: {
     "@type": "Offer",
     url: `${SITE_URL}/book`,
-    availability: "https://schema.org/LimitedAvailability",
+    availability: "https://schema.org/InStock",
     eligibleCustomerType: "Business",
-    description: PRICING.LIVE
-      ? "Flat fee. Scope and price confirmed on the call before any work begins."
-      : `Currently by selection: ${COHORT_SIZE} businesses are being taken through the assessment before general launch.`,
+    description: PRICING_STATEMENT,
     ...(PRICING.LIVE
       ? {
           priceSpecification: {
@@ -247,9 +252,7 @@ export const FAQ = [
   },
   {
     q: "What does it cost?",
-    a: PRICING.LIVE
-      ? `A flat fee between $${PRICING.min.toLocaleString()} and $${PRICING.max.toLocaleString()}, confirmed on the call before any work begins.`
-      : `${COHORT_SIZE} businesses are being selected to go through the assessment before general launch. Scope and terms are confirmed on the call.`,
+    a: PRICING_STATEMENT,
   },
   {
     q: "Are the savings figures guaranteed?",
