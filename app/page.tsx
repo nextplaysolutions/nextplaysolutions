@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import CTAButton from "@/components/CTAButton";
 import DemoScout from "@/components/DemoScout";
+import Testimonials from "@/components/Testimonials";
 import {
   AREAS,
   COHORT_SIZE,
@@ -181,6 +182,9 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* Cohort testimonials — invisible until the first real one lands */}
+      <Testimonials />
 
       {/* Operator pedigree */}
       <section className="max-w-[1200px] mx-auto px-5 py-20 md:py-24">

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import CTAButton from "@/components/CTAButton";
 import DemoScout from "@/components/DemoScout";
+import Testimonials from "@/components/Testimonials";
 import {
   AREAS,
   DELIVERABLES,
@@ -213,6 +214,9 @@ export default function AssessmentPage() {
           </div>
         </div>
       </section>
+
+      {/* Cohort testimonials — invisible until the first real one lands */}
+      <Testimonials />
 
       {/* Questions */}
       <section className="bg-np-tint border-t border-np-rule">
