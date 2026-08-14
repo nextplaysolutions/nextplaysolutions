@@ -30,7 +30,7 @@ const founders = [
     name: "Jordan Svoboda",
     role: "Co-founder",
     focus: "Operations, trust and risk",
-    photo: null,
+    photo: "/team/jordan.jpg",
     linkedin: "https://www.linkedin.com/in/jordansvoboda/",
     companies: "LinkedIn · Meta · NextPlay Homes",
     body: [
