@@ -17,7 +17,7 @@ const founders = [
     name: "Ethan Hamilton",
     role: "Co-founder",
     focus: "Talent, sales and go-to-market",
-    photo: "/team/ethan.png",
+    photo: "/team/ethan.jpg",
     linkedin: "https://www.linkedin.com/in/ethanhamiltonlinkedin/",
     companies: "LinkedIn · Snap · Tesla · Paylocity",
     body: [
