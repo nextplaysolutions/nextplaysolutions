@@ -3,6 +3,7 @@ import { Archivo, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import ChatWidget from "@/components/ChatWidget";
 import { ORGANIZATION_JSONLD } from "@/lib/offer";
 
 const archivo = Archivo({
@@ -59,6 +60,9 @@ export default function RootLayout({
         <Nav />
         <main className="flex-1">{children}</main>
         <Footer />
+        {/* Chat appears only once ANTHROPIC_API_KEY is set in Vercel — same
+            pattern as testimonials: nothing renders until it actually works. */}
+        {process.env.ANTHROPIC_API_KEY ? <ChatWidget /> : null}
       </body>
     </html>
   );
