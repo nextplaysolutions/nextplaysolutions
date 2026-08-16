@@ -93,7 +93,7 @@ export default function ChatWidget() {
             {messages.map((m, i) => (
               <div
                 key={i}
-                className={`text-[0.9375rem] leading-[1.55] max-w-[90%] px-4 py-3 whitespace-pre-wrap ${
+                className={`text-[0.9375rem] leading-[1.55] max-w-[90%] px-4 py-3 whitespace-pre-wrap [overflow-wrap:anywhere] ${
                   m.role === "user"
                     ? "ml-auto bg-np-navy text-white"
                     : "bg-np-tint text-np-body"
