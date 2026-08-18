@@ -1,5 +1,6 @@
 import Anthropic from "@anthropic-ai/sdk";
 import { CHAT_SYSTEM_PROMPT } from "@/lib/chat-prompt";
+import { ghlConfigured, upsertContact } from "@/lib/ghl";
 import { COMPANY } from "@/lib/offer";
 
 /**
@@ -15,8 +16,6 @@ import { COMPANY } from "@/lib/offer";
  *   GHL_PI_TOKEN       — optional; without it leads fall back to email
  *   GHL_LOCATION_ID    — optional; defaults to the Marketing sub-account
  */
-
-const GHL_LOCATION_ID = process.env.GHL_LOCATION_ID ?? "HYMGOAeVmEvPHBCIX8Dc";
 
 const MAX_MESSAGES = 30;
 const MAX_MESSAGE_CHARS = 2000;
@@ -49,52 +48,22 @@ const CAPTURE_LEAD_TOOL: Anthropic.Tool = {
 type Lead = { name: string; email: string; phone: string; context: string };
 
 async function captureLead(lead: Lead): Promise<string> {
-  const token = process.env.GHL_PI_TOKEN;
-  if (!token) {
+  if (!ghlConfigured()) {
     return `Lead capture is not connected yet. Ask the visitor to email ${COMPANY.email} directly instead.`;
   }
 
-  const [firstName, ...rest] = lead.name.trim().split(/\s+/);
-  const res = await fetch("https://services.leadconnectorhq.com/contacts/upsert", {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${token}`,
-      Version: "2021-07-28",
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      locationId: GHL_LOCATION_ID,
-      firstName,
-      lastName: rest.join(" ") || undefined,
-      email: lead.email,
-      phone: lead.phone || undefined,
-      source: "Website chat",
-      tags: ["website-chat"],
-    }),
+  const { ok } = await upsertContact({
+    name: lead.name,
+    email: lead.email,
+    phone: lead.phone,
+    source: "Website chat",
+    tags: ["website-chat"],
+    note: lead.context ? `Website chat: ${lead.context}` : undefined,
   });
 
-  if (!res.ok) {
-    console.error("GHL upsert failed", res.status, await res.text());
-    return `Saving the contact failed. Ask the visitor to email ${COMPANY.email} directly instead.`;
-  }
-
-  const data = (await res.json()) as { contact?: { id?: string } };
-  const contactId = data.contact?.id;
-
-  // Best-effort note with the conversation context; the lead is already saved.
-  if (contactId && lead.context) {
-    await fetch(`https://services.leadconnectorhq.com/contacts/${contactId}/notes`, {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${token}`,
-        Version: "2021-07-28",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ body: `Website chat: ${lead.context}` }),
-    }).catch(() => {});
-  }
-
-  return "Lead saved. The founders will follow up by email.";
+  return ok
+    ? "Lead saved. The founders will follow up by email."
+    : `Saving the contact failed. Ask the visitor to email ${COMPANY.email} directly instead.`;
 }
 
 export async function POST(request: Request) {
