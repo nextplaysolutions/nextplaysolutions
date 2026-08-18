@@ -29,10 +29,20 @@ export async function upsertContact(lead: {
   phone?: string;
   source: string;
   tags: string[];
+  /**
+   * Campaign slug from a tracked outreach link, already normalized by
+   * lib/source.ts. Added as a `src-` tag so campaign filtering stays separate
+   * from `source`, which answers the different question of which surface
+   * converted.
+   */
+  campaign?: string | null;
   note?: string;
 }): Promise<{ ok: boolean }> {
   if (!ghlConfigured()) return { ok: false };
 
+  const tags = lead.campaign
+    ? [...lead.tags, `src-${lead.campaign}`]
+    : lead.tags;
   const [firstName, ...rest] = lead.name.trim().split(/\s+/);
   const res = await fetch(`${GHL_API}/contacts/upsert`, {
     method: "POST",
@@ -44,7 +54,7 @@ export async function upsertContact(lead: {
       email: lead.email,
       phone: lead.phone || undefined,
       source: lead.source,
-      tags: lead.tags,
+      tags,
     }),
   });
 

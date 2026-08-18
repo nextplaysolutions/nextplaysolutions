@@ -4,6 +4,7 @@ import "./globals.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import ChatWidget from "@/components/ChatWidget";
+import SourceCapture from "@/components/SourceCapture";
 import { ORGANIZATION_JSONLD } from "@/lib/offer";
 
 const archivo = Archivo({
@@ -57,6 +58,8 @@ export default function RootLayout({
             __html: JSON.stringify(ORGANIZATION_JSONLD),
           }}
         />
+        {/* Records ?src= from tracked outreach links. Renders nothing. */}
+        <SourceCapture />
         <Nav />
         <main className="flex-1">{children}</main>
         <Footer />

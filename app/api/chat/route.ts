@@ -1,7 +1,9 @@
 import Anthropic from "@anthropic-ai/sdk";
 import { CHAT_SYSTEM_PROMPT } from "@/lib/chat-prompt";
+import { cookies } from "next/headers";
 import { ghlConfigured, upsertContact } from "@/lib/ghl";
 import { COMPANY } from "@/lib/offer";
+import { SOURCE_COOKIE, normalizeCampaign } from "@/lib/source";
 
 /**
  * POST /api/chat — backend for the "Ask NextPlay" widget.
@@ -47,7 +49,10 @@ const CAPTURE_LEAD_TOOL: Anthropic.Tool = {
 
 type Lead = { name: string; email: string; phone: string; context: string };
 
-async function captureLead(lead: Lead): Promise<string> {
+async function captureLead(
+  lead: Lead,
+  campaign: string | null,
+): Promise<string> {
   if (!ghlConfigured()) {
     return `Lead capture is not connected yet. Ask the visitor to email ${COMPANY.email} directly instead.`;
   }
@@ -58,7 +63,11 @@ async function captureLead(lead: Lead): Promise<string> {
     phone: lead.phone,
     source: "Website chat",
     tags: ["website-chat"],
-    note: lead.context ? `Website chat: ${lead.context}` : undefined,
+    campaign,
+    note: lead.context
+      ? `Website chat: ${lead.context}` +
+        (campaign ? ` · Came from link: ${campaign}` : "")
+      : undefined,
   });
 
   return ok
@@ -96,6 +105,11 @@ export async function POST(request: Request) {
   ) {
     return Response.json({ error: "Invalid request." }, { status: 400 });
   }
+
+  // Read once per request — capture_lead can fire on any turn of the loop,
+  // and the cookie cannot change mid-request. Re-validated on read because a
+  // cookie is client-controllable however it was set.
+  const campaign = normalizeCampaign((await cookies()).get(SOURCE_COOKIE)?.value);
 
   const client = new Anthropic();
   const messages: Anthropic.MessageParam[] = raw.map((m) => ({
@@ -145,7 +159,7 @@ export async function POST(request: Request) {
           toolResults.push({
             type: "tool_result",
             tool_use_id: block.id,
-            content: await captureLead(block.input as Lead),
+            content: await captureLead(block.input as Lead, campaign),
           });
         }
       }

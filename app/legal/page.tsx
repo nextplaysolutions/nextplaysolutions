@@ -24,7 +24,19 @@ const sections = [
       },
       {
         h: "The demo line",
-        p: `Calls to the demo line (${PHONE.demo}) are handled by an automated agent. We do not ask for or retain personal details from demo calls.`,
+        p: `Calls to the demo line (${PHONE.demo}) are handled by an automated agent. We do not ask for or retain personal details from the call itself.`,
+      },
+      {
+        h: "The demo request form",
+        p: "If you reach our demo page through a link we shared, we ask for your name, email address, phone number and type of business before showing you the number. We keep those details so we can follow up once about your demo. We do not sell them and we do not add you to a mailing list.",
+      },
+      {
+        h: "The chat on this site",
+        p: `The chat is answered by an AI assistant. If you ask us to get in touch and give it your details, we save them along with a short note about what you asked, so whoever follows up already knows the context. If you would rather not leave details, the chat still answers questions without them.`,
+      },
+      {
+        h: "Knowing which link you came from",
+        p: "When you arrive from a link we shared, we store a short label for that link in your browser for thirty days — for example the name of the person who sent it. It holds no personal information, it is only readable by this site, and its only job is telling us which of our own outreach is working. We use no advertising or third-party tracking cookies.",
       },
       {
         h: "Your business information",

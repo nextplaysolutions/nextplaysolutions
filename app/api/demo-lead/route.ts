@@ -1,4 +1,6 @@
+import { cookies } from "next/headers";
 import { ghlConfigured, upsertContact } from "@/lib/ghl";
+import { SOURCE_COOKIE, normalizeCampaign } from "@/lib/source";
 
 /**
  * POST /api/demo-lead — the /demo funnel form.
@@ -55,13 +57,19 @@ export async function POST(request: Request) {
     return Response.json({ error: "Invalid request." }, { status: 400 });
   }
 
+  // Re-validated on read: a cookie is client-controllable however it was set.
+  const campaign = normalizeCampaign((await cookies()).get(SOURCE_COOKIE)?.value);
+
   const { ok } = await upsertContact({
     name: name as string,
     email: email as string,
     phone: phone as string,
     source: "Demo page",
     tags: ["demo-requested"],
-    note: `Requested the Scout demo via /demo. Business type: ${businessType}`,
+    campaign,
+    note:
+      `Requested the Scout demo via /demo. Business type: ${businessType}` +
+      (campaign ? ` · Came from link: ${campaign}` : ""),
   });
 
   if (!ok) {
