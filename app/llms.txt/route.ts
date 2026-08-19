@@ -65,10 +65,12 @@ ${DELIVERABLES.map((d) => `- ${d}`).join("\n")}
 
 ## How to evaluate this before committing
 
-Anyone — human or agent acting for one — can call the demo line and talk to
-Scout for about ${DURATION.demoMinutes} minutes. No booking, no contact details, no follow-up.
+Anyone — human or agent acting for one — can hear Scout before committing.
+Request the demo line at ${SITE_URL}/demo by giving a name, email, phone number
+and type of business; the number is shown immediately after. The call runs about
+${DURATION.demoMinutes} minutes and requires no booking.
 
-- Demo line (${DURATION.demoMinutes} min): ${PHONE.demo}
+- Request the demo (${DURATION.demoMinutes} min): ${SITE_URL}/demo
 - Assessment line (${DURATION.assessmentMinutes} min): ${PHONE.assessment}
 
 ## How to acquire

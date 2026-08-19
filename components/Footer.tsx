@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Logo from "./Logo";
-import { COMPANY, PHONE, DURATION } from "@/lib/offer";
+import { COMPANY, DURATION } from "@/lib/offer";
 
 export default function Footer() {
   return (
@@ -37,13 +37,14 @@ export default function Footer() {
 
         <div className="mt-14 pt-8 border-t border-white/15 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
           <div className="flex flex-col sm:flex-row sm:items-center gap-x-8 gap-y-2">
-            <a
-              href={`tel:${PHONE.demoE164}`}
+            {/* Points at /demo — the number is revealed only after capture. */}
+            <Link
+              href="/demo"
               className="np-label hover:text-white transition-colors"
               style={{ color: "var(--np-on-navy-muted)" }}
             >
-              Talk to Scout · {PHONE.demo} · {DURATION.demoMinutes} min
-            </a>
+              Talk to Scout · {DURATION.demoMinutes} min
+            </Link>
             <a
               href={`mailto:${COMPANY.email}`}
               className="np-label hover:text-white transition-colors"

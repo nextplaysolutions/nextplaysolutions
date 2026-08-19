@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { COMPANY, DURATION, PHONE } from "@/lib/offer";
+import { COMPANY, DURATION } from "@/lib/offer";
 
 export const metadata: Metadata = {
   title: "Legal",
@@ -24,7 +24,7 @@ const sections = [
       },
       {
         h: "The demo line",
-        p: `Calls to the demo line (${PHONE.demo}) are handled by an automated agent. We do not ask for or retain personal details from the call itself.`,
+        p: "Calls to the demo line are handled by an automated agent. We do not ask for or retain personal details from the call itself.",
       },
       {
         h: "The demo request form",

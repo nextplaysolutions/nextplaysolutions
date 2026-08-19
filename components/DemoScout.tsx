@@ -1,11 +1,17 @@
-import { PHONE, DURATION } from "@/lib/offer";
+import Link from "next/link";
+import { DURATION } from "@/lib/offer";
 
 /**
- * The demo line. A visitor can hear the product in four minutes without
- * booking anything or handing over details — the sharpest differentiator
- * we have, so it gets the primary position on the homepage.
+ * The demo invitation. Sends people to /demo, where the lead form opens the
+ * line — it does NOT print the number.
  *
- * Note this is the DEMO agent, not the full assessment line.
+ * The number used to sit here in the open, which made the /demo gate
+ * pointless: anyone could read it off the homepage and skip the form. It is
+ * now revealed in exactly one place, after capture (components/DemoLeadForm).
+ * If you are about to render PHONE.demo anywhere public, that is the bug.
+ *
+ * The old copy also promised "no booking, no details, no follow-up" — true of
+ * the phone call itself, false of the page now. Don't reintroduce it.
  */
 export default function DemoScout({
   variant = "light",
@@ -22,8 +28,11 @@ export default function DemoScout({
           : "border border-np-rule p-8 md:p-10 bg-np-tint"
       }
     >
-      <p className="np-eyebrow" style={onNavy ? { color: "var(--np-rust-light)" } : undefined}>
-        Talk to Scout now · {DURATION.demoMinutes} minutes
+      <p
+        className="np-eyebrow"
+        style={onNavy ? { color: "var(--np-rust-light)" } : undefined}
+      >
+        Talk to Scout · {DURATION.demoMinutes} minutes
       </p>
 
       <p
@@ -31,21 +40,20 @@ export default function DemoScout({
           onNavy ? "text-np-on-navy-2" : "text-np-body"
         }`}
       >
-        Scout is the voice agent that runs the assessment. Call the demo line
-        and ask it anything — no booking, no details, no follow-up.
+        Scout is the voice agent that runs the assessment. Hear it work through
+        a real business — yours — before you book anything.
       </p>
 
-      {/* Primary mobile action — kept above the 44px tap-target floor. */}
-      <a
-        href={`tel:${PHONE.demoE164}`}
-        className={`mt-5 inline-block py-2 text-3xl md:text-4xl np-display tracking-tight transition-colors ${
+      <Link
+        href="/demo"
+        className={`mt-6 inline-block py-2 text-xl md:text-2xl np-display tracking-tight transition-colors ${
           onNavy
             ? "text-white hover:text-np-rust-light"
             : "text-np-navy hover:text-np-rust"
         }`}
       >
-        {PHONE.demo}
-      </a>
+        Try Scout &rarr;
+      </Link>
     </div>
   );
 }

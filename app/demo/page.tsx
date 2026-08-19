@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import DemoLeadForm from "@/components/DemoLeadForm";
-import DemoScout from "@/components/DemoScout";
 import { ghlConfigured } from "@/lib/ghl";
-import { AREAS, DURATION } from "@/lib/offer";
+import { AREAS, DURATION, PHONE } from "@/lib/offer";
 
 /**
  * /demo — unlisted lead-capture funnel for the Scout demo.
@@ -45,7 +44,28 @@ export default function DemoPage() {
         {`Scout is the voice agent that runs the NextPlay assessment — a ${DURATION.assessmentMinutes}-minute interview across ${AREAS.length} areas of a business, turned into a written report within ${DURATION.reportTurnaroundDays} business days. This demo is ${DURATION.demoMinutes} minutes of the real thing: Scout asks about your business and reflects your own numbers back at you.`}
       </p>
 
-      <div className="mt-12">{funnel ? <DemoLeadForm /> : <DemoScout />}</div>
+      <div className="mt-12">
+        {funnel ? (
+          <DemoLeadForm />
+        ) : (
+          /* Degraded state: GHL is not configured, so the form cannot file
+             anyone. Show the number rather than dead-end a live prospect —
+             this is the ONE public place it appears ungated, and only when
+             lead capture is broken. Do not render <DemoScout /> here; it
+             links to this page. */
+          <div className="border border-np-rule bg-np-tint p-8 md:p-10">
+            <p className="np-eyebrow">
+              Talk to Scout now · {DURATION.demoMinutes} minutes
+            </p>
+            <a
+              href={`tel:${PHONE.demoE164}`}
+              className="mt-5 inline-block py-2 text-4xl md:text-5xl np-display tracking-tight text-np-navy hover:text-np-rust transition-colors"
+            >
+              {PHONE.demo}
+            </a>
+          </div>
+        )}
+      </div>
 
       {/* ── SYNTHFLOW SLOT ──────────────────────────────────────────────
           When the Demo Scout web-widget embed snippet arrives from the

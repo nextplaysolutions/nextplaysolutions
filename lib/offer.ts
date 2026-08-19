@@ -176,8 +176,8 @@ export const ORGANIZATION_JSONLD = {
     {
       "@type": "ContactPoint",
       contactType: "Product demonstration",
-      telephone: PHONE.demoE164,
-      description: `A ${DURATION.demoMinutes}-minute conversation with Scout, the assessment voice agent. No booking required.`,
+      url: `${SITE_URL}/demo`,
+      description: `A ${DURATION.demoMinutes}-minute conversation with Scout, the assessment voice agent. Request the line at ${SITE_URL}/demo — no booking required.`,
       availableLanguage: "English",
     },
     {
@@ -253,7 +253,7 @@ export const FAQ = [
   },
   {
     q: "Can I try it before booking?",
-    a: `Yes. Call ${PHONE.demo} for a ${DURATION.demoMinutes}-minute conversation with Scout. No booking and no details required.`,
+    a: `Yes. Go to ${SITE_URL}/demo, tell us who you are and what kind of business you run, and we will open the line — a ${DURATION.demoMinutes}-minute conversation with Scout, no booking and no commitment.`,
   },
   {
     q: "Who is it for?",
