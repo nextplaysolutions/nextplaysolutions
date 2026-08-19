@@ -103,22 +103,25 @@ export const WHO_ITS_FOR =
 
 /**
  * Company attributions verified against both LinkedIn work histories (Aug 2026).
- * Ethan: LinkedIn (4y10m), Snap, Tesla, Paylocity — talent and go-to-market.
+ * Ethan: LinkedIn (4y10m), Snap, Tesla — talent and go-to-market.
  * Jordan: LinkedIn (8y1m), Meta (3y1m) — trust, safety and risk leadership.
- * The four-company claim is accurate; the earlier per-person split was not.
  *
- * ⚠️ These lists mix CURRENT and former employers — Ethan is at Paylocity and
- * Jordan is at LinkedIn today. Anywhere this renders, word it neutrally
- * ("Career:", "career includes"). Never "Previously" or "ex-": both founders
- * hold these jobs, and misstating that is a problem for them at work, not a
- * copy nit. Fixed 2026-08-19 after it shipped that way.
+ * ⚠️ Two rules here, both learned the hard way:
+ *
+ *  1. Paylocity is Ethan's CURRENT employer and was deliberately removed from
+ *     this list on 2026-08-19 (Jordan's call). Do not add it back.
+ *  2. Jordan is at LinkedIn today, so this list still mixes current and former
+ *     employers. Word it neutrally wherever it renders — "Career:", "career
+ *     includes". Never "Previously" or "ex-". It shipped as "Previously" once;
+ *     misstating a founder's employment is a problem for them at work, not a
+ *     copy nit.
  */
 export const FOUNDERS = [
   {
     name: "Ethan Hamilton",
     role: "Co-founder",
     background: "Talent, sales and go-to-market",
-    companies: ["LinkedIn", "Snap", "Tesla", "Paylocity"],
+    companies: ["LinkedIn", "Snap", "Tesla"],
     linkedin: "https://www.linkedin.com/in/ethanhamiltonlinkedin/",
   },
   {

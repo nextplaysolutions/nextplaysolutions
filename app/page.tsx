@@ -3,13 +3,7 @@ import Link from "next/link";
 import CTAButton from "@/components/CTAButton";
 import DemoScout from "@/components/DemoScout";
 import Testimonials from "@/components/Testimonials";
-import {
-  AREAS,
-  COMPANY,
-  DURATION,
-  FAQ_JSONLD,
-  SERVICE_JSONLD,
-} from "@/lib/offer";
+import { AREAS, DURATION, FAQ_JSONLD, SERVICE_JSONLD } from "@/lib/offer";
 
 export const metadata: Metadata = {
   title: "NextPlay Solutions — Your unfair AI advantage",
@@ -55,21 +49,34 @@ export default function HomePage() {
         <div className="grid lg:grid-cols-[1.15fr_1fr] gap-16 lg:gap-24 items-start">
           <div>
             <p className="np-eyebrow">AI Readiness Assessment</p>
-            <h1 className="np-display mt-8 text-[3rem] md:text-[4.5rem] text-np-navy">
-              {COMPANY.tagline}
+            {/* Leads with a finding from a real engagement rather than the
+                tagline. The figure is the owner's own estimate of work agreed
+                on site and never invoiced — deliberately not the report's $95k
+                headline, which leans on a flips projection the report itself
+                calls its most speculative number. Attribution is in the very
+                next sentence: this is a finding, never a promise to the reader. */}
+            <h1 className="np-display mt-8 text-[2.75rem] md:text-[4rem] text-np-navy leading-[1.05]">
+              $18,000 a year, agreed on site and never billed.
             </h1>
-            <p className="mt-9 text-xl md:text-[1.375rem] font-light leading-[1.5] text-np-body max-w-[34ch]">
-              Seven areas of your business. {DURATION.assessmentMinutes} minutes
-              on the phone. A report naming the tools, the costs, and the order.
+            <p className="mt-9 text-xl md:text-[1.375rem] font-light leading-[1.5] text-np-body max-w-[38ch]">
+              That was one finding, in one assessment, for a six-person
+              remodeling company. Seven areas of his business in{" "}
+              {DURATION.assessmentMinutes} minutes on the phone — and a report
+              naming the tools, the costs, the order, and the two things worth
+              skipping.
             </p>
 
             <div className="mt-12 flex flex-wrap items-center gap-x-8 gap-y-4">
-              <CTAButton label="Book an assessment call" size="large" />
-              <Link
+              <CTAButton
+                label="Read the full report"
                 href="/assessment/sample"
+                size="large"
+              />
+              <Link
+                href="/book"
                 className="text-np-navy font-medium hover:text-np-rust transition-colors py-3"
               >
-                See a real assessment →
+                Book an assessment call →
               </Link>
             </div>
           </div>
