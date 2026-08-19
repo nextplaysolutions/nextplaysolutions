@@ -1,5 +1,6 @@
 import { cookies } from "next/headers";
 import { ghlConfigured, upsertContact } from "@/lib/ghl";
+import { validateLead } from "@/lib/lead";
 import { SOURCE_COOKIE, normalizeCampaign } from "@/lib/source";
 
 /**
@@ -9,61 +10,37 @@ import { SOURCE_COOKIE, normalizeCampaign } from "@/lib/source";
  * "demo-requested"), then the page reveals the demo line. The form is only
  * rendered when GHL_PI_TOKEN is configured, so this route should never be
  * hit unconfigured except by stray callers.
+ *
+ * Validation lives in lib/lead.ts and is shared with the form, so the two
+ * cannot disagree about what a good lead looks like.
  */
-
-const BUSINESS_TYPES = [
-  "Real estate",
-  "Insurance",
-  "Mortgage / lending",
-  "Construction / trades",
-  "Professional services",
-  "Healthcare",
-  "Retail / e-commerce",
-  "Other",
-] as const;
 
 export async function POST(request: Request) {
   if (!ghlConfigured()) {
     return Response.json({ error: "Not configured." }, { status: 503 });
   }
 
-  let body: {
-    name?: unknown;
-    email?: unknown;
-    phone?: unknown;
-    businessType?: unknown;
-  };
+  let body: Record<string, unknown>;
   try {
     body = await request.json();
   } catch {
     return Response.json({ error: "Invalid request." }, { status: 400 });
   }
 
-  const { name, email, phone, businessType } = body;
-  const valid =
-    typeof name === "string" &&
-    name.trim().length > 0 &&
-    name.length <= 200 &&
-    typeof email === "string" &&
-    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) &&
-    email.length <= 320 &&
-    typeof phone === "string" &&
-    phone.replace(/\D/g, "").length >= 10 &&
-    phone.length <= 30 &&
-    typeof businessType === "string" &&
-    (BUSINESS_TYPES as readonly string[]).includes(businessType);
-
-  if (!valid) {
-    return Response.json({ error: "Invalid request." }, { status: 400 });
+  const problem = validateLead(body);
+  if (problem) {
+    return Response.json({ error: problem }, { status: 400 });
   }
+
+  const { name, email, phone, businessType } = body as Record<string, string>;
 
   // Re-validated on read: a cookie is client-controllable however it was set.
   const campaign = normalizeCampaign((await cookies()).get(SOURCE_COOKIE)?.value);
 
   const { ok } = await upsertContact({
-    name: name as string,
-    email: email as string,
-    phone: phone as string,
+    name,
+    email,
+    phone,
     source: "Demo page",
     tags: ["demo-requested"],
     campaign,

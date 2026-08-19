@@ -85,7 +85,7 @@ export const PRICING = {
 /** The one sentence used everywhere pricing is asked about. */
 export const PRICING_STATEMENT = PRICING.LIVE
   ? `A flat fee between $${PRICING.min.toLocaleString()} and $${PRICING.max.toLocaleString()}, confirmed before any work begins.`
-  : "A flat fee, quoted when you book and confirmed before any work begins. No hourly billing, no retainer.";
+  : "A flat fee, quoted when you book and confirmed before any work begins. No hourly billing.";
 
 /**
  * The offer in one sentence. If an agent reads nothing else, it reads this.
@@ -263,6 +263,10 @@ export const FAQ = [
   {
     q: "Are the savings figures guaranteed?",
     a: "No. Every figure in the report is an estimate and a finding based on what the business describes during the call. They are not guarantees.",
+  },
+  {
+    q: "Why not just ask ChatGPT this myself?",
+    a: "You can, and for a general list of tools it will do a reasonable job. The difference is what it will not tell you: what to skip. In one assessment of a six-person remodeling company we recommended against a CRM — at one appointment a week it is overhead, not leverage — and against automating the site work, because twenty hours a week of supply runs and walkthroughs is a hiring question, not a software one. That report was written from a recorded conversation about that specific business, with both founders reading the transcript, and every figure in it came from the owner's own numbers. A general tool has no reason to talk you out of anything.",
   },
 ] as const;
 

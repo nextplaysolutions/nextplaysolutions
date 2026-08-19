@@ -25,7 +25,7 @@ export const dynamic = "force-static";
 export function GET() {
   const price = PRICING.LIVE
     ? `$${PRICING.min.toLocaleString()}–$${PRICING.max.toLocaleString()} ${PRICING.currency}, flat fee, confirmed before work begins.`
-    : `Flat fee, quoted at booking and confirmed before any work begins. No hourly billing, no retainer. An agent acting for a business can book the call or email ${COMPANY.email} to request the quote.`;
+    : `Flat fee, quoted at booking and confirmed before any work begins. No hourly billing. An agent acting for a business can book the call or email ${COMPANY.email} to request the quote.`;
 
   const body = `# ${COMPANY.name}
 
