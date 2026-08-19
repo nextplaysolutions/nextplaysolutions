@@ -145,9 +145,16 @@ export default function ChatWidget() {
       <button
         onClick={() => setOpen((o) => !o)}
         aria-expanded={open}
-        className="bg-np-rust px-5 py-4 shadow-[0_6px_28px_rgba(0,0,0,0.32)] hover:bg-np-rust-light transition-colors"
+        className="bg-np-rust px-6 py-4 shadow-[0_6px_28px_rgba(0,0,0,0.32)] hover:bg-np-rust-light transition-colors"
       >
-        <span className="np-label text-white">
+        {/* Colour and size are set inline deliberately: .np-label hard-sets a
+            muted grey at 10px, which reads as disabled on a rust ground and is
+            too quiet for a floating action. Same white-on-rust pairing the
+            primary CTA already uses. */}
+        <span
+          className="np-label"
+          style={{ color: "#fff", fontSize: "0.75rem", fontWeight: 500 }}
+        >
           {open ? "Close" : "Ask NextPlay"}
         </span>
       </button>
