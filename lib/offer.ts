@@ -70,32 +70,75 @@ export const DURATION = {
 } as const;
 
 /**
- * Public pricing. Jordan's call (2026-08-14): no dollar figures on the site
- * yet — the fee is quoted at booking and confirmed before any work begins.
- * When he's ready to publish numbers, set `LIVE` to true and the range enters
- * the page copy, FAQ, llms.txt and structured data automatically.
+ * Public pricing. Published 2026-08-19 (Jordan's call), replacing the earlier
+ * "quoted at booking" position and the internal $1,500–$3,000 range.
+ *
+ * The shape is deliberate: a low, fixed assessment fee that is CREDITED
+ * against a build, then fixed-scope builds. It is not a monthly retainer —
+ * both founders still hold full-time jobs, and selling recurring hours before
+ * delivering a single month is how a two-person shop drowns. Ongoing support
+ * exists but is quoted privately after a build, and is deliberately NOT on
+ * the site until there is delivery data behind it.
+ *
+ * Scope is defined by the client's own report, never by a date. Every roadmap
+ * step in a report carries a "done when" line the client has already read and
+ * agreed is reasonable — that is the acceptance criterion. Do not add duration
+ * promises here; a missed date spends the trust the report earned.
  */
 export const PRICING = {
-  LIVE: false,
   currency: "USD",
-  min: 1500,
-  max: 3000,
+  /** The assessment. Credited in full against a build if they proceed. */
+  assessment: 500,
 } as const;
 
+/**
+ * What comes after the report. Names reuse the vocabulary of the report
+ * itself ("plays", "roadmap") so the pricing reads as the next page of the
+ * document rather than a sales sheet. `price: null` means quoted case by case.
+ *
+ * ⚠️ "Minimum Offer" was considered and rejected as a tier name: it describes
+ * our constraint rather than the client's outcome, anchors on the floor, and
+ * devalues — the same reason "Enterprise AI strategy. Small business price."
+ * was deleted. Don't reintroduce it.
+ */
+export const TIERS = [
+  {
+    name: "One play",
+    price: 2500,
+    summary:
+      "We implement the single highest-impact opportunity from your report, end to end. Done when your report says it is done.",
+  },
+  {
+    name: "The roadmap",
+    price: 5000,
+    summary:
+      "Everything your report marks as worth doing now, in the order it recommends.",
+  },
+  {
+    name: "Custom",
+    price: null,
+    summary:
+      "Quoted after the assessment, for larger or unusual scope. Same rule: the scope is written down before any work begins.",
+  },
+] as const;
+
 /** The one sentence used everywhere pricing is asked about. */
-export const PRICING_STATEMENT = PRICING.LIVE
-  ? `A flat fee between $${PRICING.min.toLocaleString()} and $${PRICING.max.toLocaleString()}, confirmed before any work begins.`
-  : "A flat fee, quoted when you book and confirmed before any work begins. No hourly billing.";
+export const PRICING_STATEMENT =
+  `The assessment is $${PRICING.assessment.toLocaleString()}. ` +
+  `If you go ahead with a build afterwards, that $${PRICING.assessment.toLocaleString()} comes off the first invoice. ` +
+  `Builds are fixed-scope and quoted from your own report — $${TIERS[0].price!.toLocaleString()} for one play, ` +
+  `$${TIERS[1].price!.toLocaleString()} for the roadmap, or custom for larger scope. No hourly billing.`;
 
 /**
  * The offer in one sentence. If an agent reads nothing else, it reads this.
- * Keep it declarative: what it is, how long, what comes back, who it's for.
+ * Keep it declarative: what it is, how long, what comes back, what it costs.
  */
 export const OFFER_SUMMARY =
   "NextPlay Solutions runs an AI Readiness Assessment for small and mid-sized businesses. " +
   "A voice agent called Scout interviews the owner for about 25 minutes across seven areas of the business. " +
   "Within three business days the business receives a written report naming the specific AI opportunities found, " +
   "the tools to use with their real current pricing, and the order to implement them in. " +
+  `The assessment costs $${PRICING.assessment.toLocaleString()} ${PRICING.currency}, credited against a build if the business goes ahead with one. ` +
   "Figures in the report are estimates and findings, not guarantees.";
 
 export const WHO_ITS_FOR =
@@ -217,24 +260,49 @@ export const SERVICE_JSONLD = {
       itemOffered: { "@type": "Service", name: d },
     })),
   },
+  /**
+   * A real price, not a range and not "contact us". An agent evaluating this
+   * on a business's behalf cannot choose an offer it cannot price.
+   */
   offers: {
     "@type": "Offer",
+    name: "AI Readiness Assessment",
     url: `${SITE_URL}/book`,
     availability: "https://schema.org/InStock",
     eligibleCustomerType: "Business",
     description: PRICING_STATEMENT,
-    ...(PRICING.LIVE
-      ? {
-          priceSpecification: {
-            "@type": "PriceSpecification",
-            priceCurrency: PRICING.currency,
-            minPrice: PRICING.min,
-            maxPrice: PRICING.max,
-          },
-        }
-      : {}),
+    price: PRICING.assessment,
+    priceCurrency: PRICING.currency,
     availableAtOrFrom: { "@id": `${SITE_URL}/#organization` },
   },
+};
+
+/**
+ * The builds that follow an assessment, as their own catalog so an agent can
+ * see the whole ladder rather than just the entry fee.
+ */
+export const BUILDS_JSONLD = {
+  "@context": "https://schema.org",
+  "@type": "OfferCatalog",
+  "@id": `${SITE_URL}/assessment#builds`,
+  name: "Implementation builds",
+  description: `Fixed-scope builds quoted from the client's own assessment report. The $${PRICING.assessment.toLocaleString()} assessment fee is credited against the first invoice.`,
+  itemListElement: TIERS.map((t, i) => ({
+    "@type": "Offer",
+    position: i + 1,
+    name: t.name,
+    description: t.summary,
+    eligibleCustomerType: "Business",
+    availability: "https://schema.org/InStock",
+    ...(t.price === null
+      ? {}
+      : { price: t.price, priceCurrency: PRICING.currency }),
+    itemOffered: {
+      "@type": "Service",
+      name: `${t.name} — implementation`,
+      provider: { "@id": `${SITE_URL}/#organization` },
+    },
+  })),
 };
 
 /** Questions an evaluating agent (or a skeptical owner) actually asks. */
@@ -262,6 +330,17 @@ export const FAQ = [
   {
     q: "What does it cost?",
     a: PRICING_STATEMENT,
+  },
+  {
+    q: "What happens after the report — do you do the work too?",
+    a:
+      "Yes, if you want it. The report is yours either way and it is written so you can run it yourself. If you would rather not, we build it: " +
+      TIERS.map((t) =>
+        t.price === null
+          ? `${t.name} — ${t.summary}`
+          : `${t.name}, $${t.price.toLocaleString()} — ${t.summary}`,
+      ).join(" ") +
+      ` The $${PRICING.assessment.toLocaleString()} assessment fee comes off the first invoice. Scope is taken from your own report, so what counts as finished is written down before anyone starts.`,
   },
   {
     q: "Are the savings figures guaranteed?",

@@ -8,6 +8,9 @@ import {
   DELIVERABLES,
   DURATION,
   FAQ,
+  PRICING,
+  TIERS,
+  BUILDS_JSONLD,
   FAQ_JSONLD,
   SERVICE_JSONLD,
 } from "@/lib/offer";
@@ -64,6 +67,12 @@ export default function AssessmentPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_JSONLD) }}
+      />
+      {/* The build ladder, so an agent evaluating this sees the whole offer
+          rather than just the entry fee. */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(BUILDS_JSONLD) }}
       />
 
       {/* Header */}
@@ -210,6 +219,73 @@ export default function AssessmentPage() {
               <div className="mt-6">
                 <CTAButton label="Book an assessment call" size="large" />
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Pricing. Deliberately sits AFTER "what you receive" and directly
+          above the sample-report link, so the $500 is read against evidence
+          of what it produces rather than in isolation — a price beside proof
+          reads as confidence, a price alone reads as cheap. */}
+      <section className="bg-np-tint border-y border-np-rule">
+        <div className="max-w-[1200px] mx-auto px-5 py-20 md:py-28">
+          <div className="np-section-rule pb-3 mb-10">
+            <span className="np-label">What it costs</span>
+          </div>
+
+          <div className="grid lg:grid-cols-[1fr_1.15fr] gap-14 lg:gap-20">
+            <div>
+              <p className="np-eyebrow">The assessment</p>
+              <p className="np-display mt-4 text-[3.5rem] md:text-[4.5rem] text-np-navy leading-none">
+                ${PRICING.assessment.toLocaleString()}
+              </p>
+              <p className="mt-6 text-[1.0625rem] leading-relaxed font-light text-np-body max-w-[42ch]">
+                {DURATION.assessmentMinutes} minutes on the phone, seven areas
+                of your business, a written report in{" "}
+                {DURATION.reportTurnaroundDays} business days. If you go ahead
+                with a build afterwards, this comes off the first invoice.
+              </p>
+              <div className="mt-8">
+                <CTAButton label="Book an assessment call" size="large" />
+              </div>
+            </div>
+
+            <div>
+              <p className="np-eyebrow">If you want us to build it</p>
+              <p className="mt-4 text-[1.0625rem] leading-relaxed font-light text-np-body max-w-[46ch]">
+                The report is yours either way, and it is written so you can run
+                it yourself. If you would rather not, the scope comes straight
+                from your own report — including what counts as finished.
+              </p>
+
+              <div className="np-grid mt-8">
+                {TIERS.map((t) => (
+                  <div key={t.name} className="p-7 md:p-8 bg-white">
+                    <div className="flex items-baseline justify-between gap-4">
+                      <p className="text-[1.25rem] font-light text-np-navy">
+                        {t.name}
+                      </p>
+                      <p
+                        className="np-label whitespace-nowrap"
+                        style={{ color: "var(--np-rust)" }}
+                      >
+                        {t.price === null
+                          ? "Quoted"
+                          : `$${t.price.toLocaleString()}`}
+                      </p>
+                    </div>
+                    <p className="mt-3 text-[0.9375rem] leading-relaxed font-light text-np-body">
+                      {t.summary}
+                    </p>
+                  </div>
+                ))}
+              </div>
+
+              <p className="mt-7 text-[0.9375rem] leading-relaxed text-np-muted max-w-[46ch]">
+                Fixed scope, no hourly billing. Ongoing support after a build is
+                quoted separately once we both know what the work actually takes.
+              </p>
             </div>
           </div>
         </div>

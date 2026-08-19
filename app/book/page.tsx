@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import DemoScout from "@/components/DemoScout";
-import { COMPANY, DURATION, AREAS } from "@/lib/offer";
+import { COMPANY, DURATION, AREAS, PRICING } from "@/lib/offer";
 
 export const metadata: Metadata = {
   title: "Book an assessment call",
@@ -68,8 +68,9 @@ export default function BookPage() {
             <p className="mt-3 text-[0.9375rem] leading-relaxed text-np-body font-light">
               Scout calls at your chosen time. Jordan and Ethan review the
               transcript, and your report arrives within{" "}
-              {DURATION.reportTurnaroundDays} business days. The fee is a flat
-              rate, confirmed before any work begins.
+              {DURATION.reportTurnaroundDays} business days. The assessment is
+              ${PRICING.assessment.toLocaleString()} flat — and comes off the
+              first invoice if you have us build any of it afterwards.
             </p>
           </div>
 

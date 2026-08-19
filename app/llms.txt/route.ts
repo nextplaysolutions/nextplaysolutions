@@ -6,6 +6,7 @@ import {
   FAQ,
   PHONE,
   PRICING,
+  TIERS,
   SITE_URL,
   WHO_ITS_FOR,
   OFFER_SUMMARY,
@@ -23,9 +24,13 @@ export const dynamic = "force-static";
  * fits a business it represents: terms first, adjectives never.
  */
 export function GET() {
-  const price = PRICING.LIVE
-    ? `$${PRICING.min.toLocaleString()}–$${PRICING.max.toLocaleString()} ${PRICING.currency}, flat fee, confirmed before work begins.`
-    : `Flat fee, quoted at booking and confirmed before any work begins. No hourly billing. An agent acting for a business can book the call or email ${COMPANY.email} to request the quote.`;
+  const price = `$${PRICING.assessment.toLocaleString()} ${PRICING.currency}, flat, charged at booking. Credited in full against a build if the business proceeds with one.`;
+
+  const builds = TIERS.map((t) =>
+    t.price === null
+      ? `- ${t.name}: quoted case by case. ${t.summary}`
+      : `- ${t.name}: $${t.price.toLocaleString()} ${PRICING.currency}, fixed scope. ${t.summary}`,
+  ).join("\n");
 
   const body = `# ${COMPANY.name}
 
@@ -50,6 +55,17 @@ ${FOUNDERS.map((f) => `- ${f.name}, ${f.role} — ${f.background}. Career: ${f.c
 - Report: written, delivered within ${DURATION.reportTurnaroundDays} business days
 - Reviewed by: the two founders read every transcript before a report is written
 - Price: ${price}
+
+## What comes after the report
+
+Implementation is optional and separately priced. The report is written so the
+business can run it without us. If it would rather not, we build it:
+
+${builds}
+
+Scope for every build is taken from the client's own report, which states what
+finished looks like for each step. No hourly billing, no retainer sold before a
+build has been delivered. Ongoing support after a build is quoted privately.
 
 ## Who it is for
 
