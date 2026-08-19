@@ -136,12 +136,18 @@ export default function ChatWidget() {
         </div>
       )}
 
+      {/* Rust, not navy. The button used to be navy and disappeared entirely
+          against the navy trust band and the footer — the two places a reader
+          who has scrolled that far is most likely to have a question. Rust is
+          the one brand colour that holds against both the tint sections and
+          the navy ones. The shadow is neutral black rather than navy-tinted
+          for the same reason: a navy shadow is invisible on navy. */}
       <button
         onClick={() => setOpen((o) => !o)}
         aria-expanded={open}
-        className="bg-np-navy text-white px-5 py-3.5 shadow-[0_4px_24px_rgba(20,33,61,0.3)] hover:bg-np-blue transition-colors"
+        className="bg-np-rust px-5 py-4 shadow-[0_6px_28px_rgba(0,0,0,0.32)] hover:bg-np-rust-light transition-colors"
       >
-        <span className="np-label" style={{ color: "var(--np-rust-light)" }}>
+        <span className="np-label text-white">
           {open ? "Close" : "Ask NextPlay"}
         </span>
       </button>
