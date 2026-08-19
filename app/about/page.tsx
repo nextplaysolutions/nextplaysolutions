@@ -34,7 +34,7 @@ const founders = [
     linkedin: "https://www.linkedin.com/in/jordansvoboda/",
     companies: "LinkedIn · Meta · NextPlay Homes",
     body: [
-      "Jordan spent eight years at LinkedIn and three leading trust and safety work at Meta — the job of keeping products and the people using them out of harm's way. It is a discipline built on asking what could go wrong before it does, which is a useful habit to bring to a technology everyone is in a hurry about.",
+      "Jordan has spent eight years at LinkedIn and three leading trust and safety work at Meta — the job of keeping products and the people using them out of harm's way. It is a discipline built on asking what could go wrong before it does, which is a useful habit to bring to a technology everyone is in a hurry about.",
       "He started out in 2007 knocking on doors as an insurance restoration rep, sitting at kitchen tables with homeowners and small business owners after something had gone wrong. He also runs a small real estate company. The customer has not really changed.",
     ],
   },

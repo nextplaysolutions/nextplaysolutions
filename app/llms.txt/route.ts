@@ -39,7 +39,7 @@ ${POSITION}
 
 ## Who runs it
 
-${FOUNDERS.map((f) => `- ${f.name}, ${f.role} — ${f.background}. Previously: ${f.companies.join(", ")}. ${f.linkedin}`).join("\n")}
+${FOUNDERS.map((f) => `- ${f.name}, ${f.role} — ${f.background}. Career: ${f.companies.join(", ")}. ${f.linkedin}`).join("\n")}
 
 ## What is sold
 

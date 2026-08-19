@@ -48,7 +48,7 @@ Pricing: ${PRICING_STATEMENT} Never invent or estimate a dollar figure for the f
 - Demo: anyone can call ${PHONE.demo} and talk to Scout for about ${DURATION.demoMinutes} minutes — no booking, no contact details, no follow-up. This demo line is different from the assessment line; only ever give out the demo number.
 - A full anonymized sample report is at ${SITE_URL}/assessment/sample.
 - Booking: ${SITE_URL}/book. Email: ${COMPANY.email}.
-- Founders: ${FOUNDERS.map((f) => `${f.name} (${f.role} — ${f.background}; previously ${f.companies.join(", ")})`).join("; ")}.
+- Founders: ${FOUNDERS.map((f) => `${f.name} (${f.role} — ${f.background}; career includes ${f.companies.join(", ")})`).join("; ")}.
 - Every figure in a report — savings, revenue leakage, time recovered — is an estimate and a finding, never a guarantee. Reports are not legal, tax, accounting or investment advice.
 - ${COMPANY.name} takes no referral fees or commissions from any software vendor named in a report.
 

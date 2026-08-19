@@ -106,6 +106,12 @@ export const WHO_ITS_FOR =
  * Ethan: LinkedIn (4y10m), Snap, Tesla, Paylocity — talent and go-to-market.
  * Jordan: LinkedIn (8y1m), Meta (3y1m) — trust, safety and risk leadership.
  * The four-company claim is accurate; the earlier per-person split was not.
+ *
+ * ⚠️ These lists mix CURRENT and former employers — Ethan is at Paylocity and
+ * Jordan is at LinkedIn today. Anywhere this renders, word it neutrally
+ * ("Career:", "career includes"). Never "Previously" or "ex-": both founders
+ * hold these jobs, and misstating that is a problem for them at work, not a
+ * copy nit. Fixed 2026-08-19 after it shipped that way.
  */
 export const FOUNDERS = [
   {
