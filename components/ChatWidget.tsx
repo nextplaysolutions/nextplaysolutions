@@ -128,7 +128,7 @@ export default function ChatWidget() {
               type="submit"
               disabled={busy || !input.trim()}
               className="np-label px-5 disabled:opacity-40"
-              style={{ color: "var(--np-rust)" }}
+              style={{ color: "var(--np-navy)" }}
             >
               Send
             </button>
@@ -136,24 +136,16 @@ export default function ChatWidget() {
         </div>
       )}
 
-      {/* Rust, not navy. The button used to be navy and disappeared entirely
-          against the navy trust band and the footer — the two places a reader
-          who has scrolled that far is most likely to have a question. Rust is
-          the one brand colour that holds against both the tint sections and
-          the navy ones. The shadow is neutral black rather than navy-tinted
-          for the same reason: a navy shadow is invisible on navy. */}
+      {/* Signal Lime remains visible against both paper and forest sections. */}
       <button
         onClick={() => setOpen((o) => !o)}
         aria-expanded={open}
         className="bg-np-rust px-6 py-4 shadow-[0_6px_28px_rgba(0,0,0,0.32)] hover:bg-np-rust-light transition-colors"
       >
-        {/* Colour and size are set inline deliberately: .np-label hard-sets a
-            muted grey at 10px, which reads as disabled on a rust ground and is
-            too quiet for a floating action. Same white-on-rust pairing the
-            primary CTA already uses. */}
+        {/* Colour and size override the muted metadata default for contrast. */}
         <span
           className="np-label"
-          style={{ color: "#fff", fontSize: "0.75rem", fontWeight: 500 }}
+          style={{ color: "var(--np-navy)", fontSize: "0.75rem", fontWeight: 500 }}
         >
           {open ? "Close" : "Ask NextPlay"}
         </span>

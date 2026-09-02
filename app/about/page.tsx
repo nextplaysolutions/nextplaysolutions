@@ -21,9 +21,9 @@ const founders = [
     linkedin: "https://www.linkedin.com/in/ethanhamiltonlinkedin/",
     companies: "LinkedIn · Snap · Tesla",
     body: [
-      "Ethan spent a decade deciding who got hired — at LinkedIn, at Snap, at Tesla — which is an unusually honest vantage point on how a company actually works. You learn quickly which roles exist because the work matters, and which exist because nobody ever fixed the process underneath them.",
-      "He has also sold real estate in Omaha since 2014, more than $18 million of it, walking people through the largest purchase most of them will ever make. Both jobs turn out to be the same job: work out what someone actually needs, then be straight with them about it.",
-      "He is blunt about where this technology belongs. It should not replace the people in a business. It should take the work that was never worth a person's day to begin with.",
+      "Ethan grew up in Lincoln and lives in Omaha. He has recruited for LinkedIn, Tesla and Snap and worked across insurance, customer success and big technology — an unusually honest vantage point on how companies and people actually work.",
+      "A father of four and married for 14 years, Ethan coaches soccer, basketball and baseball. Away from the sideline, he loves to travel and watch college football.",
+      "He believes technology should not replace the people in a business. It should remove the work that was never worth a person's day, making teams more successful, productive and effective with the tools already available.",
     ],
   },
   {
@@ -34,8 +34,9 @@ const founders = [
     linkedin: "https://www.linkedin.com/in/jordansvoboda/",
     companies: "LinkedIn · Meta · NextPlay Homes",
     body: [
-      "Jordan has spent eight years at LinkedIn and three leading trust and safety work at Meta — the job of keeping products and the people using them out of harm's way. It is a discipline built on asking what could go wrong before it does, which is a useful habit to bring to a technology everyone is in a hurry about.",
-      "He started out in 2007 knocking on doors as an insurance restoration rep, sitting at kitchen tables with homeowners and small business owners after something had gone wrong. He also runs a small real estate company. The customer has not really changed.",
+      "Jordan grew up in McCook, Nebraska, and now lives near Springfield. His career spans blue-collar work, staffing, sales and small-business ownership, plus operations, sales, risk and compliance roles at LinkedIn and Meta.",
+      "As a small-business owner, he ran into the same problem NextPlay now solves: AI and automation sounded useful, but choosing the right tools and fitting them into a real operation was unnecessarily difficult.",
+      "Jordan is a girl dad of two and has been married for 16 years. He loves family time outdoors, golf and coaching softball — and he brings that practical, people-first perspective to every recommendation.",
     ],
   },
 ];
@@ -128,7 +129,7 @@ export default function AboutPage() {
 
               <p
                 className="np-label mt-7"
-                style={{ color: "var(--np-rust)" }}
+                style={{ color: "var(--np-body)" }}
               >
                 {f.focus}
               </p>
@@ -150,7 +151,7 @@ export default function AboutPage() {
                   href={f.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="np-label inline-block mt-4 py-2 hover:text-np-rust transition-colors"
+                  className="np-label inline-block mt-4 py-2 hover:text-np-body transition-colors"
                   style={{ color: "var(--np-navy)" }}
                 >
                   Verify on LinkedIn ↗
@@ -193,7 +194,7 @@ export default function AboutPage() {
             what AI is actually worth to it is to have the conversation.
           </p>
           <div className="mt-8">
-            <CTAButton label="Book an assessment call" size="large" />
+            <CTAButton label="Try Scout free" size="large" />
           </div>
         </div>
       </section>

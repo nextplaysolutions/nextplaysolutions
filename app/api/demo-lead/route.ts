@@ -4,12 +4,10 @@ import { validateLead } from "@/lib/lead";
 import { SOURCE_COOKIE, normalizeCampaign } from "@/lib/source";
 
 /**
- * POST /api/demo-lead — the /demo funnel form.
+ * POST /api/demo-lead — the strict Scout assessment lead gate.
  *
- * Captures name / email / phone / business type into GHL (tag
- * "demo-requested"), then the page reveals the demo line. The form is only
- * rendered when GHL_PI_TOKEN is configured, so this route should never be
- * hit unconfigured except by stray callers.
+ * Captures name / email / phone / business type into GHL before the page
+ * reveals the full assessment line.
  *
  * Validation lives in lib/lead.ts and is shared with the form, so the two
  * cannot disagree about what a good lead looks like.
@@ -41,11 +39,11 @@ export async function POST(request: Request) {
     name,
     email,
     phone,
-    source: "Demo page",
-    tags: ["demo-requested"],
+    source: "Free Scout assessment page",
+    tags: ["free-assessment-requested", "scout-requested"],
     campaign,
     note:
-      `Requested the Scout demo via /demo. Business type: ${businessType}` +
+      `Requested the free 25-minute Scout assessment via /demo. Business type: ${businessType}` +
       (campaign ? ` · Came from link: ${campaign}` : ""),
   });
 

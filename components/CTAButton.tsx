@@ -1,12 +1,11 @@
 import Link from "next/link";
 
 /**
- * Square corners, rust ground. Default label never leads with "free" —
- * availability is framed as selection, not discount (brand guidelines §06).
+ * Square corners and Signal Lime: the primary action is the strongest signal.
  */
 export default function CTAButton({
-  label = "Book an assessment call",
-  href = "/book",
+  label = "Try Scout free",
+  href = "/demo",
   size = "default",
   variant = "rust",
 }: {
@@ -19,10 +18,10 @@ export default function CTAButton({
     size === "large" ? "px-8 py-4 text-[1.0625rem]" : "px-6 py-3 text-[0.9375rem]";
 
   const variants = {
-    rust: "bg-np-rust text-white hover:bg-np-navy",
+    rust: "bg-np-rust text-np-navy hover:bg-np-rust-light",
     outline:
       "border border-np-navy text-np-navy hover:bg-np-navy hover:text-white",
-    "on-navy": "bg-white text-np-navy hover:bg-np-rust hover:text-white",
+    "on-navy": "bg-np-rust text-np-navy hover:bg-np-rust-light",
   } as const;
 
   return (

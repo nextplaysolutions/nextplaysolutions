@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { SITE_URL } from "@/lib/offer";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const lastModified = new Date("2026-08-11");
+  const lastModified = new Date("2026-08-31");
 
   return [
     { url: SITE_URL, lastModified, changeFrequency: "monthly", priority: 1 },
@@ -19,7 +19,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
-      url: `${SITE_URL}/book`,
+      url: `${SITE_URL}/services`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${SITE_URL}/field-notes`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
+      url: `${SITE_URL}/demo`,
       lastModified,
       changeFrequency: "monthly",
       priority: 0.9,

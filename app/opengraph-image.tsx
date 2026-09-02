@@ -1,13 +1,14 @@
 import { ImageResponse } from "next/og";
-import { COMPANY, DURATION } from "@/lib/offer";
+import { COMPANY, DURATION, POSITIONING } from "@/lib/offer";
 
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 export const alt = `${COMPANY.name} — ${COMPANY.tagline}`;
 
-const NAVY = "#14213D";
-const RUST_LIGHT = "#E8925C";
-const ON_NAVY_2 = "#C8D2E6";
+const NAVY = "#06120F";
+const SIGNAL_LIME = "#C9FF3D";
+const SIGNAL_MINT = "#84FFD0";
+const ON_NAVY_2 = "#D7E1DC";
 
 /**
  * The Aperture mark, rebuilt for the image renderer.
@@ -25,7 +26,7 @@ function Mark({ size: s = 96 }: { size?: number }) {
       style={{
         width: s,
         height: s,
-        background: "#fff",
+        background: SIGNAL_LIME,
         display: "flex",
         position: "relative",
       }}
@@ -87,11 +88,11 @@ export default function Image() {
               display: "flex",
               fontSize: 20,
               letterSpacing: 3,
-              color: RUST_LIGHT,
+              color: SIGNAL_MINT,
               marginBottom: 28,
             }}
           >
-            AI READINESS ASSESSMENT
+            AI BUSINESS OPTIMIZATION + IMPLEMENTATION
           </div>
           <div
             style={{
@@ -102,7 +103,7 @@ export default function Image() {
               letterSpacing: -1.5,
             }}
           >
-            {COMPANY.tagline}
+            {POSITIONING.headline}
           </div>
         </div>
 
@@ -115,9 +116,8 @@ export default function Image() {
             maxWidth: 900,
           }}
         >
-          Seven areas of your business, {DURATION.assessmentMinutes} minutes,
-          and a report naming the tools, the real costs, and the order to do
-          them in.
+          A free {DURATION.assessmentMinutes}-minute Scout assessment finds the
+          hidden cost. The NextPlay Way turns it into the right move.
         </div>
       </div>
     ),

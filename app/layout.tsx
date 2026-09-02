@@ -28,11 +28,11 @@ export const metadata: Metadata = {
     template: "%s — NextPlay Solutions",
   },
   description:
-    "An AI readiness assessment for small and mid-sized businesses. Seven areas of your business reviewed in 25 minutes, and a report naming the tools, the real costs, and the order to do them in.",
+    "NextPlay finds the invisible tax hiding in small-business operations, prioritizes the right move, and implements it through the NextPlay Way.",
   openGraph: {
     title: "NextPlay Solutions — Your unfair AI advantage",
     description:
-      "Seven areas of your business reviewed in 25 minutes. A report naming the tools, the real costs, and the order to do them in.",
+      "Find hidden operational waste and missed revenue with a free 25-minute Scout assessment and human-reviewed action plan.",
     url: "https://nextplaysolutions.ai",
     siteName: "NextPlay Solutions",
     locale: "en_US",

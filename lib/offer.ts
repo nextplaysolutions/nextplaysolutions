@@ -11,10 +11,9 @@
  * it cannot choose. So the terms below are stated plainly — nouns, numbers,
  * durations, and one unambiguous way to acquire the service.
  *
- * Copy rules that govern this file (brand guidelines §06):
+ * Copy rules that govern this file:
  *   · Always "assessment", never "audit".
- *   · Never devalue — no price-anchoring, no cheapness claims.
- *   · Selection, not favour — never lead with "free".
+ *   · The assessment is free; implementation is fixed-scope paid work.
  *   · Specific over grand — numbers and nouns, not adjectives.
  *   · Findings, not promises — figures are estimates, never guarantees.
  */
@@ -28,16 +27,23 @@ export const COMPANY = {
   email: "hello@nextplaysolutions.ai",
 } as const;
 
-/* Founding-cohort framing removed 2026-08-14 — the site now sells the
-   assessment as a standard paid engagement. Do not reintroduce cohort or
-   "free" language. */
+/** The positioning spine used across human and machine-readable surfaces. */
+export const POSITIONING = {
+  problem: "The Invisible Tax",
+  headline: "Your business is paying an invisible tax.",
+  recognition:
+    "Unbilled work. Leads nobody followed up on. Information entered twice. Software nobody uses.",
+  master:
+    "NextPlay finds the invisible tax hiding in your operation, shows you which move matters most, and implements it through the NextPlay Way.",
+  promise: COMPANY.tagline,
+} as const;
 
 /** Live phone lines. These are different agents — do not conflate them. */
 export const PHONE = {
-  /** 4-minute demo: a visitor can talk to Scout and hear the product. */
+  /** Legacy short demo line. Kept off-site; public Try Scout reveals assessment. */
   demo: "+1 402 940 7602",
   demoE164: "+14029407602",
-  /** The full 25-minute assessment agent. */
+  /** The full 25-minute Scout assessment, revealed after lead capture. */
   assessment: "+1 402 407 2540",
   assessmentE164: "+14024072540",
 } as const;
@@ -55,7 +61,7 @@ export const AREAS = [
 
 /** What the client receives. Deliverables, stated as nouns. */
 export const DELIVERABLES = [
-  "A written assessment of all seven areas, specific to how the business actually runs",
+  "A free written assessment of all seven areas, specific to how the business actually runs",
   "The opportunities found, ranked by impact and by effort to implement",
   "Named tools with their real current pricing — not categories",
   "An implementation order: what to do first, what to skip, and why",
@@ -63,22 +69,14 @@ export const DELIVERABLES = [
 ] as const;
 
 export const DURATION = {
-  demoMinutes: 4,
   assessmentMinutes: 25,
   /** Business days from call to delivered report. */
   reportTurnaroundDays: 3,
 } as const;
 
 /**
- * Public pricing. Published 2026-08-19 (Jordan's call), replacing the earlier
- * "quoted at booking" position and the internal $1,500–$3,000 range.
- *
- * The shape is deliberate: a low, fixed assessment fee that is CREDITED
- * against a build, then fixed-scope builds. It is not a monthly retainer —
- * both founders still hold full-time jobs, and selling recurring hours before
- * delivering a single month is how a two-person shop drowns. Ongoing support
- * exists but is quoted privately after a build, and is deliberately NOT on
- * the site until there is delivery data behind it.
+ * Public implementation pricing. The full assessment is free; paid work
+ * begins only when a business asks NextPlay to implement a recommendation.
  *
  * Scope is defined by the client's own report, never by a date. Every roadmap
  * step in a report carries a "done when" line the client has already read and
@@ -87,8 +85,6 @@ export const DURATION = {
  */
 export const PRICING = {
   currency: "USD",
-  /** The assessment. Credited in full against a build if they proceed. */
-  assessment: 500,
 } as const;
 
 /**
@@ -96,10 +92,8 @@ export const PRICING = {
  * itself ("plays", "roadmap") so the pricing reads as the next page of the
  * document rather than a sales sheet. `price: null` means quoted case by case.
  *
- * ⚠️ "Minimum Offer" was considered and rejected as a tier name: it describes
- * our constraint rather than the client's outcome, anchors on the floor, and
- * devalues — the same reason "Enterprise AI strategy. Small business price."
- * was deleted. Don't reintroduce it.
+ * One Play is the minimum paid engagement, but the client-facing name remains
+ * outcome-led. Do not label the tier "Minimum" or "Basic" on the site.
  */
 export const TIERS = [
   {
@@ -124,25 +118,97 @@ export const TIERS = [
 
 /** The one sentence used everywhere pricing is asked about. */
 export const PRICING_STATEMENT =
-  `The assessment is $${PRICING.assessment.toLocaleString()}. ` +
-  `If you go ahead with a build afterwards, that $${PRICING.assessment.toLocaleString()} comes off the first invoice. ` +
-  `Builds are fixed-scope and quoted from your own report — $${TIERS[0].price!.toLocaleString()} for one play, ` +
-  `$${TIERS[1].price!.toLocaleString()} for the roadmap, or custom for larger scope. No hourly billing.`;
+  `The full ${DURATION.assessmentMinutes}-minute Scout assessment and written report are free. ` +
+  `Implementation is fixed-scope: $${TIERS[0].price!.toLocaleString()} for One Play, ` +
+  `$${TIERS[1].price!.toLocaleString()} for The Roadmap, or a custom quote for larger scope. No hourly billing.`;
 
 /**
  * The offer in one sentence. If an agent reads nothing else, it reads this.
  * Keep it declarative: what it is, how long, what comes back, what it costs.
  */
 export const OFFER_SUMMARY =
-  "NextPlay Solutions runs an AI Readiness Assessment for small and mid-sized businesses. " +
+  "NextPlay Solutions finds the invisible tax hiding in small and mid-sized business operations, shows the owner which move matters most, and implements it through the NextPlay Way. " +
   "A voice agent called Scout interviews the owner for about 25 minutes across seven areas of the business. " +
-  "Within three business days the business receives a written report naming the specific AI opportunities found, " +
-  "the tools to use with their real current pricing, and the order to implement them in. " +
-  `The assessment costs $${PRICING.assessment.toLocaleString()} ${PRICING.currency}, credited against a build if the business goes ahead with one. ` +
+  "Jordan Svoboda and Ethan Hamilton review the conversation, and within three business days the business receives a free written assessment naming the specific opportunities found, " +
+  "the tools to use with their real current pricing, what to skip, and the order to implement the highest-value moves. " +
+  "If the business wants help executing the plan, NextPlay implements One Play, The Roadmap, or a custom scope. " +
   "Figures in the report are estimates and findings, not guarantees.";
 
+/** The four-part method used in every assessment and implementation. */
+export const NEXTPLAY_WAY = [
+  {
+    n: "01",
+    name: "Map",
+    summary:
+      `Scout walks the seven areas of the business in a ${DURATION.assessmentMinutes}-minute call. No preparation, no jargon.`,
+  },
+  {
+    n: "02",
+    name: "Score",
+    summary:
+      "Each opportunity is scored for readiness, upside, effort, and operational fit.",
+  },
+  {
+    n: "03",
+    name: "Prioritize",
+    summary:
+      "The noise is reduced to the three moves most likely to pay back and hold up in the real business.",
+  },
+  {
+    n: "04",
+    name: "Play",
+    summary:
+      "The chosen move becomes a fixed-scope build with named tools, an owner, a price, and a clear definition of done.",
+  },
+] as const;
+
+/** Permission-cleared, anonymized findings. No invented values. */
+export const FIELD_NOTES = [
+  {
+    vertical: "Remodeling",
+    signal: "$18,000 / year",
+    metric: "Estimated annual value identified",
+    finding:
+      "Change orders were being agreed on site, completed, and never added to the final invoice.",
+    surfaced: "Surfaced during the Scout conversation",
+  },
+  {
+    vertical: "M&A advisory",
+    signal: "Weeks stalled",
+    metric: "Operational delay observed",
+    finding:
+      "Deals were waiting on client paperwork while the cost of that delay remained unpriced and largely invisible.",
+    surfaced: "The leak was not the work. It was the waiting.",
+  },
+  {
+    vertical: "Contracting",
+    signal: "CRM: not yet",
+    metric: "Avoided purchase",
+    finding:
+      "At roughly one appointment a week, a new CRM would have added overhead without recovering meaningful revenue.",
+    surfaced: "The recommendation was to skip the software.",
+  },
+] as const;
+
+export const QUIET_LEAKS = [
+  { vertical: "Construction", leak: "Change orders completed but never billed" },
+  { vertical: "Mortgage & lending", leak: "Files stalled while documents are chased by hand" },
+  { vertical: "Professional services", leak: "Specialists spending billable hours on data entry" },
+  { vertical: "Local services", leak: "Referrals disappearing inside text threads" },
+] as const;
+
 export const WHO_ITS_FOR =
-  "Small and mid-sized businesses with no CTO and no dedicated technical staff.";
+  "Small and mid-sized businesses with real operating complexity, no CTO or automation team, and a recurring workflow problem worth solving.";
+
+export const FIT_SIGNALS = [
+  "Four or more people—or a smaller team with meaningful recurring volume",
+  "Recurring admin, handoffs, missed follow-up, unbilled work, or fragmented systems",
+  "A decision-maker willing to change a process and name an internal owner",
+  "An opportunity that can reasonably justify a $2,500 minimum implementation",
+] as const;
+
+export const CHATGPT_DIFFERENCE =
+  "ChatGPT answers the question you ask. NextPlay determines which question matters, grounds the answer in how your business actually runs, compares the alternatives, tells you what not to buy, and can implement the move.";
 
 /**
  * Company attributions verified against both LinkedIn work histories (Aug 2026).
@@ -210,7 +276,10 @@ export const ORGANIZATION_JSONLD = {
     sameAs: f.linkedin,
   })),
   knowsAbout: [
-    "AI readiness assessment",
+    "The Invisible Tax in business operations",
+    "AI business assessment",
+    "AI business optimization",
+    "AI implementation",
     "Small business operations",
     "AI tool selection",
     "Business process automation",
@@ -220,7 +289,7 @@ export const ORGANIZATION_JSONLD = {
       "@type": "ContactPoint",
       contactType: "Product demonstration",
       url: `${SITE_URL}/demo`,
-      description: `A ${DURATION.demoMinutes}-minute conversation with Scout, the assessment voice agent. Request the line at ${SITE_URL}/demo — no booking required.`,
+      description: `A free ${DURATION.assessmentMinutes}-minute business assessment with Scout. Request the line at ${SITE_URL}/demo.`,
       availableLanguage: "English",
     },
     {
@@ -236,8 +305,8 @@ export const SERVICE_JSONLD = {
   "@context": "https://schema.org",
   "@type": "Service",
   "@id": `${SITE_URL}/assessment#service`,
-  name: "AI Readiness Assessment",
-  serviceType: "Business technology assessment",
+  name: "Free AI Business Assessment",
+  serviceType: "AI business assessment and optimization strategy",
   provider: { "@id": `${SITE_URL}/#organization` },
   description: OFFER_SUMMARY,
   audience: {
@@ -261,17 +330,17 @@ export const SERVICE_JSONLD = {
     })),
   },
   /**
-   * A real price, not a range and not "contact us". An agent evaluating this
-   * on a business's behalf cannot choose an offer it cannot price.
+   * The assessment is genuinely free. Paid implementation is listed in the
+   * separate build catalog below.
    */
   offers: {
     "@type": "Offer",
-    name: "AI Readiness Assessment",
-    url: `${SITE_URL}/book`,
+    name: "Free AI Business Assessment",
+    url: `${SITE_URL}/demo`,
     availability: "https://schema.org/InStock",
     eligibleCustomerType: "Business",
     description: PRICING_STATEMENT,
-    price: PRICING.assessment,
+    price: 0,
     priceCurrency: PRICING.currency,
     availableAtOrFrom: { "@id": `${SITE_URL}/#organization` },
   },
@@ -286,7 +355,7 @@ export const BUILDS_JSONLD = {
   "@type": "OfferCatalog",
   "@id": `${SITE_URL}/assessment#builds`,
   name: "Implementation builds",
-  description: `Fixed-scope builds quoted from the client's own assessment report. The $${PRICING.assessment.toLocaleString()} assessment fee is credited against the first invoice.`,
+  description: "Fixed-scope AI implementation based on the client's free written assessment.",
   itemListElement: TIERS.map((t, i) => ({
     "@type": "Offer",
     position: i + 1,
@@ -308,7 +377,11 @@ export const BUILDS_JSONLD = {
 /** Questions an evaluating agent (or a skeptical owner) actually asks. */
 export const FAQ = [
   {
-    q: "What is the AI Readiness Assessment?",
+    q: "What problem does NextPlay Solutions solve?",
+    a: `${POSITIONING.master} The invisible tax often looks like unbilled work, missed follow-up, duplicate data entry, stalled handoffs, or software the team does not use.`,
+  },
+  {
+    q: "What is the free AI Business Assessment?",
     a: OFFER_SUMMARY,
   },
   {
@@ -321,7 +394,7 @@ export const FAQ = [
   },
   {
     q: "Can I try it before booking?",
-    a: `Yes. Go to ${SITE_URL}/demo, tell us who you are and what kind of business you run, and we will open the line — a ${DURATION.demoMinutes}-minute conversation with Scout, no booking and no commitment.`,
+    a: `Yes. Go to ${SITE_URL}/demo, tell us who you are and what kind of business you run, and we will open the line for the full ${DURATION.assessmentMinutes}-minute Scout assessment. The written report is free and there is no obligation to buy implementation.`,
   },
   {
     q: "Who is it for?",
@@ -340,7 +413,7 @@ export const FAQ = [
           ? `${t.name} — ${t.summary}`
           : `${t.name}, $${t.price.toLocaleString()} — ${t.summary}`,
       ).join(" ") +
-      ` The $${PRICING.assessment.toLocaleString()} assessment fee comes off the first invoice. Scope is taken from your own report, so what counts as finished is written down before anyone starts.`,
+      " The assessment and report are free. Scope is taken from your own report, so what counts as finished is written down before anyone starts.",
   },
   {
     q: "Are the savings figures guaranteed?",
@@ -348,7 +421,7 @@ export const FAQ = [
   },
   {
     q: "Why not just ask ChatGPT this myself?",
-    a: "You can, and for a general list of tools it will do a reasonable job. The difference is what it will not tell you: what to skip. In one assessment of a six-person remodeling company we recommended against a CRM — at one appointment a week it is overhead, not leverage — and against automating the site work, because twenty hours a week of supply runs and walkthroughs is a hiring question, not a software one. That report was written from a recorded conversation about that specific business, with both founders reading the transcript, and every figure in it came from the owner's own numbers. A general tool has no reason to talk you out of anything.",
+    a: `${CHATGPT_DIFFERENCE} For example, one assessment recommended against a CRM because the business did not have enough lead volume for the added system to pay back.`,
   },
 ] as const;
 

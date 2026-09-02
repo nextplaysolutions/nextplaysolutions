@@ -2,316 +2,163 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import CTAButton from "@/components/CTAButton";
 import DemoScout from "@/components/DemoScout";
-import Testimonials from "@/components/Testimonials";
 import {
   AREAS,
   DELIVERABLES,
   DURATION,
-  FAQ,
-  PRICING,
-  TIERS,
-  BUILDS_JSONLD,
   FAQ_JSONLD,
+  NEXTPLAY_WAY,
+  POSITIONING,
   SERVICE_JSONLD,
 } from "@/lib/offer";
 
 export const metadata: Metadata = {
-  title: "The Assessment",
-  description: `Seven areas of your business reviewed in ${DURATION.assessmentMinutes} minutes. A written report in ${DURATION.reportTurnaroundDays} business days naming the tools, their real prices, and the order to implement them.`,
+  title: "Free AI Business Assessment",
+  description:
+    "Find the invisible tax in seven areas of your business with a free 25-minute Scout assessment and human-reviewed written plan delivered within three business days.",
   alternates: { canonical: "/assessment" },
 };
-
-const stages = [
-  {
-    n: "01",
-    label: `${DURATION.assessmentMinutes} minutes, by phone`,
-    title: "Scout interviews you",
-    body: "Scout is a voice agent. It works through seven areas of the business and asks follow-up questions when an answer opens something up. There is nothing to prepare and no form to fill in first.",
-    points: [
-      "Answer the way you'd explain it to a colleague",
-      "Plain questions — no technical vocabulary",
-      "Scout takes calls outside business hours",
-    ],
-  },
-  {
-    n: "02",
-    label: "Reviewed by hand",
-    title: "We read the transcript",
-    body: "Scout runs the interview; we write the report. Jordan and Ethan read every transcript and decide what actually matters for your operation. No report is generated and sent unread.",
-    points: [
-      "Findings weighed against how your business really runs",
-      "Opportunities that don't pay for themselves get cut",
-      "We say where AI isn't worth it yet",
-    ],
-  },
-  {
-    n: "03",
-    label: `${DURATION.reportTurnaroundDays} business days`,
-    title: "The report arrives",
-    body: "A written assessment naming specific tools and what they cost today, ranked by what they'd return against what they'd take to implement — with a defensible order to work through them.",
-    points: [
-      "Named products with current pricing, not categories",
-      "Ranked by impact and by effort",
-      "Hand it to anyone on your team to execute",
-    ],
-  },
-];
 
 export default function AssessmentPage() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(SERVICE_JSONLD) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_JSONLD) }}
-      />
-      {/* The build ladder, so an agent evaluating this sees the whole offer
-          rather than just the entry fee. */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(BUILDS_JSONLD) }}
-      />
+      {[SERVICE_JSONLD, FAQ_JSONLD].map((data, index) => (
+        <script
+          key={index}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+        />
+      ))}
 
-      {/* Header */}
-      <section className="max-w-[1200px] mx-auto px-5 pt-24 pb-16 md:pt-40 md:pb-20">
-        <p className="np-eyebrow">The Assessment</p>
-        <h1 className="np-display mt-8 text-[2.75rem] md:text-[4rem] text-np-navy max-w-[20ch]">
-          Where AI pays for itself in your business
-        </h1>
-        <p className="mt-8 text-xl font-light leading-[1.55] text-np-body max-w-[50ch]">
-          The opportunities that hold up, the tools that fit, what each one
-          costs, and the order to do them in. Every figure is a finding — an
-          estimate, not a guarantee.
-        </p>
+      <section className="relative overflow-hidden border-b border-np-rule">
+        <div className="np-hero-grid absolute inset-0 pointer-events-none" />
+        <div className="relative max-w-[1200px] mx-auto px-5 py-24 md:py-36">
+          <div className="grid lg:grid-cols-[1.1fr_.9fr] gap-14 lg:gap-24 items-center">
+            <div>
+              <p className="np-eyebrow">Free AI business assessment</p>
+              <h1 className="np-display mt-8 text-[3rem] md:text-[4.5rem] text-np-navy max-w-[13ch]">
+                Find the invisible tax. Make the NextPlay clear.
+              </h1>
+              <p className="mt-8 text-xl font-light leading-[1.55] text-np-body max-w-[52ch]">
+                {POSITIONING.recognition} One {DURATION.assessmentMinutes}-minute call with Scout maps
+                seven areas of your business. Jordan and Ethan review the
+                conversation and send your written assessment within three
+                business days. The call and report are free.
+              </p>
+              <div className="mt-11 flex flex-wrap items-center gap-x-8 gap-y-4">
+                <CTAButton label="Start the free assessment" size="large" />
+                <Link href="/assessment/sample" className="font-medium text-np-navy py-3 hover:text-np-body">
+                  Read a real report →
+                </Link>
+              </div>
+            </div>
+            <DemoScout />
+          </div>
+        </div>
       </section>
 
-      {/* See a real one — the strongest proof we have */}
-      <section className="max-w-[1200px] mx-auto px-5 pb-16">
+      <section className="max-w-[1200px] mx-auto px-5 py-16">
+        <div className="np-grid sm:grid-cols-2 lg:grid-cols-4">
+          {[
+            ["Call length", `${DURATION.assessmentMinutes} minutes`],
+            ["Preparation", "None"],
+            ["Written report", `${DURATION.reportTurnaroundDays} business days`],
+            ["Price", "$0"],
+          ].map(([label, value]) => (
+            <div key={label} className="p-6">
+              <p className="np-label">{label}</p>
+              <p className="mt-3 text-2xl font-light text-np-navy">{value}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="max-w-[1200px] mx-auto px-5 py-20 md:py-28">
+        <div className="grid lg:grid-cols-[.7fr_1.3fr] gap-14 lg:gap-24">
+          <div>
+            <p className="np-eyebrow">The NextPlay Way</p>
+            <h2 className="np-display mt-6 text-4xl md:text-[3.4rem] text-np-navy">
+              Four steps. One clear move.
+            </h2>
+          </div>
+          <div className="border-t border-np-rule">
+            {NEXTPLAY_WAY.map((step) => (
+              <article key={step.n} className="grid grid-cols-[3.5rem_1fr] md:grid-cols-[5rem_9rem_1fr] gap-4 py-7 border-b border-np-rule">
+                <p className="np-label">{step.n}</p>
+                <h3 className="text-xl font-medium text-np-navy">{step.name}</h3>
+                <p className="col-start-2 md:col-start-auto text-np-body font-light leading-relaxed">
+                  {step.summary}
+                </p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-np-tint border-y border-np-rule">
+        <div className="max-w-[1200px] mx-auto px-5 py-20 md:py-24">
+          <div className="grid lg:grid-cols-2 gap-14 lg:gap-24">
+            <div>
+              <p className="np-label">Seven areas mapped</p>
+              <div className="mt-6 np-grid sm:grid-cols-2">
+                {AREAS.map((area, index) => (
+                  <div key={area} className="p-5 flex items-center gap-4">
+                    <span className="np-label" style={{ color: "var(--np-body)" }}>
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <span className="text-np-navy font-light">{area}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div>
+              <p className="np-label">What comes back</p>
+              <ul className="mt-6 border-t border-np-rule">
+                {DELIVERABLES.map((deliverable) => (
+                  <li key={deliverable} className="py-4 border-b border-np-rule text-np-body font-light leading-relaxed">
+                    {deliverable}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="max-w-[1200px] mx-auto px-5 py-20 md:py-28">
         <Link
           href="/assessment/sample"
-          className="group block border border-np-rule hover:border-np-navy transition-colors p-8 md:p-10"
+          className="group block bg-np-navy text-white p-8 md:p-12"
         >
-          <div className="flex items-start justify-between gap-6 flex-wrap">
-            <div className="max-w-[52ch]">
-              <p className="np-eyebrow">See a real one</p>
-              <p className="mt-4 text-[1.375rem] md:text-[1.625rem] font-light text-np-navy leading-snug">
-                A complete assessment, delivered August 2026 to a six-person
-                remodeling company.
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8">
+            <div className="max-w-[58ch]">
+              <p className="np-eyebrow" style={{ color: "var(--np-rust-light)" }}>
+                See the deliverable
               </p>
-              <p className="mt-3 text-np-body font-light leading-relaxed">
-                Anonymised, otherwise unchanged — including the two sections
-                telling the owner not to buy anything.
+              <h2 className="np-display mt-5 text-3xl md:text-[2.8rem]">
+                Read a complete anonymized assessment.
+              </h2>
+              <p className="mt-5 text-np-on-navy-2 font-light leading-relaxed">
+                Real findings, real estimates, named tools, and the two things
+                the owner was told not to buy.
               </p>
             </div>
-            <span className="np-label group-hover:text-np-rust transition-colors whitespace-nowrap">
-              Read it →
+            <span className="np-label text-np-rust group-hover:text-np-rust-light transition-colors whitespace-nowrap">
+              Open the report →
             </span>
           </div>
         </Link>
       </section>
 
-      {/* Fact strip — hairline grid */}
-      <section className="max-w-[1200px] mx-auto px-5">
-        <div className="np-grid sm:grid-cols-2 lg:grid-cols-4">
-          {[
-            { l: "Call length", v: `${DURATION.assessmentMinutes} minutes` },
-            { l: "Preparation", v: "None" },
-            {
-              l: "Report delivered",
-              v: `${DURATION.reportTurnaroundDays} business days`,
-            },
-            { l: "Areas covered", v: `${AREAS.length}` },
-          ].map((f) => (
-            <div key={f.l} className="p-6">
-              <p className="np-label">{f.l}</p>
-              <p className="mt-2.5 text-[1.375rem] font-light text-np-navy">
-                {f.v}
-              </p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Stages */}
-      <section className="max-w-[1200px] mx-auto px-5 py-20 md:py-28">
-        <div className="flex flex-col gap-16 md:gap-20">
-          {stages.map((s) => (
-            <div key={s.n} className="grid md:grid-cols-[7rem_1fr] gap-6 md:gap-10">
-              <div>
-                <p className="np-label" style={{ color: "var(--np-rust)" }}>
-                  {s.n}
-                </p>
-                <p className="np-label mt-2">{s.label}</p>
-              </div>
-              <div className="max-w-[60ch]">
-                <h2 className="text-[1.75rem] md:text-[2rem] font-light text-np-navy leading-snug">
-                  {s.title}
-                </h2>
-                <p className="mt-4 text-[1.0625rem] leading-relaxed text-np-body font-light">
-                  {s.body}
-                </p>
-                <ul className="mt-6 flex flex-col">
-                  {s.points.map((p) => (
-                    <li
-                      key={p}
-                      className="text-[0.9375rem] text-np-body font-light py-3 border-t border-np-rule"
-                    >
-                      {p}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Seven areas */}
-      <section className="bg-np-tint border-y border-np-rule">
-        <div className="max-w-[1200px] mx-auto px-5 py-16 md:py-20">
-          <p className="np-label">The seven areas</p>
-          <div className="np-grid mt-6 sm:grid-cols-2 lg:grid-cols-4">
-            {AREAS.map((a, i) => (
-              <div key={a} className="p-6">
-                <p className="np-label" style={{ color: "var(--np-rust)" }}>
-                  {String(i + 1).padStart(2, "0")}
-                </p>
-                <p className="mt-2.5 text-[1.0625rem] font-light text-np-navy">
-                  {a}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* What you receive */}
-      <section className="max-w-[1200px] mx-auto px-5 py-20 md:py-28">
-        <div className="grid lg:grid-cols-[1fr_1fr] gap-14 lg:gap-20">
-          <div>
-            <div className="np-section-rule pb-3 mb-8">
-              <span className="np-label">What you receive</span>
-            </div>
-            <ul className="flex flex-col">
-              {DELIVERABLES.map((d) => (
-                <li
-                  key={d}
-                  className="text-[1.0625rem] text-np-body font-light leading-relaxed py-5 border-b border-np-rule"
-                >
-                  {d}
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="lg:pt-2">
-            <DemoScout />
-            <div className="mt-10">
-              <p className="np-label">Ready to book</p>
-              <p className="mt-3 text-np-body font-light leading-relaxed">
-                Pick a time that suits you. The call is{" "}
-                {DURATION.assessmentMinutes} minutes and needs nothing from you
-                beforehand.
-              </p>
-              <div className="mt-6">
-                <CTAButton label="Book an assessment call" size="large" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Pricing. Deliberately sits AFTER "what you receive" and directly
-          above the sample-report link, so the $500 is read against evidence
-          of what it produces rather than in isolation — a price beside proof
-          reads as confidence, a price alone reads as cheap. */}
-      <section className="bg-np-tint border-y border-np-rule">
-        <div className="max-w-[1200px] mx-auto px-5 py-20 md:py-28">
-          <div className="np-section-rule pb-3 mb-10">
-            <span className="np-label">What it costs</span>
-          </div>
-
-          <div className="grid lg:grid-cols-[1fr_1.15fr] gap-14 lg:gap-20">
-            <div>
-              <p className="np-eyebrow">The assessment</p>
-              <p className="np-display mt-4 text-[3.5rem] md:text-[4.5rem] text-np-navy leading-none">
-                ${PRICING.assessment.toLocaleString()}
-              </p>
-              <p className="mt-6 text-[1.0625rem] leading-relaxed font-light text-np-body max-w-[42ch]">
-                {DURATION.assessmentMinutes} minutes on the phone, seven areas
-                of your business, a written report in{" "}
-                {DURATION.reportTurnaroundDays} business days. If you go ahead
-                with a build afterwards, this comes off the first invoice.
-              </p>
-              <div className="mt-8">
-                <CTAButton label="Book an assessment call" size="large" />
-              </div>
-            </div>
-
-            <div>
-              <p className="np-eyebrow">If you want us to build it</p>
-              <p className="mt-4 text-[1.0625rem] leading-relaxed font-light text-np-body max-w-[46ch]">
-                The report is yours either way, and it is written so you can run
-                it yourself. If you would rather not, the scope comes straight
-                from your own report — including what counts as finished.
-              </p>
-
-              <div className="np-grid mt-8">
-                {TIERS.map((t) => (
-                  <div key={t.name} className="p-7 md:p-8 bg-white">
-                    <div className="flex items-baseline justify-between gap-4">
-                      <p className="text-[1.25rem] font-light text-np-navy">
-                        {t.name}
-                      </p>
-                      <p
-                        className="np-label whitespace-nowrap"
-                        style={{ color: "var(--np-rust)" }}
-                      >
-                        {t.price === null
-                          ? "Quoted"
-                          : `$${t.price.toLocaleString()}`}
-                      </p>
-                    </div>
-                    <p className="mt-3 text-[0.9375rem] leading-relaxed font-light text-np-body">
-                      {t.summary}
-                    </p>
-                  </div>
-                ))}
-              </div>
-
-              <p className="mt-7 text-[0.9375rem] leading-relaxed text-np-muted max-w-[46ch]">
-                Fixed scope, no hourly billing. Ongoing support after a build is
-                quoted separately once we both know what the work actually takes.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Client testimonials — invisible until the first real one lands */}
-      <Testimonials />
-
-      {/* Questions */}
-      <section className="bg-np-tint border-t border-np-rule">
-        <div className="max-w-[1200px] mx-auto px-5 py-16 md:py-20">
-          <div className="np-section-rule pb-3 mb-8">
-            <span className="np-label">Questions</span>
-          </div>
-          <div className="grid md:grid-cols-2 gap-x-16 gap-y-8 max-w-[92ch]">
-            {FAQ.map((f) => (
-              <div key={f.q}>
-                <h3 className="text-[1.0625rem] font-medium text-np-navy">
-                  {f.q}
-                </h3>
-                <p className="mt-2.5 text-[0.9375rem] leading-relaxed text-np-body font-light">
-                  {f.a}
-                </p>
-              </div>
-            ))}
-          </div>
+      <section className="max-w-[1200px] mx-auto px-5 pb-24 md:pb-36 text-center">
+        <h2 className="np-display text-4xl md:text-[3.6rem] text-np-navy">
+          See what Scout finds in yours.
+        </h2>
+        <p className="mt-6 text-np-body font-light">
+          Free call. Free written assessment. No implementation obligation.
+        </p>
+        <div className="mt-9">
+          <CTAButton label="Try Scout free" size="large" />
         </div>
       </section>
     </>

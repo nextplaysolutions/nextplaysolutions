@@ -14,7 +14,7 @@
 export const SAMPLE = {
   meta: {
     reportNumber: "2026-016",
-    eyebrow: "AI Readiness Assessment — Residential Remodeling & Flips",
+    eyebrow: "AI Business Assessment — Residential Remodeling & Flips",
     preparedFor: "Six-person remodeling company",
     assessmentDate: "August 2026",
     reviewedBy: "Jordan & Ethan",

@@ -15,20 +15,20 @@ const sections = [
     heading: "What we collect and why",
     blocks: [
       {
-        h: "Booking details",
-        p: "When you book a call we collect your name, email address, phone number and business name through our scheduling provider. We use them to run the assessment and to send you the report. We do not sell them and we do not share them with tool vendors.",
+        h: "Contact and assessment details",
+        p: "When you request the Scout line or schedule a conversation, we collect your name, email address, phone number and business information. We use them to run the assessment, send the report and follow up once. We do not sell them or share them with tool vendors.",
       },
       {
         h: "Assessment calls",
         p: `Assessment calls are recorded and transcribed so the report can be written from what was actually said. Scout states this at the start of the call. If you would rather not be recorded, tell us before booking and we will arrange the conversation differently.`,
       },
       {
-        h: "The demo line",
-        p: "Calls to the demo line are handled by an automated agent. We do not ask for or retain personal details from the call itself.",
+        h: "The Scout assessment line",
+        p: "Calls to Scout are handled by an automated voice agent and are recorded and transcribed so Jordan and Ethan can prepare the written assessment. Scout states this at the start of the call.",
       },
       {
-        h: "The demo request form",
-        p: "If you reach our demo page through a link we shared, we ask for your name, email address, phone number and type of business before showing you the number. We keep those details so we can follow up once about your demo. We do not sell them and we do not add you to a mailing list.",
+        h: "The Scout request form",
+        p: "Before showing the Scout number, we ask for your name, email address, phone number and business industry. We use those details to match the call to the right business, deliver the written assessment and follow up once. We do not sell them or add you to a mailing list.",
       },
       {
         h: "The chat on this site",
@@ -55,7 +55,7 @@ const sections = [
     blocks: [
       {
         h: "What the assessment is",
-        p: `The assessment is a written analysis of AI opportunities in your business, delivered within ${DURATION.reportTurnaroundDays} business days of the call. It covers seven areas of your operation and recommends specific tools with their prices at the time of writing.`,
+        p: `The free assessment is a written analysis of AI and automation opportunities in your business, delivered within ${DURATION.reportTurnaroundDays} business days of the call. It covers seven areas of your operation and may recommend specific tools with their prices at the time of writing. There is no obligation to purchase implementation.`,
       },
       {
         h: "Estimates, not guarantees",
@@ -72,6 +72,10 @@ const sections = [
       {
         h: "Your report is yours",
         p: "You own the report we deliver and may share it inside your business or with your advisors as you see fit.",
+      },
+      {
+        h: "Implementation is separate",
+        p: "One Play, The Roadmap and custom implementation are separate paid engagements. Scope, price and what counts as finished are agreed in writing before work begins.",
       },
     ],
   },
@@ -90,7 +94,7 @@ export default function LegalPage() {
           nobody. Questions go to{" "}
           <a
             href={`mailto:${COMPANY.email}`}
-            className="text-np-navy font-medium hover:text-np-rust transition-colors"
+            className="text-np-navy font-medium hover:text-np-body transition-colors"
           >
             {COMPANY.email}
           </a>

@@ -1,26 +1,26 @@
 @import "tailwindcss";
 
 /* ---------------------------------------------------------------------------
-   NextPlay Solutions — Brand System v1.0
-   Source of truth: docs/brand/BRAND-SYSTEM.md (§08 Developer handoff)
+   NextPlay Solutions — Aperture Identity System
+   Source of truth: /brand/NEXTPLAY_BRAND_GUIDE.md
    ADD NO COLORS OUTSIDE THIS SET.
    Governing principle: default to less. The identity is built on subtraction —
    when in doubt, remove the element rather than style it.
 --------------------------------------------------------------------------- */
 
 @theme {
-  --color-np-navy: #14213d;
-  --color-np-blue: #2c4a8c;
-  --color-np-rust: #c8622f;
-  --color-np-rust-light: #e8925c;
-  --color-np-tint: #faf6f2;
+  --color-np-navy: #06120f;
+  --color-np-blue: #10231c;
+  --color-np-rust: #c9ff3d;
+  --color-np-rust-light: #84ffd0;
+  --color-np-tint: #f4f4ed;
   --color-np-white: #ffffff;
-  --color-np-body: #4a5163;
-  --color-np-muted: #8a8f9c;
-  --color-np-rule: #e4e6ea;
-  --color-np-on-navy: #e8edf6;
-  --color-np-on-navy-2: #c8d2e6;
-  --color-np-on-navy-muted: #9ba8c4;
+  --color-np-body: #17231e;
+  --color-np-muted: #617069;
+  --color-np-rule: #d5dad4;
+  --color-np-on-navy: #f4f4ed;
+  --color-np-on-navy-2: #d7e1dc;
+  --color-np-on-navy-muted: #a9b8b1;
 
   --font-sans: var(--np-font);
   --font-mono: var(--np-mono);
@@ -39,18 +39,18 @@
 /* Canonical variable names from the brand guidelines, so component CSS lifted
    verbatim out of §08 works without translation. */
 :root {
-  --np-navy: #14213d;
-  --np-blue: #2c4a8c;
-  --np-rust: #c8622f;
-  --np-rust-light: #e8925c;
-  --np-tint: #faf6f2;
+  --np-navy: #06120f;
+  --np-blue: #10231c;
+  --np-rust: #c9ff3d;
+  --np-rust-light: #84ffd0;
+  --np-tint: #f4f4ed;
   --np-white: #ffffff;
-  --np-body: #4a5163;
-  --np-muted: #8a8f9c;
-  --np-rule: #e4e6ea;
-  --np-on-navy: #e8edf6;
-  --np-on-navy-2: #c8d2e6;
-  --np-on-navy-muted: #9ba8c4;
+  --np-body: #17231e;
+  --np-muted: #617069;
+  --np-rule: #d5dad4;
+  --np-on-navy: #f4f4ed;
+  --np-on-navy-2: #d7e1dc;
+  --np-on-navy-muted: #a9b8b1;
 
   --np-radius: 0;
   --np-max: 1200px;
@@ -67,6 +67,7 @@ body {
   background: var(--np-white);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  overflow-x: hidden;
 }
 
 /* --- The mark: "Aperture" -------------------------------------------------
@@ -116,22 +117,36 @@ body {
 
 /* Inverted lockup for navy grounds */
 .np-logo--invert .np-mark {
-  background: #fff;
+  background: var(--np-rust);
 }
 .np-logo--invert .np-word {
   color: #fff;
+}
+.np-logo--invert .np-label {
+  color: var(--np-on-navy-muted);
 }
 
 /* --- Shared type devices, matched to the client report -------------------- */
 
 /* Eyebrow: mono, uppercase, wide tracking, rust. */
 .np-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
   font-family: var(--np-mono), monospace;
   font-size: 0.6875rem;
   font-weight: 500;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--np-rust);
+  color: var(--np-body);
+}
+
+.np-eyebrow::before {
+  content: "";
+  width: 0.55rem;
+  height: 0.55rem;
+  flex: none;
+  background: var(--np-rust);
 }
 
 /* Small metadata label: mono, uppercase, muted. */
@@ -171,6 +186,237 @@ body {
 
 /* Focus visibility — keep it square and on-system. */
 :where(a, button, input, textarea, select):focus-visible {
-  outline: 2px solid var(--np-rust);
+  outline: 2px solid var(--np-navy);
   outline-offset: 2px;
+}
+
+/* --- Motion system -------------------------------------------------------
+   Movement behaves like a signal being found: horizontal scans, small rises,
+   and one pulsing point. Every animation has a reduced-motion fallback.
+--------------------------------------------------------------------------- */
+
+.np-hero-grid {
+  background-image:
+    linear-gradient(to right, rgb(213 218 212 / 0.35) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(213 218 212 / 0.35) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(to bottom, black 55%, transparent 100%);
+}
+
+.np-hero-grid-dark {
+  background-image:
+    radial-gradient(circle at 72% 34%, rgb(201 255 61 / 0.11), transparent 32%),
+    linear-gradient(to right, rgb(132 255 208 / 0.07) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(132 255 208 / 0.07) 1px, transparent 1px);
+  background-size: auto, 64px 64px, 64px 64px;
+  mask-image: linear-gradient(to bottom, black 68%, transparent 100%);
+}
+
+.np-scout-visual {
+  position: relative;
+  height: 570px;
+  margin-top: 3.5rem;
+  isolation: isolate;
+}
+
+.np-scout-visual::after {
+  content: "";
+  position: absolute;
+  inset: 8% 12%;
+  z-index: -2;
+  background: radial-gradient(circle, rgb(201 255 61 / 0.09), transparent 64%);
+  animation: np-visual-breathe 5s ease-in-out infinite;
+}
+
+.np-orbit {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: -1;
+  border: 1px solid rgb(132 255 208 / 0.14);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.np-orbit-one {
+  width: 540px;
+  height: 540px;
+  animation: np-orbit-spin 18s linear infinite;
+}
+
+.np-orbit-two {
+  width: 400px;
+  height: 400px;
+  animation: np-orbit-spin-reverse 13s linear infinite;
+}
+
+.np-orbit i {
+  position: absolute;
+  left: 50%;
+  top: -5px;
+  width: 10px;
+  height: 10px;
+  background: var(--np-rust);
+  box-shadow: 0 0 22px rgb(201 255 61 / 0.7);
+}
+
+.np-orbit-two i {
+  left: auto;
+  right: 10%;
+  top: 13%;
+  width: 7px;
+  height: 7px;
+  background: var(--np-rust-light);
+}
+
+.np-scout-card {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: min(680px, 72vw);
+  padding: 2rem 2.25rem;
+  background: rgb(6 18 15 / 0.9);
+  border: 1px solid rgb(201 255 61 / 0.3);
+  box-shadow: 0 30px 90px rgb(0 0 0 / 0.35);
+  transform: translate(-50%, -50%);
+  backdrop-filter: blur(12px);
+  animation: np-card-hover 5s ease-in-out infinite;
+}
+
+.np-scout-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(to bottom, transparent 0%, rgb(201 255 61 / 0.06) 48%, transparent 52%);
+  background-size: 100% 180px;
+  animation: np-scan 4.5s linear infinite;
+}
+
+.np-waveform {
+  height: 98px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  overflow: hidden;
+}
+
+.np-waveform i {
+  display: block;
+  width: 3px;
+  background: var(--np-rust);
+  transform-origin: center;
+  animation: np-wave 1.25s ease-in-out infinite alternate;
+}
+
+.np-scout-trust {
+  position: absolute;
+  z-index: 2;
+  padding: 0.9rem 1.1rem;
+  background: var(--np-tint);
+  color: var(--np-navy);
+  font-family: var(--np-mono), monospace;
+  font-size: 0.625rem;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  box-shadow: 0 14px 40px rgb(0 0 0 / 0.18);
+}
+
+.np-scout-trust-left { left: 0; top: 62%; }
+.np-scout-trust-right { right: 0; top: 20%; }
+
+@keyframes np-orbit-spin {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes np-orbit-spin-reverse {
+  from { transform: translate(-50%, -50%) rotate(360deg); }
+  to { transform: translate(-50%, -50%) rotate(0deg); }
+}
+
+@keyframes np-wave {
+  from { transform: scaleY(0.35); opacity: 0.55; }
+  to { transform: scaleY(1); opacity: 1; }
+}
+
+@keyframes np-card-hover {
+  0%, 100% { transform: translate(-50%, calc(-50% - 5px)); }
+  50% { transform: translate(-50%, calc(-50% + 5px)); }
+}
+
+@keyframes np-scan {
+  from { background-position: 0 -180px; }
+  to { background-position: 0 520px; }
+}
+
+@keyframes np-visual-breathe {
+  0%, 100% { opacity: 0.55; transform: scale(0.96); }
+  50% { opacity: 1; transform: scale(1.04); }
+}
+
+.np-signal-track {
+  display: flex;
+  width: max-content;
+  animation: np-signal-scroll 30s linear infinite;
+  will-change: transform;
+}
+
+.np-signal-track:hover {
+  animation-play-state: paused;
+}
+
+.np-signal-dot {
+  animation: np-signal-pulse 2.2s ease-in-out infinite;
+}
+
+.np-view-rise {
+  animation: np-view-rise both;
+  animation-timeline: view();
+  animation-range: entry 8% cover 32%;
+}
+
+@keyframes np-signal-scroll {
+  to { transform: translateX(-50%); }
+}
+
+@keyframes np-signal-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgb(201 255 61 / 0); }
+  50% { box-shadow: 0 0 0 10px rgb(201 255 61 / 0.12); }
+}
+
+@keyframes np-view-rise {
+  from { opacity: 0; transform: translateY(28px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .np-signal-track,
+  .np-signal-dot,
+  .np-view-rise,
+  .np-orbit-one,
+  .np-orbit-two,
+  .np-scout-card,
+  .np-scout-card::before,
+  .np-scout-visual::after,
+  .np-waveform i {
+    animation: none;
+    transform: none;
+  }
+
+  .np-scout-card { transform: translate(-50%, -50%); }
+  .np-orbit-one,
+  .np-orbit-two { transform: translate(-50%, -50%); }
+}
+
+@media (max-width: 767px) {
+  .np-scout-visual { height: 500px; margin-top: 2.5rem; }
+  .np-orbit-one { width: 430px; height: 430px; }
+  .np-orbit-two { width: 310px; height: 310px; }
+  .np-scout-card { width: calc(100% - 1rem); padding: 1.25rem; }
+  .np-waveform { gap: 5px; height: 74px; }
+  .np-scout-trust { padding: 0.7rem 0.8rem; }
+  .np-scout-trust-left { left: -0.75rem; top: 83%; }
+  .np-scout-trust-right { right: -0.75rem; top: 3%; }
 }

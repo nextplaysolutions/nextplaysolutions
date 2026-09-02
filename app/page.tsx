@@ -1,220 +1,334 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import CTAButton from "@/components/CTAButton";
-import DemoScout from "@/components/DemoScout";
 import Testimonials from "@/components/Testimonials";
-import { AREAS, DURATION, FAQ_JSONLD, SERVICE_JSONLD } from "@/lib/offer";
+import ScoutSignalGraphic from "@/components/ScoutSignalGraphic";
+import {
+  BUILDS_JSONLD,
+  CHATGPT_DIFFERENCE,
+  FAQ_JSONLD,
+  FIELD_NOTES,
+  FIT_SIGNALS,
+  NEXTPLAY_WAY,
+  QUIET_LEAKS,
+  SERVICE_JSONLD,
+  TIERS,
+} from "@/lib/offer";
 
 export const metadata: Metadata = {
-  title: "NextPlay Solutions — Your unfair AI advantage",
+  title: "Find the Invisible Tax in Your Business",
   description:
-    "Seven areas of your business reviewed in 25 minutes. A report naming the tools, the real costs, and the order to do them in.",
+    "NextPlay finds hidden operational waste, missed revenue, and unnecessary software. Start with a free 25-minute Scout assessment and human-reviewed action plan.",
   alternates: { canonical: "/" },
 };
-
-const steps = [
-  {
-    n: "01",
-    title: "A conversation with Scout",
-    body: `About ${DURATION.assessmentMinutes} minutes by phone. Scout works through seven areas of the business. Nothing to prepare — answer the way you'd tell a colleague.`,
-  },
-  {
-    n: "02",
-    title: "We read every transcript",
-    body: "Scout runs the interview. Jordan and Ethan review the findings and write the report. Nothing reaches you unread.",
-  },
-  {
-    n: "03",
-    title: "The report, in three days",
-    body: "Named tools with their real prices, ranked by what they'd return and what they'd take to put in. Plus what to skip, and why.",
-  },
-];
 
 const companies = ["LinkedIn", "Meta", "Tesla", "Snapchat"];
 
 export default function HomePage() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(SERVICE_JSONLD) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_JSONLD) }}
-      />
+      {[SERVICE_JSONLD, BUILDS_JSONLD, FAQ_JSONLD].map((data, index) => (
+        <script
+          key={index}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+        />
+      ))}
 
-      {/* Hero */}
-      <section className="max-w-[1200px] mx-auto px-5 pt-24 pb-24 md:pt-44 md:pb-40">
-        <div className="grid lg:grid-cols-[1.15fr_1fr] gap-16 lg:gap-24 items-start">
-          <div>
-            <p className="np-eyebrow">AI Readiness Assessment</p>
-            {/* Leads with a finding from a real engagement rather than the
-                tagline. The figure is the owner's own estimate of work agreed
-                on site and never invoiced — deliberately not the report's $95k
-                headline, which leans on a flips projection the report itself
-                calls its most speculative number. Attribution is in the very
-                next sentence: this is a finding, never a promise to the reader. */}
-            <h1 className="np-display mt-8 text-[2.75rem] md:text-[4rem] text-np-navy leading-[1.05]">
-              $18,000 a year, agreed on site and never billed.
-            </h1>
-            <p className="mt-9 text-xl md:text-[1.375rem] font-light leading-[1.5] text-np-body max-w-[38ch]">
-              That was one finding, in one assessment, for a six-person
-              remodeling company. Seven areas of his business in{" "}
-              {DURATION.assessmentMinutes} minutes on the phone — and a report
-              naming the tools, the costs, the order, and the two things worth
-              skipping.
+      <section className="relative overflow-hidden bg-np-navy text-white border-b border-white/15">
+        <div className="np-hero-grid-dark absolute inset-0 pointer-events-none" />
+        <div className="relative max-w-[1200px] mx-auto px-5 py-20 md:py-24">
+          <div className="max-w-[1050px]">
+            <p className="np-eyebrow" style={{ color: "var(--np-rust-light)" }}>
+              AI readiness for real businesses
             </p>
-
-            <div className="mt-12 flex flex-wrap items-center gap-x-8 gap-y-4">
-              <CTAButton
-                label="Read the full report"
-                href="/assessment/sample"
-                size="large"
-              />
+            <h1 className="np-display mt-8 text-[3rem] md:text-[4.45rem] lg:text-[4.7rem] max-w-[28ch]">
+              Your team isn&apos;t behind on AI. <span className="text-np-on-navy-muted">They&apos;re buried in work it should already own.</span>
+            </h1>
+            <p className="mt-6 text-xl md:text-[1.35rem] font-light leading-[1.55] text-np-on-navy-2 max-w-[58ch]">
+              That buried work is the Invisible Tax. In one 25-minute Scout
+              conversation, we find the missed revenue, repeated work, and AI
+              plays hiding inside your operation—then make the NextPlay clear.
+            </p>
+            <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-4">
+              <CTAButton label="Find your next play" size="large" variant="on-navy" />
               <Link
-                href="/book"
-                className="text-np-navy font-medium hover:text-np-rust transition-colors py-3"
+                href="/field-notes"
+                className="text-white font-medium border-b border-white/35 hover:border-np-rust hover:text-np-rust transition-colors py-3"
               >
-                Book an assessment call →
+                See a real finding ↓
               </Link>
             </div>
-          </div>
-
-          <div className="lg:pt-4">
-            <DemoScout />
+            <div className="mt-12 grid grid-cols-3 max-w-[760px] border-t border-white/15">
+              {[["25", "minute call"], ["07", "business areas"], ["03", "days to your assessment"]].map(([value, label]) => (
+                <div key={label} className="pt-5 pr-4 border-r border-white/15 last:border-r-0">
+                  <p className="np-display text-3xl md:text-4xl text-np-rust">{value}</p>
+                  <p className="np-label mt-2" style={{ color: "var(--np-on-navy-muted)" }}>{label}</p>
+                </div>
+              ))}
+            </div>
+            <ScoutSignalGraphic />
           </div>
         </div>
       </section>
 
-      {/* Who it's for — hairline grid, the report's signature device */}
-      <section className="border-t border-np-rule bg-np-tint">
-        <div className="max-w-[1200px] mx-auto px-5 py-16">
-          <p className="np-label">Built for</p>
-          <div className="np-grid mt-6 md:grid-cols-3">
-            {[
-              {
-                h: "No CTO, no tech team",
-                p: "Nobody whose job is to evaluate this. So it lands on yours.",
-              },
-              {
-                h: "No time to research it",
-                p: "Every tool claims the same things. Sorting them takes weeks you don't have.",
-              },
-              {
-                h: "Wary of being sold to",
-                p: "We take no referral fees from any vendor. The list is what fits, not what pays.",
-              },
-            ].map((c) => (
-              <div key={c.h} className="p-8 md:p-9">
-                <p className="font-medium text-np-navy text-[1.0625rem]">
-                  {c.h}
-                </p>
-                <p className="mt-3 text-[0.9375rem] leading-relaxed text-np-body font-light">
-                  {c.p}
-                </p>
+      <section className="border-b border-np-rule" aria-labelledby="invisible-tax-heading">
+        <div className="max-w-[1200px] mx-auto px-5 py-16 md:py-20">
+          <div className="grid lg:grid-cols-[.7fr_1.3fr] gap-10 lg:gap-20">
+            <div>
+              <p className="np-eyebrow">The problem, made visible</p>
+              <h2 id="invisible-tax-heading" className="np-display mt-5 text-3xl md:text-[3.25rem] text-np-navy">
+                What the tax looks like.
+              </h2>
+            </div>
+            <div>
+              <p className="text-xl md:text-2xl font-light leading-relaxed text-np-navy max-w-[50ch]">
+                The Invisible Tax is the cost of work your team has learned to
+                live with—small leaks, repeated every week, until they feel normal.
+              </p>
+              <div className="mt-8 np-grid sm:grid-cols-2">
+                {["Unbilled work", "Missed follow-up", "Information entered twice", "Software nobody uses"].map((item) => (
+                  <p key={item} className="p-5 text-np-body font-light">{item}</p>
+                ))}
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-np-tint border-b border-np-rule overflow-hidden">
+        <div className="max-w-[1200px] mx-auto px-5 pt-20 md:pt-24">
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-5">
+            <div>
+              <p className="np-eyebrow">Field Notes</p>
+              <h2 className="np-display mt-5 text-3xl md:text-[3.25rem] text-np-navy">
+                What owners were not seeing.
+              </h2>
+            </div>
+            <p className="text-np-body font-light max-w-[42ch] leading-relaxed">
+              Anonymized findings from real conversations. Specific enough to
+              be useful. Blurred enough to protect the business.
+            </p>
+          </div>
+        </div>
+
+        <div className="mt-12 pb-20 md:pb-24">
+          <div className="np-signal-track">
+            {[...FIELD_NOTES, ...FIELD_NOTES].map((note, index) => (
+              <article
+                key={`${note.vertical}-${index}`}
+                className="w-[340px] md:w-[440px] flex-none border-y border-r border-np-rule bg-white p-7 md:p-9"
+                aria-hidden={index >= FIELD_NOTES.length || undefined}
+              >
+                <div className="flex items-center justify-between gap-4">
+                  <p className="np-label">{note.vertical}</p>
+                  <span className="w-2 h-2 bg-np-rust" aria-hidden="true" />
+                </div>
+                <p className="np-display mt-8 text-3xl text-np-navy">
+                  {note.signal}
+                </p>
+                <p className="np-label mt-2">{note.metric}</p>
+                <p className="mt-5 text-[1.0625rem] leading-relaxed text-np-body font-light">
+                  {note.finding}
+                </p>
+                <p className="np-label mt-7">{note.surfaced}</p>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
-      {/* How it runs */}
-      <section className="max-w-[1200px] mx-auto px-5 py-24 md:py-36">
-        <div className="flex items-baseline gap-5 np-section-rule pb-3 mb-14">
-          <span className="np-label">How it runs</span>
-        </div>
+      <section id="nextplay-way" className="max-w-[1200px] mx-auto px-5 py-24 md:py-36">
+        <div className="grid lg:grid-cols-[.72fr_1.28fr] gap-14 lg:gap-24">
+          <div>
+            <p className="np-eyebrow">The NextPlay Way</p>
+            <h2 className="np-display mt-6 text-4xl md:text-[3.7rem] text-np-navy max-w-[11ch]">
+              Business strategy that ends in a build.
+            </h2>
+            <p className="mt-7 text-lg font-light leading-relaxed text-np-body max-w-[38ch]">
+              Understanding is not the deliverable. A clear, ranked move—and a
+              practical way to implement it—is.
+            </p>
+          </div>
 
-        <div className="grid md:grid-cols-3 gap-12 md:gap-16">
-          {steps.map((s) => (
-            <div key={s.n}>
-              <p className="np-label" style={{ color: "var(--np-rust)" }}>
-                {s.n}
-              </p>
-              <h3 className="mt-5 text-[1.375rem] font-light text-np-navy leading-snug">
-                {s.title}
-              </h3>
-              <p className="mt-4 leading-relaxed text-np-body font-light">
-                {s.body}
-              </p>
-            </div>
-          ))}
-        </div>
-
-        <div className="mt-14 flex flex-wrap gap-x-3 gap-y-2">
-          {AREAS.map((a) => (
-            <span
-              key={a}
-              className="np-label border border-np-rule px-3 py-2"
-              style={{ color: "var(--np-body)" }}
-            >
-              {a}
-            </span>
-          ))}
+          <div className="border-t border-np-rule">
+            {NEXTPLAY_WAY.map((step) => (
+              <article
+                key={step.n}
+                className="np-view-rise grid grid-cols-[3.5rem_1fr] md:grid-cols-[5rem_10rem_1fr] gap-4 md:gap-6 py-7 md:py-9 border-b border-np-rule"
+              >
+                <p className="np-label" style={{ color: "var(--np-body)" }}>
+                  {step.n}
+                </p>
+                <h3 className="text-2xl font-medium text-np-navy">{step.name}</h3>
+                <p className="col-start-2 md:col-start-auto text-np-body font-light leading-relaxed max-w-[45ch]">
+                  {step.summary}
+                </p>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* Trust band — the report tells you what not to buy */}
       <section className="bg-np-navy text-white">
-        <div className="max-w-[1200px] mx-auto px-5 py-24 md:py-36">
-          <div className="grid lg:grid-cols-[1.1fr_1fr] gap-16 lg:gap-24 items-start">
+        <div className="max-w-[1200px] mx-auto px-5 py-24 md:py-32">
+          <div className="grid lg:grid-cols-[1.05fr_.95fr] gap-14 lg:gap-24 items-end">
             <div>
-              <p
-                className="np-eyebrow"
-                style={{ color: "var(--np-rust-light)" }}
-              >
-                The honest version
+              <p className="np-eyebrow" style={{ color: "var(--np-rust-light)" }}>
+                What we told them not to buy
               </p>
-              <h2 className="np-display mt-8 text-4xl md:text-[3.5rem]">
-                If AI isn&rsquo;t worth it for your business yet, the report
-                says so.
+              <h2 className="np-display mt-7 text-4xl md:text-[3.6rem] max-w-[14ch]">
+                We told a contractor to skip the CRM.
               </h2>
-              <p className="mt-8 text-lg font-light leading-relaxed text-np-on-navy-2 max-w-[44ch]">
-                Every assessment includes what not to buy. We take no referral
-                fees from any vendor, so the recommendations have nothing to
-                sell you.
-              </p>
-              <div className="mt-11">
-                <CTAButton
-                  label="Book an assessment call"
-                  size="large"
-                  variant="on-navy"
-                />
-              </div>
             </div>
-
-            <div className="lg:pt-2">
-              <DemoScout variant="navy" />
+            <div>
+              <p className="text-xl font-light leading-relaxed text-np-on-navy-2">
+                At roughly one appointment a week, it would have added another
+                system without recovering meaningful revenue. Every assessment
+                includes what to skip—and why.
+              </p>
+              <p className="np-label mt-7" style={{ color: "var(--np-on-navy-muted)" }}>
+                No referral fees · no vendor commissions · no quota to fill
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Client testimonials — invisible until the first real one lands */}
+      <section id="services" className="max-w-[1200px] mx-auto px-5 py-24 md:py-36">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
+          <div>
+            <p className="np-eyebrow">Implementation</p>
+            <h2 className="np-display mt-5 text-4xl md:text-[3.5rem] text-np-navy">
+              The assessment is free. The build is the offer.
+            </h2>
+          </div>
+          <Link href="/services" className="np-label hover:text-np-body py-2">
+            Compare services →
+          </Link>
+        </div>
+
+        <div className="np-grid lg:grid-cols-3">
+          {TIERS.map((tier, index) => (
+            <article key={tier.name} className="p-8 md:p-10 flex flex-col min-h-[360px]">
+              <div className="flex items-center justify-between gap-4">
+                <p className="np-label">{String(index + 1).padStart(2, "0")}</p>
+                {index === 0 && (
+                  <span className="np-label bg-np-rust text-np-navy px-2.5 py-1.5">
+                    Minimum engagement
+                  </span>
+                )}
+              </div>
+              <h3 className="np-display mt-8 text-3xl text-np-navy">{tier.name}</h3>
+              <p className="mt-4 text-np-body font-light leading-relaxed">
+                {tier.summary}
+              </p>
+              <div className="mt-auto pt-10">
+                <p className="np-display text-3xl text-np-navy">
+                  {tier.price === null ? "Scoped with you" : `$${tier.price.toLocaleString()}`}
+                </p>
+                <p className="np-label mt-2">
+                  {tier.price === null ? "No public price" : "Fixed scope"}
+                </p>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4">
+          <CTAButton label="Start with Scout" size="large" />
+          <Link href="/assessment/sample" className="font-medium text-np-navy py-3 hover:text-np-body">
+            See what the plan looks like →
+          </Link>
+        </div>
+      </section>
+
+      <section className="bg-np-tint border-y border-np-rule">
+        <div className="max-w-[1200px] mx-auto px-5 py-20 md:py-28">
+          <p className="np-eyebrow">The Invisible Tax, by industry</p>
+          <h2 className="np-display mt-5 text-3xl md:text-[3.25rem] text-np-navy max-w-[18ch]">
+            Every industry has one owners stop noticing.
+          </h2>
+          <div className="mt-12 np-grid md:grid-cols-2">
+            {QUIET_LEAKS.map((item) => (
+              <article key={item.vertical} className="p-7 md:p-9">
+                <p className="np-label">{item.vertical}</p>
+                <p className="mt-4 text-xl md:text-2xl font-light text-np-navy leading-snug">
+                  {item.leak}
+                </p>
+              </article>
+            ))}
+          </div>
+          <p className="mt-7 text-sm text-np-muted font-light">
+            These are patterns Scout investigates, not claims about every business.
+          </p>
+        </div>
+      </section>
+
+      <section className="max-w-[1200px] mx-auto px-5 py-24 md:py-32">
+        <div className="grid lg:grid-cols-2 gap-px bg-np-rule border border-np-rule">
+          <article className="bg-white p-8 md:p-12">
+            <p className="np-eyebrow">Who this is for</p>
+            <h2 className="np-display mt-6 text-3xl md:text-[3.2rem] text-np-navy max-w-[13ch]">
+              Enough moving parts to hide a leak.
+            </h2>
+            <div className="mt-9 border-t border-np-rule">
+              {FIT_SIGNALS.map((signal) => (
+                <p key={signal} className="py-4 border-b border-np-rule text-np-body font-light leading-relaxed">
+                  {signal}
+                </p>
+              ))}
+            </div>
+          </article>
+          <article className="bg-np-navy text-white p-8 md:p-12">
+            <p className="np-eyebrow" style={{ color: "var(--np-rust-light)" }}>Why not just use ChatGPT?</p>
+            <h2 className="np-display mt-6 text-3xl md:text-[3.2rem] max-w-[12ch]">
+              Answers are cheap. Diagnosis is not.
+            </h2>
+            <p className="mt-8 text-lg text-np-on-navy-2 font-light leading-relaxed">
+              {CHATGPT_DIFFERENCE}
+            </p>
+            <p className="np-label mt-8" style={{ color: "var(--np-on-navy-muted)" }}>
+              Specific business · human review · implementation available
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section className="max-w-[1200px] mx-auto px-5 py-24 md:py-36 text-center">
+        <p className="np-eyebrow">One question</p>
+        <h2 className="np-display mt-7 text-4xl md:text-[4.2rem] text-np-navy max-w-[19ch] mx-auto">
+          If nothing changes for twelve months, what did it cost?
+        </h2>
+        <p className="mt-7 text-lg font-light text-np-body max-w-[52ch] mx-auto leading-relaxed">
+          Most owners we have spoken with could not answer before the
+          assessment. The point is not a bigger AI budget. It is a clear next move.
+        </p>
+        <div className="mt-10 flex flex-wrap justify-center gap-x-8 gap-y-4">
+          <CTAButton size="large" />
+          <Link href="/assessment/sample" className="font-medium text-np-navy py-4 hover:text-np-body">
+            Read the sample report →
+          </Link>
+        </div>
+      </section>
+
       <Testimonials />
 
-      {/* Operator pedigree */}
-      <section className="max-w-[1200px] mx-auto px-5 py-20 md:py-24">
-        <div className="grid md:grid-cols-[auto_1fr] gap-10 md:gap-16 items-center">
+      <section className="border-t border-np-rule">
+        <div className="max-w-[1200px] mx-auto px-5 py-20 md:py-24 grid md:grid-cols-[auto_1fr] gap-10 md:gap-16 items-center">
           <div className="flex flex-wrap gap-x-8 gap-y-3">
-            {companies.map((c) => (
-              <span
-                key={c}
-                className="text-[1.0625rem] font-medium text-np-navy"
-              >
-                {c}
+            {companies.map((company) => (
+              <span key={company} className="text-[1.0625rem] font-medium text-np-navy">
+                {company}
               </span>
             ))}
           </div>
-          <p className="text-np-body font-light leading-relaxed max-w-[48ch]">
-            25 years between them inside the companies that adopted this
-            technology first. They saw which changes held and which were
-            theatre.{" "}
-            <Link
-              href="/about"
-              className="text-np-navy font-medium hover:text-np-rust transition-colors whitespace-nowrap"
-            >
-              About us →
+          <p className="text-np-body font-light leading-relaxed max-w-[50ch]">
+            Twenty-five years between the founders inside companies that adopted
+            this technology early—plus the small-business experience to know
+            enterprise answers rarely transfer unchanged.{" "}
+            <Link href="/about" className="font-medium text-np-navy hover:text-np-body whitespace-nowrap">
+              Meet Jordan and Ethan →
             </Link>
           </p>
         </div>

@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import DemoScout from "@/components/DemoScout";
-import { COMPANY, DURATION, AREAS, PRICING } from "@/lib/offer";
+import { COMPANY, AREAS } from "@/lib/offer";
 
 export const metadata: Metadata = {
-  title: "Book an assessment call",
-  description: `Pick a time for your AI Readiness Assessment. ${DURATION.assessmentMinutes} minutes by phone, nothing to prepare, report in ${DURATION.reportTurnaroundDays} business days.`,
+  title: "Talk About AI Implementation",
+  description:
+    "Talk with NextPlay Solutions about implementing One Play, The Roadmap, or a custom AI business optimization engagement.",
   alternates: { canonical: "/book" },
 };
 
@@ -16,12 +17,12 @@ export default function BookPage() {
         <div>
           <p className="np-eyebrow">Book</p>
           <h1 className="np-display mt-8 text-[2.75rem] md:text-[3.5rem] text-np-navy max-w-[16ch]">
-            Pick a time that works
+            Talk through the build
           </h1>
           <p className="mt-7 text-xl font-light leading-[1.55] text-np-body max-w-[52ch]">
-            The call runs about {DURATION.assessmentMinutes} minutes. Nothing to
-            prepare — Scout asks the questions, you answer them the way
-            you&rsquo;d explain your business to a colleague.
+            This calendar is for businesses that already have an assessment or
+            want to discuss a larger implementation. If you have not spoken
+            with Scout yet, start with the free assessment.
           </p>
 
           {/* GHL booking calendar — NextPlay Solutions Marketing Account */}
@@ -36,7 +37,7 @@ export default function BookPage() {
               }}
               scrolling="no"
               id="ghl-booking-calendar"
-              title="Book your AI Readiness Assessment call"
+              title="Talk to NextPlay about implementation"
             />
           </div>
           <Script
@@ -66,11 +67,9 @@ export default function BookPage() {
           <div className="border-l-2 border-np-rust pl-5">
             <p className="np-label">After you book</p>
             <p className="mt-3 text-[0.9375rem] leading-relaxed text-np-body font-light">
-              Scout calls at your chosen time. Jordan and Ethan review the
-              transcript, and your report arrives within{" "}
-              {DURATION.reportTurnaroundDays} business days. The assessment is
-              ${PRICING.assessment.toLocaleString()} flat — and comes off the
-              first invoice if you have us build any of it afterwards.
+              Jordan or Ethan will use the time to confirm the priority, the
+              scope, who owns each step, and what counts as finished. Nothing
+              is billed until the work is written down and agreed.
             </p>
           </div>
 
@@ -78,7 +77,7 @@ export default function BookPage() {
             <p className="np-label">Questions first</p>
             <a
               href={`mailto:${COMPANY.email}`}
-              className="mt-3 inline-block text-np-navy font-medium hover:text-np-rust transition-colors"
+              className="mt-3 inline-block text-np-navy font-medium hover:text-np-body transition-colors"
             >
               {COMPANY.email}
             </a>

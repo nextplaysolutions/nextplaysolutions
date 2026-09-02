@@ -7,12 +7,12 @@ import { DURATION } from "@/lib/offer";
 export const metadata: Metadata = {
   title: "A real assessment",
   description:
-    "A complete AI Readiness Assessment as delivered to a six-person remodeling company, anonymised. Real findings, real tool costs, and the parts that say don't buy anything.",
+    "A complete AI Business Assessment as delivered to a six-person remodeling company, anonymised. Real findings, real tool costs, and the parts that say don't buy anything.",
   alternates: { canonical: "/assessment/sample" },
 };
 
 const priorityColor = {
-  NOW: "var(--np-rust)",
+  NOW: "var(--np-body)",
   NEXT: "var(--np-blue)",
   LATER: "var(--np-muted)",
 } as const;
@@ -172,7 +172,7 @@ export default function SamplePage() {
             {SAMPLE.plays.map((p) => (
               <div key={p.number}>
                 <div className="flex items-baseline justify-between gap-4 flex-wrap">
-                  <p className="np-label" style={{ color: "var(--np-rust)" }}>
+                  <p className="np-label" style={{ color: "var(--np-body)" }}>
                     {p.number}
                   </p>
                   <p className="np-label">{p.value}</p>
@@ -188,7 +188,7 @@ export default function SamplePage() {
                     </p>
                   </div>
                   <div className="p-6">
-                    <p className="np-label" style={{ color: "var(--np-rust)" }}>
+                    <p className="np-label" style={{ color: "var(--np-body)" }}>
                       With AI
                     </p>
                     <p className="mt-2.5 text-[0.9375rem] leading-relaxed text-np-body font-light">
@@ -212,7 +212,7 @@ export default function SamplePage() {
                 key={r.weeks}
                 className="py-6 border-b border-np-rule grid md:grid-cols-[5rem_1fr_auto] gap-3 md:gap-6 items-start"
               >
-                <span className="np-label" style={{ color: "var(--np-rust)" }}>
+                <span className="np-label" style={{ color: "var(--np-body)" }}>
                   Weeks {r.weeks}
                 </span>
                 <div>
@@ -265,10 +265,10 @@ export default function SamplePage() {
             arrives.
           </p>
           <div className="mt-9 flex flex-wrap items-center gap-x-8 gap-y-4">
-            <CTAButton label="Book an assessment call" size="large" />
+            <CTAButton label="Try Scout free" size="large" />
             <Link
               href="/assessment"
-              className="text-np-navy font-medium hover:text-np-rust transition-colors py-3"
+              className="text-np-navy font-medium hover:text-np-body transition-colors py-3"
             >
               How it works →
             </Link>

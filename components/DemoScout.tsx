@@ -2,8 +2,8 @@ import Link from "next/link";
 import { DURATION } from "@/lib/offer";
 
 /**
- * The demo invitation. Sends people to /demo, where the lead form opens the
- * line — it does NOT print the number.
+ * The Scout invitation. Sends people to /demo, where the lead form opens the
+ * full assessment line — it does NOT print the number.
  *
  * The number used to sit here in the open, which made the /demo gate
  * pointless: anyone could read it off the homepage and skip the form. It is
@@ -32,7 +32,7 @@ export default function DemoScout({
         className="np-eyebrow"
         style={onNavy ? { color: "var(--np-rust-light)" } : undefined}
       >
-        Talk to Scout · {DURATION.demoMinutes} minutes
+        Try Scout free · {DURATION.assessmentMinutes} minutes
       </p>
 
       <p
@@ -40,8 +40,8 @@ export default function DemoScout({
           onNavy ? "text-np-on-navy-2" : "text-np-body"
         }`}
       >
-        Scout is the voice agent that runs the assessment. Hear it work through
-        a real business — yours — before you book anything.
+        Scout maps seven areas of your business. The founders review the call
+        and send a written assessment within three business days.
       </p>
 
       <Link
@@ -49,7 +49,7 @@ export default function DemoScout({
         className={`mt-6 inline-block py-2 text-xl md:text-2xl np-display tracking-tight transition-colors ${
           onNavy
             ? "text-white hover:text-np-rust-light"
-            : "text-np-navy hover:text-np-rust"
+            : "text-np-navy hover:text-np-body"
         }`}
       >
         Try Scout &rarr;

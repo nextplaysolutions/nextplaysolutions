@@ -20,11 +20,11 @@ export default function Testimonials() {
       >
         {TESTIMONIALS.map((t) => (
           <figure key={t.name} className="p-8 md:p-10">
-            {t.metric && (
-              <p className="np-label mb-5" style={{ color: "var(--np-rust)" }}>
+            {t.metric ? (
+              <p className="np-label mb-5" style={{ color: "var(--np-body)" }}>
                 {t.metric}
               </p>
-            )}
+            ) : null}
             <blockquote>
               <p className="text-[1.25rem] md:text-[1.375rem] font-light leading-[1.55] text-np-navy max-w-[44ch]">
                 &ldquo;{t.quote}&rdquo;
