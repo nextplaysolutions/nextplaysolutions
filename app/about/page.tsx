@@ -194,7 +194,7 @@ export default function AboutPage() {
             what AI is actually worth to it is to have the conversation.
           </p>
           <div className="mt-8">
-            <CTAButton label="Try Scout free" size="large" />
+            <CTAButton size="large" />
           </div>
         </div>
       </section>

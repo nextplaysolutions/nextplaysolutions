@@ -32,7 +32,7 @@ export default function DemoScout({
         className="np-eyebrow"
         style={onNavy ? { color: "var(--np-rust-light)" } : undefined}
       >
-        Try Scout free · {DURATION.assessmentMinutes} minutes
+        see if you qualify · {DURATION.assessmentMinutes} minutes
       </p>
 
       <p
@@ -52,7 +52,7 @@ export default function DemoScout({
             : "text-np-navy hover:text-np-body"
         }`}
       >
-        Try Scout &rarr;
+        see if you qualify &rarr;
       </Link>
     </div>
   );

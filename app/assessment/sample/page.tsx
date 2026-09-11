@@ -265,7 +265,7 @@ export default function SamplePage() {
             arrives.
           </p>
           <div className="mt-9 flex flex-wrap items-center gap-x-8 gap-y-4">
-            <CTAButton label="Try Scout free" size="large" />
+            <CTAButton size="large" />
             <Link
               href="/assessment"
               className="text-np-navy font-medium hover:text-np-body transition-colors py-3"

@@ -61,7 +61,7 @@ export default function ServicesPage() {
             counts as finished are written down before implementation begins.
           </p>
           <div className="mt-11 flex flex-wrap items-center gap-x-8 gap-y-4">
-            <CTAButton label="Start with the free assessment" size="large" />
+            <CTAButton size="large" />
             <Link href="/assessment/sample" className="font-medium text-np-navy py-3 hover:text-np-body">
               Read a sample report →
             </Link>
