@@ -72,7 +72,7 @@ export default function ChatWidget() {
     <div className="fixed bottom-5 right-5 z-50 flex flex-col items-end gap-3">
       {open && (
         <div
-          className="flex flex-col w-[calc(100vw-2.5rem)] max-w-[380px] h-[520px] max-h-[calc(100vh-7rem)] bg-white border border-np-rule shadow-[0_8px_40px_rgba(20,33,61,0.18)]"
+          className="flex flex-col w-[calc(100vw-2.5rem)] max-w-[380px] h-[520px] max-h-[calc(100vh-7rem)] bg-white border border-np-rule shadow-[0_8px_40px_rgba(0,0,0,0.18)]"
           role="dialog"
           aria-label="Ask NextPlay chat"
         >

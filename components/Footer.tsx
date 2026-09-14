@@ -19,7 +19,7 @@ export default function Footer() {
 
           <nav className="flex flex-col text-[0.9375rem] md:text-right">
             {[
-              { href: "/assessment", label: "Free Assessment" },
+              { href: "/assessment", label: "Assessment" },
               { href: "/services", label: "Services" },
               { href: "/field-notes", label: "Field Notes" },
               { href: "/about", label: "About" },
@@ -44,7 +44,7 @@ export default function Footer() {
               className="np-label hover:text-white transition-colors"
               style={{ color: "var(--np-on-navy-muted)" }}
             >
-              Try Scout free · {DURATION.assessmentMinutes} min
+              see if you qualify · {DURATION.assessmentMinutes} min
             </Link>
             <a
               href={`mailto:${COMPANY.email}`}
