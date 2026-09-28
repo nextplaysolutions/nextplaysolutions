@@ -14,8 +14,9 @@ const nextConfig: NextConfig = {
       { source: "/contact", destination: "/book", permanent: true },
       // Business-card QR short link. Printed on cards, so the path never changes;
       // only the destination does. Temporary (307) on purpose so browsers never
-      // cache it. Repoint to the GHL "Talk with Scout" calendar once it is live.
-      { source: "/scout", destination: "/book", permanent: false },
+      // cache it. Stopgap: /demo (see if you qualify). Repoint to the GHL
+      // "Talk with Scout" calendar (ID-based URL) once it is live.
+      { source: "/scout", destination: "/demo", permanent: false },
     ];
   },
 };
