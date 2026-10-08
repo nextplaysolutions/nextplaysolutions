@@ -1,4 +1,4 @@
 # Changelog
 
-## 2026-09-28
-- Added `/scout` short link (temporary redirect to `/demo`). It is the permanent URL printed in the business-card QR code. The destination will be repointed to the GHL "Talk with Scout" calendar once that calendar is live, so the cards never need reprinting.
+## 2026-10-08
+- Pointed the `/scout` short link (business-card QR) to the GHL "Talk with Scout" booking page with a temporary 302 redirect, so the destination can change later without reprinting cards.
