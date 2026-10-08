@@ -12,6 +12,14 @@ const nextConfig: NextConfig = {
       // "audit" is never our word — catch anyone who typed or linked it.
       { source: "/audit", destination: "/assessment", permanent: true },
       { source: "/contact", destination: "/book", permanent: true },
+      // Business-card QR short link. Printed on cards, so the path never changes;
+      // only the destination does. 302 (temporary) on purpose so browsers never
+      // cache it and the destination can be repointed later.
+      {
+        source: "/scout",
+        destination: "https://api.leadconnectorhq.com/widget/bookings/talk-with-scout",
+        statusCode: 302,
+      },
     ];
   },
 };
