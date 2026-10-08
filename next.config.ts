@@ -13,10 +13,13 @@ const nextConfig: NextConfig = {
       { source: "/audit", destination: "/assessment", permanent: true },
       { source: "/contact", destination: "/book", permanent: true },
       // Business-card QR short link. Printed on cards, so the path never changes;
-      // only the destination does. Temporary (307) on purpose so browsers never
-      // cache it. Stopgap: /demo (see if you qualify). Repoint to the GHL
-      // "Talk with Scout" calendar (ID-based URL) once it is live.
-      { source: "/scout", destination: "/demo", permanent: false },
+      // only the destination does. 302 (temporary) on purpose so browsers never
+      // cache it and the destination can be repointed later.
+      {
+        source: "/scout",
+        destination: "https://api.leadconnectorhq.com/widget/bookings/talk-with-scout",
+        statusCode: 302,
+      },
     ];
   },
 };
