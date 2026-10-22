@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1100" viewBox="0 0 1600 1100" role="img" aria-labelledby="title desc">
+  <title id="title">NextPlay Solutions brand board</title>
+  <desc id="desc">A visual reference showing the NextPlay logo system, color palette, and typography.</desc>
+  <rect width="1600" height="1100" fill="#F4F4ED"/>
+  <text x="90" y="95" fill="#617069" font-family="Menlo, monospace" font-size="15" font-weight="600" letter-spacing="4">NEXTPLAY SOLUTIONS / IDENTITY SYSTEM 01</text>
+  <path fill="#06120F" fill-rule="evenodd" d="M90 155H230V295H90V155ZM137 193V257L189 225L137 193Z"/>
+  <text x="270" y="235" fill="#06120F" font-family="Helvetica Neue, Arial, sans-serif" font-size="76" font-weight="400" letter-spacing="-3">Next<tspan font-weight="700">Play</tspan></text>
+  <text x="275" y="278" fill="#53645C" font-family="Menlo, monospace" font-size="16" font-weight="600" letter-spacing="10">SOLUTIONS</text>
+  <text x="90" y="375" fill="#06120F" font-family="Helvetica Neue, Arial, sans-serif" font-size="42" font-weight="500" letter-spacing="-1.5">Find the opening. Make the NextPlay clear.</text>
+  <text x="90" y="414" fill="#617069" font-family="Helvetica Neue, Arial, sans-serif" font-size="20">Aperture is a play arrow made from negative space—the opportunity already inside the business.</text>
+  <rect x="90" y="490" width="1420" height="300" fill="#06120F"/>
+  <path fill="#C9FF3D" fill-rule="evenodd" d="M150 550H310V710H150V550ZM204 594V666L263 630L204 594Z"/>
+  <text x="355" y="650" fill="#FFFFFF" font-family="Helvetica Neue, Arial, sans-serif" font-size="76" font-weight="400" letter-spacing="-3">Next<tspan font-weight="700">Play</tspan></text>
+  <text x="360" y="696" fill="#A9B8B1" font-family="Menlo, monospace" font-size="16" font-weight="600" letter-spacing="10">SOLUTIONS</text>
+  <text x="360" y="745" fill="#84FFD0" font-family="Helvetica Neue, Arial, sans-serif" font-size="25" font-weight="500">Your unfair AI advantage</text>
+  <g transform="translate(90 850)">
+    <g><rect width="210" height="150" fill="#06120F"/><text x="18" y="112" fill="#FFFFFF" font-family="Menlo, monospace" font-size="14">FOREST</text><text x="18" y="134" fill="#A9B8B1" font-family="Menlo, monospace" font-size="12">#06120F</text></g>
+    <g transform="translate(225)"><rect width="210" height="150" fill="#10231C"/><text x="18" y="112" fill="#FFFFFF" font-family="Menlo, monospace" font-size="14">DEEP PINE</text><text x="18" y="134" fill="#A9B8B1" font-family="Menlo, monospace" font-size="12">#10231C</text></g>
+    <g transform="translate(450)"><rect width="210" height="150" fill="#C9FF3D"/><text x="18" y="112" fill="#06120F" font-family="Menlo, monospace" font-size="14">SIGNAL LIME</text><text x="18" y="134" fill="#53645C" font-family="Menlo, monospace" font-size="12">#C9FF3D</text></g>
+    <g transform="translate(675)"><rect width="210" height="150" fill="#84FFD0"/><text x="18" y="112" fill="#06120F" font-family="Menlo, monospace" font-size="14">SIGNAL MINT</text><text x="18" y="134" fill="#53645C" font-family="Menlo, monospace" font-size="12">#84FFD0</text></g>
+    <g transform="translate(900)"><rect width="210" height="150" fill="#FFFFFF" stroke="#D7DBD5"/><text x="18" y="112" fill="#06120F" font-family="Menlo, monospace" font-size="14">WHITE</text><text x="18" y="134" fill="#53645C" font-family="Menlo, monospace" font-size="12">#FFFFFF</text></g>
+    <g transform="translate(1125)"><rect width="210" height="150" fill="#17231E"/><text x="18" y="112" fill="#FFFFFF" font-family="Menlo, monospace" font-size="14">GRAPHITE</text><text x="18" y="134" fill="#A9B8B1" font-family="Menlo, monospace" font-size="12">#17231E</text></g>
+  </g>
+</svg>
