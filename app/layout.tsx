@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import ChatWidget from "@/components/ChatWidget";
 import SourceCapture from "@/components/SourceCapture";
 import { ORGANIZATION_JSONLD } from "@/lib/offer";
+import { Analytics } from "@vercel/analytics/next";
 
 const archivo = Archivo({
   variable: "--np-font",
@@ -66,6 +67,9 @@ export default function RootLayout({
         {/* Chat appears only once ANTHROPIC_API_KEY is set in Vercel — same
             pattern as testimonials: nothing renders until it actually works. */}
         {process.env.ANTHROPIC_API_KEY ? <ChatWidget /> : null}
+        {/* Vercel Web Analytics: counts page views. Reports data only once
+            Web Analytics is enabled on the Vercel project. */}
+        <Analytics />
       </body>
     </html>
   );
