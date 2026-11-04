@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import CTAButton from "@/components/CTAButton";
+import Link from "next/link";
 import { FIELD_NOTES, QUIET_LEAKS } from "@/lib/offer";
 
 export const metadata: Metadata = {
@@ -30,7 +31,7 @@ export default function FieldNotesPage() {
       <section className="max-w-[1200px] mx-auto px-5 py-20 md:py-28">
         <div className="grid gap-8">
           {FIELD_NOTES.map((note, index) => (
-            <article key={note.vertical} className="np-view-rise grid md:grid-cols-[5rem_.6fr_1.4fr] gap-6 md:gap-12 border-t border-np-rule pt-8">
+            <article id={`finding-${index + 1}`} key={note.vertical} className="scroll-mt-24 grid md:grid-cols-[5rem_.6fr_1.4fr] gap-6 md:gap-12 border-t border-np-rule pt-8">
               <p className="np-label">{String(index + 1).padStart(2, "0")}</p>
               <div>
                 <p className="np-label">{note.vertical}</p>
@@ -40,11 +41,17 @@ export default function FieldNotesPage() {
               <div>
                 <p className="text-xl md:text-2xl font-light leading-relaxed text-np-navy">{note.finding}</p>
                 <p className="np-label mt-7">{note.surfaced}</p>
+                <div className="mt-7 grid gap-5 bg-np-tint p-6">
+                  <div><h3 className="font-medium">Recommended next step</h3><p className="mt-2 leading-relaxed">{note.recommendation}</p></div>
+                  <div><h3 className="font-medium">What this evidence shows</h3><p className="mt-2 leading-relaxed">{note.evidence}</p></div>
+                </div>
               </div>
             </article>
           ))}
         </div>
       </section>
+
+      <section className="max-w-[1200px] mx-auto px-5 pb-20"><p className="np-eyebrow">Practical guides</p><h2 className="np-display mt-5 text-4xl">Start with the problem you recognize.</h2><div className="grid md:grid-cols-3 gap-5 mt-8">{[["missing-change-orders","How to stop missing change orders"],["client-document-chasing","How to reduce client document chasing"],["duplicate-data-entry","How to stop entering data twice"]].map(([slug,title])=><Link key={slug} href={`/field-notes/${slug}`} className="border border-np-rule p-7 text-xl hover:bg-np-tint">{title} →</Link>)}</div></section>
 
       <section className="bg-np-navy text-white">
         <div className="max-w-[1200px] mx-auto px-5 py-20 md:py-28">

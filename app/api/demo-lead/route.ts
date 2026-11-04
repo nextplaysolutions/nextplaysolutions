@@ -1,4 +1,6 @@
 import { cookies } from "next/headers";
+import { SCOUT_LINE } from "@/lib/scout-line";
+import { guardRequest } from "@/lib/request-guard";
 import { ghlConfigured, upsertContact } from "@/lib/ghl";
 import { validateLead } from "@/lib/lead";
 import { SOURCE_COOKIE, normalizeCampaign } from "@/lib/source";
@@ -14,6 +16,8 @@ import { SOURCE_COOKIE, normalizeCampaign } from "@/lib/source";
  */
 
 export async function POST(request: Request) {
+  const blocked = guardRequest(request, "lead", 5);
+  if (blocked) return blocked;
   if (!ghlConfigured()) {
     return Response.json({ error: "Not configured." }, { status: 503 });
   }
@@ -25,7 +29,11 @@ export async function POST(request: Request) {
     return Response.json({ error: "Invalid request." }, { status: 400 });
   }
 
+  if (!body || typeof body !== "object" || Array.isArray(body)) {
+    return Response.json({ error: "Invalid request." }, { status: 400 });
+  }
   const problem = validateLead(body);
+  if (body.website) return Response.json({ error: "Unable to submit." }, { status: 400 });
   if (problem) {
     return Response.json({ error: problem }, { status: 400 });
   }
@@ -50,5 +58,5 @@ export async function POST(request: Request) {
   if (!ok) {
     return Response.json({ error: "Could not save." }, { status: 502 });
   }
-  return Response.json({ ok: true });
+  return Response.json({ ok: true, line: SCOUT_LINE }, { headers: { "Cache-Control": "no-store" } });
 }

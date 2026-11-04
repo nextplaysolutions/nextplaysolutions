@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { track } from "@/lib/analytics";
 
 /**
  * Records which tracked link brought a visitor in.
@@ -20,6 +21,13 @@ import { useEffect } from "react";
  * request site-wide to carry a marketing label would be a poor trade.
  */
 export default function SourceCapture() {
+  useEffect(() => {
+    const click = (event: MouseEvent) => {
+      if (event.target instanceof Element && event.target.closest('a[href="/demo"]')) track("assessment_click");
+    };
+    document.addEventListener("click", click);
+    return () => document.removeEventListener("click", click);
+  }, []);
   useEffect(() => {
     const raw = new URLSearchParams(window.location.search).get("src");
     if (!raw) return;

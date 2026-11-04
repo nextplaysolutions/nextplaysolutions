@@ -40,7 +40,7 @@ export default function Nav() {
             href="/demo"
             className="bg-np-rust text-np-navy px-6 py-3 text-[0.9375rem] font-medium hover:bg-np-rust-light transition-colors"
           >
-            Try Scout
+            Free assessment
           </Link>
         </nav>
 
@@ -87,7 +87,7 @@ export default function Nav() {
             className="bg-np-rust text-np-navy px-6 py-4 text-center text-lg font-medium"
             onClick={() => setOpen(false)}
           >
-            Try Scout free
+            Start my free assessment
           </Link>
         </div>
       )}

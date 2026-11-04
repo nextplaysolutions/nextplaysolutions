@@ -4,7 +4,7 @@ import Link from "next/link";
  * Square corners and Signal Lime: the primary action is the strongest signal.
  */
 export default function CTAButton({
-  label = "Try Scout free",
+  label = "Start my free assessment",
   href = "/demo",
   size = "default",
   variant = "rust",
@@ -27,6 +27,7 @@ export default function CTAButton({
   return (
     <Link
       href={href}
+      data-assessment-cta={href === "/demo" || undefined}
       className={`inline-block font-medium text-center transition-colors ${sizing} ${variants[variant]}`}
     >
       {label}

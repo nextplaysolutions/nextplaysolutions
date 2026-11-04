@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import FAQSection from "@/components/FAQSection";
+import AssessmentCommitment from "@/components/AssessmentCommitment";
 import CTAButton from "@/components/CTAButton";
 import { BUILDS_JSONLD, NEXTPLAY_WAY, TIERS } from "@/lib/offer";
 
@@ -35,7 +37,7 @@ const details = [
       "Larger or cross-functional operational scope",
       "Multiple systems, teams, or locations",
       "A written scope and price before work begins",
-      "No public price because the shape genuinely varies",
+      "Let’s scope your NextPlay.",
     ],
   ],
 ] as const;
@@ -101,6 +103,7 @@ export default function ServicesPage() {
             </article>
           ))}
         </div>
+        <AssessmentCommitment />
       </section>
 
       <section className="bg-np-navy text-white">
@@ -131,6 +134,7 @@ export default function ServicesPage() {
         </p>
         <div className="mt-9"><CTAButton size="large" /></div>
       </section>
+      <FAQSection />
     </>
   );
 }

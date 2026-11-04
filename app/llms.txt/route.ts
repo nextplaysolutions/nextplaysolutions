@@ -1,3 +1,4 @@
+import { GUIDES } from "@/lib/guides";
 import {
   AREAS,
   CHATGPT_DIFFERENCE,
@@ -100,7 +101,7 @@ ${DELIVERABLES.map((deliverable) => `- ${deliverable}`).join("\n")}
 
 ## Anonymized field notes
 
-${FIELD_NOTES.map((note) => `- ${note.vertical}: ${note.signal} (${note.metric.toLowerCase()}). ${note.finding}`).join("\n")}
+${FIELD_NOTES.map((note) => `- ${note.vertical}: ${note.signal} (${note.metric.toLowerCase()}). ${note.finding} Recommendation: ${note.recommendation} Evidence limit: ${note.evidence}`).join("\n")}
 
 These are specific findings, not averages, promises, or guaranteed outcomes.
 
@@ -131,7 +132,9 @@ ${FAQ.map((item) => `### ${item.q}\n${item.a}`).join("\n\n")}
 - ${SITE_URL}/assessment — free AI business assessment
 - ${SITE_URL}/assessment/sample — sample written assessment
 - ${SITE_URL}/services — One Play, The Roadmap, and Custom implementation
+- ${SITE_URL}/remodelers — workflow assessment for remodeling businesses
 - ${SITE_URL}/field-notes — anonymized findings
+${GUIDES.map((guide) => `- ${SITE_URL}/field-notes/${guide.slug} — ${guide.title}`).join("\n")}
 - ${SITE_URL}/demo — strict Scout lead gate
 - ${SITE_URL}/about — founders and operating position
 - ${SITE_URL}/legal — privacy and terms

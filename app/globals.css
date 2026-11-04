@@ -326,6 +326,26 @@ body {
 .np-scout-trust-left { left: 0; top: 62%; }
 .np-scout-trust-right { right: 0; top: 20%; }
 
+/* Launch composition: the visual shares the opening viewport with the offer. */
+.np-launch-hero .np-scout-visual { height: 560px; margin-top: 0; min-width: 0; }
+.np-launch-hero .np-scout-card { width: calc(100% - 30px); padding: 1.5rem; }
+.np-launch-hero .np-scout-card blockquote { font-size: 1.125rem; }
+.np-launch-hero .np-scout-card .grid { grid-template-columns: 1.5rem 1fr; }
+.np-launch-hero .np-scout-card .grid > :last-child { grid-column: 2; text-align: left; }
+.np-launch-hero .np-orbit-one { width: 100%; height: auto; aspect-ratio: 1; }
+.np-launch-hero .np-orbit-two { width: 80%; height: auto; aspect-ratio: 1; }
+.np-launch-hero .np-scout-trust-left { top: 90%; }
+.np-launch-hero .np-scout-trust-right { top: 0; }
+.np-label { font-size: 0.75rem; letter-spacing: 0.06em; }
+.np-eyebrow { font-size: 0.8125rem; letter-spacing: 0.08em; }
+summary:focus-visible { outline: 2px solid var(--np-navy); outline-offset: 5px; }
+.bg-np-navy :where(a,button):focus-visible { outline-color: var(--np-rust); }
+.np-scout-visual:hover *, .np-scout-visual:focus-within * { animation-play-state: paused; }
+@media (min-width: 1024px) {
+  #nextplay-way article { transition: border-color .2s, background .2s; }
+  #nextplay-way article:hover { border-color: var(--np-navy); background: var(--np-tint); }
+}
+
 @keyframes np-orbit-spin {
   from { transform: translate(-50%, -50%) rotate(0deg); }
   to { transform: translate(-50%, -50%) rotate(360deg); }
@@ -420,3 +440,9 @@ body {
   .np-scout-trust-left { left: -0.75rem; top: 83%; }
   .np-scout-trust-right { right: -0.75rem; top: 3%; }
 }
+.np-motion-control { position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); z-index: 5; display: flex; align-items: center; gap: .5rem; white-space: nowrap; font-size: .8125rem; cursor: pointer; }
+.np-motion-control input { accent-color: var(--np-navy); width: 1rem; height: 1rem; }
+.np-scout-visual:has(.np-motion-control input:checked) *,
+.np-scout-visual:has(.np-motion-control input:checked) *::before,
+.np-scout-visual:has(.np-motion-control input:checked) *::after,
+.np-scout-visual:has(.np-motion-control input:checked)::after { animation-play-state: paused !important; }

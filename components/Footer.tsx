@@ -22,6 +22,7 @@ export default function Footer() {
               { href: "/assessment", label: "Free Assessment" },
               { href: "/services", label: "Services" },
               { href: "/field-notes", label: "Field Notes" },
+              { href: "/remodelers", label: "For Remodelers" },
               { href: "/about", label: "About" },
               { href: "/legal", label: "Legal" },
             ].map(({ href, label }) => (

@@ -3,6 +3,7 @@ const waveform = [18, 30, 45, 62, 36, 54, 28, 48, 66, 38, 24, 55, 34, 46, 30, 58
 export default function ScoutSignalGraphic() {
   return (
     <div className="np-scout-visual" aria-label="Animated example of Scout identifying an operational opportunity">
+      <label className="np-motion-control"><input type="checkbox" /> Pause animation</label>
       <div className="np-orbit np-orbit-one" aria-hidden="true"><i /></div>
       <div className="np-orbit np-orbit-two" aria-hidden="true"><i /></div>
       <div className="np-scout-trust np-scout-trust-left">No vendor fees ↗</div>
@@ -12,9 +13,9 @@ export default function ScoutSignalGraphic() {
         <div className="flex items-center justify-between gap-5 border-b border-white/15 pb-5">
           <p className="np-label flex items-center gap-2" style={{ color: "var(--np-rust-light)" }}>
             <span className="np-signal-dot block w-2 h-2 bg-np-rust" aria-hidden="true" />
-            Scout / live analysis
+            Scout / example conversation
           </p>
-          <p className="np-label" style={{ color: "var(--np-on-navy-muted)" }}>Area 06 / 07</p>
+          <p className="np-label" style={{ color: "var(--np-on-navy-muted)" }}>Illustration</p>
         </div>
 
         <div className="np-waveform" aria-hidden="true">

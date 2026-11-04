@@ -1,8 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import { BUSINESS_TYPES, validateLead } from "@/lib/lead";
-import { COMPANY, PHONE, DURATION } from "@/lib/offer";
+import { COMPANY, DURATION } from "@/lib/offer";
+import { track } from "@/lib/analytics";
 
 /**
  * The /demo funnel: capture name / email / phone / business type, file the
@@ -28,7 +30,13 @@ export default function DemoLeadForm() {
   const [businessType, setBusinessType] = useState("");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [revealed, setRevealed] = useState(false);
+  const [line, setLine] = useState<{ display: string; e164: string } | null>(null);
+  const [started, setStarted] = useState(false);
+  const [website, setWebsite] = useState("");
+  const successRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (line) successRef.current?.focus();
+  }, [line]);
 
   async function submit(e: React.FormEvent) {
     e.preventDefault();
@@ -48,13 +56,16 @@ export default function DemoLeadForm() {
       const res = await fetch("/api/demo-lead", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, phone, businessType }),
+        body: JSON.stringify({ name, email, phone, businessType, website }),
       });
       if (!res.ok) {
         setError(`We couldn't open the Scout line just now. Please try again or email ${COMPANY.email}.`);
         return;
       }
-      setRevealed(true);
+      const data = await res.json();
+      if (!data.line?.e164 || !data.line?.display) throw new Error("Missing line");
+      setLine(data.line);
+      track("lead_saved");
     } catch {
       setError(`We couldn't open the Scout line just now. Please try again or email ${COMPANY.email}.`);
     } finally {
@@ -62,25 +73,30 @@ export default function DemoLeadForm() {
     }
   }
 
-  if (revealed) {
+  if (line) {
     return (
-      <div className="border border-np-rule bg-np-tint p-8 md:p-10">
+      <div ref={successRef} tabIndex={-1} aria-label="Your Scout assessment is ready to start" className="border border-np-rule bg-np-tint p-8 md:p-10">
         <p className="np-eyebrow">You&apos;re set — start the assessment</p>
         <a
-          href={`tel:${PHONE.assessmentE164}`}
+          href={`tel:${line.e164}`}
+          onClick={() => track("call_click")}
           className="mt-5 inline-block py-2 text-4xl md:text-5xl np-display tracking-tight text-np-navy hover:text-np-body transition-colors"
         >
-          {PHONE.assessment}
+          {line.display}
         </a>
         <p className="mt-5 text-[1.0625rem] leading-relaxed font-light text-np-body max-w-[52ch]">
           {`The call takes about ${DURATION.assessmentMinutes} minutes. Scout will map seven areas of your business. Jordan and Ethan review the conversation and send your written assessment within ${DURATION.reportTurnaroundDays} business days.`}
         </p>
+        <a href={`tel:${line.e164}`} onClick={() => track("call_click")} className="inline-block mt-7 bg-np-rust px-8 py-4 font-medium">Call Scout now →</a>
+        <a className="block mt-5 underline underline-offset-4" download="NextPlay-Scout.txt" href={`data:text/plain;charset=utf-8,${encodeURIComponent(`Call Scout: ${line.display}\nAllow 25 minutes. Your human-reviewed assessment arrives within three business days after the call.\nhttps://nextplaysolutions.ai`)}`} onClick={() => track("number_saved")}>Save the number for later</a>
+        <p className="mt-6 text-sm leading-relaxed">Use the phone number you entered so we can match your call to your assessment. Find a quiet spot; no preparation is needed. Your report will be sent to {email}.</p>
       </div>
     );
   }
 
   return (
-    <form onSubmit={submit} className="border border-np-rule bg-white p-8 md:p-10">
+    <form onSubmit={submit} onFocus={() => { if (!started) { setStarted(true); track("form_start"); } }} className="border border-np-rule bg-white p-8 md:p-10">
+      <div hidden aria-hidden="true"><label>Website<input tabIndex={-1} autoComplete="off" value={website} onChange={e => setWebsite(e.target.value)} /></label></div>
       <p className="np-eyebrow">Free assessment · {DURATION.assessmentMinutes} minutes</p>
       <p className="mt-4 text-[1.0625rem] leading-relaxed font-light text-np-body max-w-[52ch]">
         Tell us who&apos;s calling and we&apos;ll open the full Scout assessment line.
@@ -165,12 +181,13 @@ export default function DemoLeadForm() {
         disabled={busy}
         className="mt-8 bg-np-rust text-np-navy px-8 py-4 text-[0.9375rem] font-medium hover:bg-np-rust-light transition-colors disabled:opacity-50"
       >
-        {busy ? "One moment…" : "Open the Scout line"}
+        {busy ? "Opening your assessment…" : "Start my free assessment"}
       </button>
 
       <p className="mt-5 text-[0.8125rem] leading-relaxed text-np-muted max-w-[52ch]">
         We&apos;ll use these details to deliver your assessment and follow up once.
         No list and no drip campaign.
+        {" "}<Link href="/legal" className="underline underline-offset-4">Privacy policy</Link>.
       </p>
     </form>
   );

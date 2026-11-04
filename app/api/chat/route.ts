@@ -1,4 +1,5 @@
 import Anthropic from "@anthropic-ai/sdk";
+import { guardRequest } from "@/lib/request-guard";
 import { CHAT_SYSTEM_PROMPT } from "@/lib/chat-prompt";
 import { cookies } from "next/headers";
 import { ghlConfigured, upsertContact } from "@/lib/ghl";
@@ -76,6 +77,8 @@ async function captureLead(
 }
 
 export async function POST(request: Request) {
+  const blocked = guardRequest(request, "chat", 12);
+  if (blocked) return blocked;
   if (!process.env.ANTHROPIC_API_KEY) {
     return Response.json({ error: "Chat is not configured." }, { status: 503 });
   }
@@ -87,7 +90,7 @@ export async function POST(request: Request) {
     return Response.json({ error: "Invalid request." }, { status: 400 });
   }
 
-  const raw = body.messages;
+  const raw = body?.messages;
   if (
     !Array.isArray(raw) ||
     raw.length === 0 ||

@@ -39,14 +39,6 @@ export const POSITIONING = {
 } as const;
 
 /** Live phone lines. These are different agents — do not conflate them. */
-export const PHONE = {
-  /** Legacy short demo line. Kept off-site; public Try Scout reveals assessment. */
-  demo: "+1 402 940 7602",
-  demoE164: "+14029407602",
-  /** The full 25-minute Scout assessment, revealed after lead capture. */
-  assessment: "+1 402 407 2540",
-  assessmentE164: "+14024072540",
-} as const;
 
 /** The seven areas Scout covers. */
 export const AREAS = [
@@ -165,29 +157,68 @@ export const NEXTPLAY_WAY = [
 /** Permission-cleared, anonymized findings. No invented values. */
 export const FIELD_NOTES = [
   {
-    vertical: "Remodeling",
-    signal: "$18,000 / year",
-    metric: "Estimated annual value identified",
-    finding:
-      "Change orders were being agreed on site, completed, and never added to the final invoice.",
-    surfaced: "Surfaced during the Scout conversation",
+    "vertical": "Remodeling",
+    "signal": "$18,000 / year",
+    "metric": "Estimated annual opportunity",
+    "finding": "Change orders were being agreed on site, completed, and never added to the final invoice.",
+    "surfaced": "Anonymized assessment finding",
+    "recommendation": "Connect field approval to the final invoice: record each change, obtain approval, and reconcile completed changes before billing.",
+    "evidence": "An estimated annual opportunity identified in an assessment—not verified recovered revenue."
   },
   {
-    vertical: "M&A advisory",
-    signal: "Weeks stalled",
-    metric: "Operational delay observed",
-    finding:
-      "Deals were waiting on client paperwork while the cost of that delay remained unpriced and largely invisible.",
-    surfaced: "The leak was not the work. It was the waiting.",
+    "vertical": "M&A advisory",
+    "signal": "Weeks stalled",
+    "metric": "Paperwork bottleneck",
+    "finding": "Deals were waiting on client paperwork while the cost of that delay remained unpriced.",
+    "surfaced": "Anonymized assessment finding",
+    "recommendation": "Map document requests, name an owner for each missing item, and measure waiting time before choosing automation.",
+    "evidence": "An assessment finding. No quantified savings or post-implementation result is claimed."
   },
   {
-    vertical: "Contracting",
-    signal: "CRM: not yet",
-    metric: "Avoided purchase",
-    finding:
-      "At roughly one appointment a week, a new CRM would have added overhead without recovering meaningful revenue.",
-    surfaced: "The recommendation was to skip the software.",
+    "vertical": "Contracting",
+    "signal": "CRM: not yet",
+    "metric": "Recommendation to defer",
+    "finding": "At low appointment volume, the assessment recommended keeping the process simple instead of adding a CRM.",
+    "surfaced": "Anonymized assessment finding",
+    "recommendation": "Revisit a CRM when volume or missed follow-up makes its benefit measurable.",
+    "evidence": "A recommendation against a purchase, not a measured financial result."
   },
+  {
+    "vertical": "Production",
+    "signal": "Disconnected job records",
+    "metric": "Information handoff",
+    "finding": "A production business was already using AI, but job details and payment records lived in separate systems. The owner still had to connect the information and follow-up could slip.",
+    "surfaced": "Anonymized assessment finding",
+    "recommendation": "Establish one reliable job record before adding more automation.",
+    "evidence": "An observed workflow issue and recommendation. No recovered time or revenue is claimed."
+  },
+  {
+    "vertical": "Practice",
+    "signal": "Follow-up depended on someone noticing",
+    "metric": "Manual exception handling",
+    "finding": "A practice relied on staff to catch missed appointments, messages, and payment exceptions manually.",
+    "surfaced": "Anonymized assessment finding",
+    "recommendation": "Clarify ownership and follow-up using the existing systems.",
+    "evidence": "An operational finding—not a clinical recommendation or verified retention result."
+  },
+  {
+    "vertical": "Commercial cleaning",
+    "signal": "Prepare for growth",
+    "metric": "Document what works",
+    "finding": "Follow-up was working. The opportunity was to document site procedures and organize the pipeline before more work made those responsibilities harder to hand off.",
+    "surfaced": "Anonymized assessment finding",
+    "recommendation": "Document site procedures and make pipeline responsibilities easy to hand over.",
+    "evidence": "Preparation for growth. This is not evidence of lost leads or recovered savings."
+  },
+  {
+    "vertical": "Salon",
+    "signal": "Better setup, not another platform",
+    "metric": "Booking friction",
+    "finding": "A salon’s booking process pushed customers back to the phone. The assessment recommended clarifying services, restoring online booking, and connecting its existing deposit policy to the booking process.",
+    "surfaced": "Anonymized assessment finding",
+    "recommendation": "Improve the existing booking setup before considering another platform.",
+    "evidence": "Recommendations from an assessment, not completed implementation or verified revenue gains."
+  }
 ] as const;
 
 export const QUIET_LEAKS = [
@@ -267,7 +298,6 @@ export const ORGANIZATION_JSONLD = {
   slogan: COMPANY.tagline,
   description: OFFER_SUMMARY,
   email: COMPANY.email,
-  telephone: PHONE.assessmentE164,
   areaServed: { "@type": "Country", name: "United States" },
   founder: FOUNDERS.map((f) => ({
     "@type": "Person",
@@ -376,6 +406,11 @@ export const BUILDS_JSONLD = {
 
 /** Questions an evaluating agent (or a skeptical owner) actually asks. */
 export const FAQ = [
+{"q":"Is Scout a person or AI?","a":"Scout is an AI voice analyst. Jordan and Ethan review the conversation and recommendations before you receive your written plan."},
+{"q":"What happens to my data?","a":"We collect your contact and business details to arrange the assessment and prepare your report. The Scout call is recorded and transcribed for review. Avoid sharing passwords, payment details, or sensitive customer information. See our privacy notice for more information."},
+{"q":"What if you tell me not to buy?","a":"Then you keep the free plan. We may recommend using what you already have, postponing a purchase, or making a simpler process change. There is no obligation to hire us."},
+{"q":"How long does a build take?","a":"Timing depends on scope, systems, access, and testing. We agree the implementation schedule and definition of done before work begins; the three-business-day turnaround applies to the assessment report, not the build."},
+{"q":"Do I have to change my software?","a":"Not necessarily. We review your current tools and workflows first. A better setup or a clearer handoff may be enough; any proposed software change is explained in the plan."},
   {
     q: "What problem does NextPlay Solutions solve?",
     a: `${POSITIONING.master} The invisible tax often looks like unbilled work, missed follow-up, duplicate data entry, stalled handoffs, or software the team does not use.`,

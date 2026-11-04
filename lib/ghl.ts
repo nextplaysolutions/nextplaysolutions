@@ -46,6 +46,7 @@ export async function upsertContact(lead: {
   const [firstName, ...rest] = lead.name.trim().split(/\s+/);
   const res = await fetch(`${GHL_API}/contacts/upsert`, {
     method: "POST",
+    signal: AbortSignal.timeout(10000),
     headers: headers(),
     body: JSON.stringify({
       locationId: GHL_LOCATION_ID,
@@ -56,20 +57,22 @@ export async function upsertContact(lead: {
       source: lead.source,
       tags,
     }),
-  });
+  }).catch(() => null);
 
-  if (!res.ok) {
-    console.error("GHL upsert failed", res.status, await res.text());
+  if (!res?.ok) {
+    console.error("GHL upsert failed", res?.status ?? "network_or_timeout");
     return { ok: false };
   }
 
-  const data = (await res.json()) as { contact?: { id?: string } };
-  const contactId = data.contact?.id;
+  const data = (await res.json().catch(() => null)) as { contact?: { id?: string } } | null;
+  const contactId = data?.contact?.id;
+  if (!contactId) return { ok: false };
 
   // Best-effort note; the lead itself is already saved.
   if (contactId && lead.note) {
     await fetch(`${GHL_API}/contacts/${contactId}/notes`, {
       method: "POST",
+      signal: AbortSignal.timeout(5000),
       headers: headers(),
       body: JSON.stringify({ body: lead.note }),
     }).catch(() => {});
