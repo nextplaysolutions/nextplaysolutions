@@ -4,7 +4,17 @@ import { createHash } from "node:crypto";
 const windows = new Map<string, { count: number; expires: number }>();
 export function guardRequest(request: Request, bucket: string, limit: number) {
   const origin = request.headers.get("origin");
-  if (origin && origin !== new URL(request.url).origin) return Response.json({ error: "Invalid origin." }, { status: 403 });
+  const url = new URL(request.url);
+  // Next.js may normalize a loopback URL to localhost while the browser uses
+  // 127.0.0.1. The HTTP Host preserves the browser's actual request authority.
+  // Never trust arbitrary x-forwarded-host values or allow unrelated origins.
+  const host = request.headers.get("host");
+  const hostOrigin = host && /^[a-z0-9.:[\]-]+$/i.test(host)
+    ? `${url.protocol}//${host}`
+    : null;
+  if (origin && origin !== url.origin && origin !== hostOrigin) {
+    return Response.json({ error: "Invalid origin." }, { status: 403 });
+  }
   const ip = request.headers.get("x-vercel-forwarded-for") || request.headers.get("x-forwarded-for") || "unknown";
   const key = createHash("sha256").update(`${bucket}:${ip}`).digest("hex");
   const now = Date.now();

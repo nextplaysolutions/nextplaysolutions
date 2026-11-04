@@ -20,6 +20,14 @@ test("cross-origin submissions are rejected", () => {
   assert.equal(guardRequest(request({ origin: "https://other.example" }), "origin-test", 5).status, 403);
 });
 
+test("same-host loopback requests survive Next.js hostname normalization", () => {
+  const local = new Request("http://localhost:3100/api/events", {
+    method: "POST", headers: { origin: "http://127.0.0.1:3100", host: "127.0.0.1:3100" },
+  });
+  assert.equal(guardRequest(local, "loopback-test", 5), null);
+  assert.equal(guardRequest(request({ origin: "https://other.example", host: "nextplaysolutions.ai", "x-forwarded-host": "other.example" }), "forwarded-test", 5).status, 403);
+});
+
 test("rate limits return a retry hint without blocking other buckets", () => {
   assert.equal(guardRequest(request(), "limit-test", 1), null);
   const blocked = guardRequest(request(), "limit-test", 1);

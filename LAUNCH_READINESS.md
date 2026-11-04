@@ -1,6 +1,17 @@
 # NextPlay launch refresh
 
-Local review copy — not pushed or deployed.
+Release verification record. Historical notes below describe earlier checks, not the current deployment status.
+
+## Approved release — November 4, 2026
+
+- Owner explicitly approved pushing to main and deploying after release checks.
+- Merged upstream main through `8348ea9`; preserved the existing `/scout` booking redirect, Vercel Web Analytics, and shared “see if you qualify” labels.
+- Corrected same-origin validation for Next.js loopback hostname normalization. Local `/api/events` now returns 204; cross-origin and forged forwarded-host regression tests reject requests.
+- Live pre-release `/api/chat` returned 200 with a correct assessment explanation. Live `/api/demo-lead` returned 200 after submitting the owner-provided Jordan contact details. This may trigger the existing follow-up workflow.
+- The release audit found security advisories in Next.js 16.2.9. Updated Next.js and its matching ESLint configuration to 16.4.5, plus compatible transitive dependency fixes. Reference: https://github.com/vercel/next.js/releases/tag/v16.4.5
+- Eight moderate audit entries remain in the development-only ESLint/minimatch dependency chain; the suggested forced fix would downgrade the Next.js lint configuration across a major version, so it was not applied.
+- Physical Scout calling and human report delivery still require an owner-operated call; neither is established by a successful website API response.
+- No A/B test is enabled. Vercel page-view analytics is retained; completed-call and delivered-report conversion reporting remains a separate follow-up.
 
 ## Current verification — November 4, 2026
 
