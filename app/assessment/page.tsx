@@ -46,7 +46,7 @@ export default function AssessmentPage() {
                 business days. The call and report are free.
               </p>
               <div className="mt-11 flex flex-wrap items-center gap-x-8 gap-y-4">
-                <CTAButton label="Start the free assessment" size="large" />
+                <CTAButton size="large" />
                 <Link href="/assessment/sample" className="font-medium text-np-navy py-3 hover:text-np-body">
                   Read a real report →
                 </Link>
@@ -158,7 +158,7 @@ export default function AssessmentPage() {
           Free call. Free written assessment. No implementation obligation.
         </p>
         <div className="mt-9">
-          <CTAButton label="Try Scout free" size="large" />
+          <CTAButton size="large" />
         </div>
       </section>
     </>

@@ -4,7 +4,7 @@ import Link from "next/link";
  * Square corners and Signal Lime: the primary action is the strongest signal.
  */
 export default function CTAButton({
-  label = "Start my free assessment",
+  label = "see if you qualify",
   href = "/demo",
   size = "default",
   variant = "rust",

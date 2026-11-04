@@ -97,7 +97,7 @@ export default function DemoLeadForm() {
   return (
     <form onSubmit={submit} onFocus={() => { if (!started) { setStarted(true); track("form_start"); } }} className="border border-np-rule bg-white p-8 md:p-10">
       <div hidden aria-hidden="true"><label>Website<input tabIndex={-1} autoComplete="off" value={website} onChange={e => setWebsite(e.target.value)} /></label></div>
-      <p className="np-eyebrow">Free assessment · {DURATION.assessmentMinutes} minutes</p>
+      <p className="np-eyebrow">see if you qualify · {DURATION.assessmentMinutes} minutes</p>
       <p className="mt-4 text-[1.0625rem] leading-relaxed font-light text-np-body max-w-[52ch]">
         Tell us who&apos;s calling and we&apos;ll open the full Scout assessment line.
       </p>

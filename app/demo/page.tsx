@@ -21,7 +21,7 @@ export default function DemoPage() {
       <div className="relative max-w-[1100px] mx-auto px-5 py-24 md:py-36">
         <div className="grid lg:grid-cols-[.85fr_1.15fr] gap-14 lg:gap-20 items-start">
           <div>
-            <p className="np-eyebrow">Try Scout free</p>
+            <p className="np-eyebrow">see if you qualify</p>
             <h1 className="np-display mt-7 text-4xl md:text-[3.8rem] text-np-navy tracking-tight">
               Twenty-five minutes to find your invisible tax.
             </h1>
