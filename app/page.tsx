@@ -16,11 +16,21 @@ import {
 } from "@/lib/offer";
 
 export const metadata: Metadata = {
-  title: "Find the Invisible Tax in Your Business",
+  title: "Small Business Workflow Automation",
   description:
-    "NextPlay finds hidden operational waste, missed revenue, and unnecessary software. Start with a free 25-minute Scout assessment and human-reviewed action plan.",
+    "Find missed invoices, stalled follow-up, and repetitive admin. Get a free AI business assessment and a clear plan, with optional fixed-scope workflow implementation.",
   alternates: { canonical: "/" },
 };
+
+const SIGN_IMAGES = [
+  "unbilled-work",
+  "missed-follow-up",
+  "duplicate-entry",
+  "unused-software",
+  "missing-paperwork",
+  "evening-admin",
+  "one-person-process",
+] as const;
 
 export default function HomePage() {
   return (
@@ -74,15 +84,31 @@ export default function HomePage() {
         <p className="np-eyebrow">The Invisible Tax</p>
         <h2 id="invisible-tax-heading" className="np-display mt-5 text-3xl md:text-5xl max-w-[23ch]">Seven signs your business is paying for work it shouldn’t have to.</h2>
         <p className="mt-6 text-lg leading-relaxed max-w-[65ch]">The Invisible Tax is time and money lost to manual work and dropped follow-up. These are symptoms to investigate, not a diagnosis of every business.</p>
-        <ol className="mt-10 grid md:grid-cols-2 gap-5">
+        <ol className="mt-12 border-t border-np-rule">
           {INVISIBLE_TAX_SIGNS.map(([title, body], index) => (
-            <li key={title} className="border border-np-rule p-6 md:p-8 hover:border-np-navy transition-colors">
-              <p className="np-label">0{index + 1} / Signal</p>
-              <h3 className="mt-4 text-2xl font-medium">{title}</h3>
-              <p className="mt-3 leading-relaxed text-np-body">{body}</p>
+            <li key={title} className="grid md:grid-cols-2 items-center gap-6 md:gap-12 lg:gap-20 py-8 md:py-10 border-b border-np-rule">
+              <div className={index % 2 === 1 ? "md:col-start-2 md:row-start-1" : ""}>
+                <div className="flex items-center gap-3">
+                  <span className="inline-flex h-9 w-9 items-center justify-center bg-np-navy text-np-rust font-mono text-sm" aria-hidden="true">0{index + 1}</span>
+                  <p className="np-label">Signal {index + 1} / 07</p>
+                </div>
+                <h3 className="np-display mt-5 text-[1.65rem] lg:text-[2rem] max-w-[24ch]">{title}</h3>
+                <p className="mt-4 text-base lg:text-lg leading-relaxed text-np-body max-w-[46ch]">{body}</p>
+              </div>
+              <div className={`relative aspect-[16/10] md:aspect-[16/9] overflow-hidden bg-np-tint ${index % 2 === 1 ? "md:col-start-1 md:row-start-1" : ""}`}>
+                <Image
+                  src={`/images/signs/${SIGN_IMAGES[index]}.webp`}
+                  alt=""
+                  fill
+                  sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1199px) 46vw, 540px"
+                  className="object-cover"
+                />
+                <span className="absolute bottom-0 left-0 h-1 w-16 bg-np-rust" aria-hidden="true" />
+              </div>
             </li>
           ))}
         </ol>
+        <p className="mt-4 text-xs text-np-muted">Illustrative AI-generated imagery. No clients are pictured.</p>
         <div className="mt-8 flex flex-wrap gap-6 items-center">
           <CTAButton label="Find your NextPlay" />
           <Link href="/remodelers" className="underline underline-offset-4">Running a remodeling business? →</Link>
@@ -189,7 +215,7 @@ export default function HomePage() {
               <div className="flex items-center justify-between gap-4">
                 <p className="np-label">{String(index + 1).padStart(2, "0")}</p>
                 {index === 0 && (
-                  <span className="np-label bg-np-rust text-np-navy px-2.5 py-1.5">
+                  <span className="np-label bg-np-rust px-2.5 py-1.5" style={{ color: "var(--np-navy)" }}>
                     Minimum engagement
                   </span>
                 )}

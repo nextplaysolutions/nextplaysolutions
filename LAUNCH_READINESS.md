@@ -1,5 +1,42 @@
 # NextPlay launch refresh
 
+## Approved release — November 9, 2026
+
+- Owner approved pushing the seven-signs visual refresh together with the prepared SEO/AIO improvements. This supersedes the local-draft approval status below.
+- Fetched origin and confirmed no newer commits on main before release preparation. Existing November 4 deployment retained as the prior production release.
+- Scope: alternating seven-signs imagery, expanded practical guides and downloadable checklists, Article/breadcrumb metadata, descriptive homepage metadata, corrected badge contrast, linked llms.txt directory, and accurate sitemap modification dates. Search Console is verified and the sitemap was accepted on November 6; no ranking or AI-answer placement guarantee is implied.
+
+## Seven signs visual refresh — November 9, 2026 (local draft)
+
+- Replaced the two-column card list with seven alternating text/photo rows. Desktop/tablet image placement alternates right/left; mobile keeps text before its photo for every item. Original signal copy and conversion links retained.
+- Added seven illustrative AI-generated business photos, documented with prompts in `docs/seven-signs-imagery.md`. Website WebP assets total 565,520 bytes; Next.js serves responsive, lazy-loaded images with reserved space. No client depiction or outcome claim is implied.
+- Production build and all nine existing tests pass; diff whitespace check passes. Browser review at 375px, 768px, and desktop confirms no horizontal overflow, correct ordering, and seven loaded photos. No browser console errors observed. Desktop/mobile review screenshots saved outside the repository in `/tmp/nextplay-seven-signs-desktop.jpg` and `/tmp/nextplay-seven-signs-mobile.jpg`.
+- No commit, push, or production deployment made. Existing pending SEO changes preserved.
+
+## SEO and AI-search follow-up — November 6, 2026 (local draft)
+
+- Prepared a descriptive homepage title and description while retaining the visible brand headline.
+- Expanded all three practical guides with four explanatory sections, an explicitly illustrative workflow table, downloadable checklists, measurement guidance, FAQs, visible organization attribution, and update dates. No founder quotation or personal authorship is implied.
+- Added Article and breadcrumb structured data; sitemap guide dates now use the content's update dates. This is descriptive markup, not a ranking guarantee.
+- Corrected the minimum-engagement badge's foreground color and converted the llms.txt page directory to Markdown links. llms.txt is a convenience for consumers that use it, not a Google ranking mechanism.
+- Live homepage mobile PageSpeed baseline: Performance 99, Accessibility 96, Best Practices 100, SEO 100; FCP 0.9s, LCP 0.9s, TBT 10ms, CLS 0. Google reports no real-user data. These are single-run lab results, not field Core Web Vitals or measured rankings.
+- Report: https://pagespeed.web.dev/analysis/https-nextplaysolutions-ai/stm6ihrnhb?form_factor=mobile
+- Search Console: owner approved setup under jordan@nextplaysolutions.ai on November 6. Added the nextplaysolutions.ai domain property; Google automatically verified ownership through the domain name provider. No DNS records or routing were changed. Submitted https://nextplaysolutions.ai/sitemap.xml; Google reports Success and 12 discovered pages. Overview reports are processing. Homepage inspection reports indexed, crawl/indexing allowed, successful fetch, and Google-selected canonical matching https://nextplaysolutions.ai/. Last recorded crawl was October 24, 2026, before the November 4 release; the inspection's sitemap discovery field reports a temporary processing error despite the submitted-sitemap table reporting Success. Individual guide/remodeler inspection remains pending.
+- Local checks: nine automated tests and the production build pass. All three guide pages and all three checklist files return HTTP 200. Article markup is present in server-rendered HTML. All three guides fit a 375px viewport without document overflow; the first guide was visually inspected on desktop and mobile. Related-guide navigation works. The React review kept guide content server-rendered, with no added client-side JavaScript or dependencies.
+
+- A fresh homepage indexing request was attempted, but Google returned "We had a problem submitting your indexing request" and could not connect to its reCAPTCHA service. No successful manual crawl request is claimed. Sitemap submission remains successful; retry the manual request later if needed.
+
+### Measurement and genuine proof plan
+
+1. After property verification, submit https://nextplaysolutions.ai/sitemap.xml; inspect the homepage, remodeler page, and each practical guide. Record indexing status and Google's selected canonical.
+2. Establish a Search Console baseline for impressions, clicks, queries, and landing pages. Review after enough data accumulates; do not infer rankings from a Lighthouse score. Track organic lead captures separately from phone-link clicks and completed assessments.
+3. For each implemented client workflow, record the baseline period, observed workload or error count, implementation scope, measurement period, and supporting records. Separate estimates, invoiced amounts, collected amounts, and staff capacity.
+4. Have a founder check attribution and alternative explanations before claiming improvement. Obtain the client's permission for the exact public facts and level of anonymization. Industry plus geography plus revenue may identify a client even without a name.
+5. Ask completed clients for an honest account in their own words: what problem they had, what changed, what remains imperfect, and whether they authorize publication. Do not draft invented testimonials, require positive sentiment, or attach fake ratings.
+6. Publish an outcome case study only after evidence and permission are complete. Include the scope, measurement dates, limitations, and named reviewer if that person actually reviewed it. Until then keep the existing assessment findings clearly labeled.
+
+No outreach, testimonial request, or new outcome claim has been sent or published in this pass. No push or deployment is authorized by this local working record.
+
 Release verification record. Historical notes below describe earlier checks, not the current deployment status.
 
 ## Approved release — November 4, 2026

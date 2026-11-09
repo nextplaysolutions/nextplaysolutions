@@ -1,0 +1,18 @@
+NEXTPLAY SOLUTIONS
+How to stop missing change orders
+Updated 2026-11-06
+
+[ ] Every change has a unique reference linked to its job.
+[ ] Approval and completion are separate, visible statuses.
+[ ] The billing owner can locate the approval record.
+[ ] Completed changes are reconciled before the final invoice.
+[ ] Unbilled exceptions have a next action and an owner.
+[ ] A backup can run the same closeout process.
+
+WHAT TO MEASURE
+Track completed-but-unbilled approved changes, days from completion to invoicing, and time spent reconstructing approvals. Keep estimated opportunities separate from amounts actually invoiced and collected. An invoice alone does not establish cash recovered.
+
+EVIDENCE AND LIMITS
+A remodeling assessment surfaced an estimated $18,000 annual opportunity in unbilled changes. That finding illustrates the problem; it is not a promise of savings for another business.
+
+https://nextplaysolutions.ai/field-notes/missing-change-orders

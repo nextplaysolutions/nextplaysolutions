@@ -1,0 +1,19 @@
+NEXTPLAY SOLUTIONS
+How to stop entering data twice
+Updated 2026-11-06
+
+[ ] Repeated fields and current owners are documented.
+[ ] Each shared field has one authoritative source.
+[ ] Records use stable identifiers.
+[ ] Retries do not create duplicate records.
+[ ] Failed transfers are visible and assigned.
+[ ] The pilot covers updates, conflicts, and missing data.
+[ ] Access is limited to the data the workflow needs.
+
+WHAT TO MEASURE
+Record time spent copying and checking data before and after the pilot, plus duplicate records and failed transfers. Recovered staff hours describe available capacity. Count cash savings separately, and only if an expense actually falls.
+
+EVIDENCE AND LIMITS
+This is process guidance, not a client case study. Time recovered is capacity; it should not be presented as cash saved unless it actually reduces an expense.
+
+https://nextplaysolutions.ai/field-notes/duplicate-data-entry

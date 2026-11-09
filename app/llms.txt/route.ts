@@ -128,16 +128,16 @@ ${FAQ.map((item) => `### ${item.q}\n${item.a}`).join("\n\n")}
 
 ## Pages
 
-- ${SITE_URL}/ — offer overview
-- ${SITE_URL}/assessment — free AI business assessment
-- ${SITE_URL}/assessment/sample — sample written assessment
-- ${SITE_URL}/services — One Play, The Roadmap, and Custom implementation
-- ${SITE_URL}/remodelers — workflow assessment for remodeling businesses
-- ${SITE_URL}/field-notes — anonymized findings
-${GUIDES.map((guide) => `- ${SITE_URL}/field-notes/${guide.slug} — ${guide.title}`).join("\n")}
-- ${SITE_URL}/demo — strict Scout lead gate
-- ${SITE_URL}/about — founders and operating position
-- ${SITE_URL}/legal — privacy and terms
+- [Home](${SITE_URL}/): offer overview
+- [Assessment](${SITE_URL}/assessment): free AI business assessment
+- [Sample report](${SITE_URL}/assessment/sample): sample written assessment
+- [Services](${SITE_URL}/services): One Play, The Roadmap, and Custom implementation
+- [Remodelers](${SITE_URL}/remodelers): workflow assessment for remodeling businesses
+- [Field Notes](${SITE_URL}/field-notes): anonymized findings
+${GUIDES.map((guide) => `- [${guide.title}](${SITE_URL}/field-notes/${guide.slug}): practical guide, worked example, and checklist`).join("\n")}
+- [Try Scout](${SITE_URL}/demo): contact capture before revealing the Scout line
+- [About](${SITE_URL}/about): founders and operating position
+- [Legal](${SITE_URL}/legal): privacy and terms
 `;
 
   return new Response(body, {

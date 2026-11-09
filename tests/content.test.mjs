@@ -2,6 +2,23 @@ import assert from "node:assert/strict";
 import { test } from "node:test";
 import { FIELD_NOTES, FAQ, FAQ_JSONLD, TIERS } from "../lib/offer.ts";
 import { INVISIBLE_TAX_SIGNS, REMODELER_SIGNS } from "../lib/launch-content.ts";
+import { GUIDES } from "../lib/guides.ts";
+import { readFileSync } from "node:fs";
+
+test("expanded guides have evidence, examples, and matching downloadable checklists", () => {
+  assert.equal(GUIDES.length, 3);
+  for (const guide of GUIDES) {
+    assert.equal(guide.sections.length, 4);
+    assert.ok(guide.example.intro.includes("Illustrative"));
+    assert.ok(guide.measure.length > 100);
+    assert.equal(guide.faq.length, 2);
+    assert.match(guide.evidenceHref, /^\/field-notes#finding-\d+$/);
+    const checklist = readFileSync(new URL(`../public/checklists/${guide.slug}.txt`, import.meta.url), "utf8");
+    for (const item of guide.checklist) assert.ok(checklist.includes(item));
+    assert.ok(checklist.includes(guide.evidence));
+    assert.ok(!Number.isNaN(Date.parse(guide.updated)));
+  }
+});
 
 test("seven findings carry recommendations and evidence limits", () => {
   assert.equal(FIELD_NOTES.length, 7);

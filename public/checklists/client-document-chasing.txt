@@ -1,0 +1,18 @@
+NEXTPLAY SOLUTIONS
+How to reduce client document chasing
+Updated 2026-11-06
+
+[ ] Each request names a specific document and due date.
+[ ] Clients have an approved submission channel.
+[ ] Received and accepted are separate statuses.
+[ ] Every outstanding item has a next action and owner.
+[ ] Reminders stop when the request changes.
+[ ] A backup can see the queue and take over.
+
+WHAT TO MEASURE
+Measure days each stage is blocked, repeat requests per item, and staff time spent chasing. Distinguish client waiting from internal review time. Faster paperwork does not automatically mean more revenue; report a financial result only when its connection to an actual outcome is supported.
+
+EVIDENCE AND LIMITS
+An M&A advisory interview identified deals waiting weeks on paperwork. The cost had not been quantified. No dollar return or implemented outcome is claimed here.
+
+https://nextplaysolutions.ai/field-notes/client-document-chasing
