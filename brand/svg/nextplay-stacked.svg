@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="520" height="520" viewBox="0 0 520 520" role="img" aria-labelledby="title desc">
+  <title id="title">NextPlay Solutions stacked logo</title>
+  <desc id="desc">The NextPlay aperture mark above the centered wordmark.</desc>
+  <path fill="#06120F" fill-rule="evenodd" d="M196 58H324V186H196V58ZM239 92V152L288 122L239 92Z"/>
+  <text x="260" y="278" text-anchor="middle" fill="#06120F" font-family="Geist, Inter, Helvetica Neue, Arial, sans-serif" font-size="63" font-weight="400" letter-spacing="-2.5">Next<tspan font-weight="700">Play</tspan></text>
+  <text x="260" y="321" text-anchor="middle" fill="#53645C" font-family="Geist Mono, SFMono-Regular, Menlo, monospace" font-size="14" font-weight="600" letter-spacing="9">SOLUTIONS</text>
+  <path d="M118 370H402" stroke="#D5DAD4"/>
+  <text x="260" y="414" text-anchor="middle" fill="#617069" font-family="Geist, Inter, Helvetica Neue, Arial, sans-serif" font-size="18" font-weight="500" letter-spacing=".4">Your unfair AI advantage</text>
+</svg>

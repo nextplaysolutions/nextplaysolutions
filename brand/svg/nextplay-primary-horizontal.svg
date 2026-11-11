@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="160" viewBox="0 0 760 160" role="img" aria-labelledby="title desc">
+  <title id="title">NextPlay Solutions logo</title>
+  <desc id="desc">A square aperture mark with a play arrow cut from its center, followed by the NextPlay Solutions wordmark.</desc>
+  <path fill="#06120F" fill-rule="evenodd" d="M24 28H128V132H24V28ZM59 56V104L98 80L59 56Z"/>
+  <text x="158" y="88" fill="#06120F" font-family="Geist, Inter, Helvetica Neue, Arial, sans-serif" font-size="55" font-weight="400" letter-spacing="-2">Next<tspan font-weight="700">Play</tspan></text>
+  <text x="161" y="119" fill="#53645C" font-family="Geist Mono, SFMono-Regular, Menlo, monospace" font-size="13" font-weight="600" letter-spacing="8">SOLUTIONS</text>
+</svg>
