@@ -20,6 +20,12 @@ const nextConfig: NextConfig = {
         destination: "https://api.leadconnectorhq.com/widget/bookings/talk-with-scout",
         statusCode: 302,
       },
+      // Temporary target: GHL funnel preview until a domain is connected; repoint later.
+      {
+        source: "/goldensheaf",
+        destination: "https://sites.leadconnectorhq.com/preview/QzzgVAqEEhx4PYKSOddq",
+        permanent: false,
+      },
     ];
   },
 };
